@@ -11,6 +11,10 @@ includes, so `uv run` syncs it automatically and the docs commands need no extra
 provisioning. Sphinx autodoc imports `mdreport`, so the docs must be built inside that
 environment — this is why the commands go through `uv run` rather than `make html`.
 
+`docs-publish` deploys the rendered site to a branch that holds nothing else. Each run
+commits on top of that branch's published tip, so the push fast-forwards and the source
+history never mixes in; `--force` restarts the branch from an orphan commit instead.
+
 `publish` uploads through a section of `~/.pypirc`, which supplies both the index URL
 and the API token — so the section name is what decides which PyPI account owns the
 release. It defaults to `tychoengr-pypi`, publishing as tychoengr, and will refuse to
@@ -22,7 +26,7 @@ Usage:
     uv run manage.py docs --build                  # render to docs/build/html instead of serving
     uv run manage.py docs --build --strict         # treat Sphinx warnings as errors
     uv run manage.py docs-publish                  # push the built docs to the gh-pages branch
-    uv run manage.py docs-publish --force          # force-push, discarding gh-pages history
+    uv run manage.py docs-publish --force          # republish gh-pages from scratch, discarding its history
     uv run manage.py publish                       # build sdist+wheel, upload to PyPI as tychoengr
     uv run manage.py publish --repository testpypi
     uv run manage.py publish --skip-build          # upload whatever is already in dist/
@@ -50,6 +54,10 @@ DOCS = ROOT / "docs"
 DOCS_SOURCE = DOCS / "source"
 DOCS_BUILD = DOCS / "build"
 DOCS_HTML = DOCS_BUILD / "html"
+
+# Local branch `docs-publish` points its orphan worktree at, created and deleted within
+# a single deploy. Only used when there is no published branch to extend.
+DEPLOY_STAGING_BRANCH = "docs-publish-staging"
 
 # Directories and glob patterns `clean` removes, relative to ROOT.
 BUILD_ARTIFACTS = ["build", "dist", "docs/build", ".eggs", ".pytest_cache", ".ruff_cache", ".mypy_cache"]
@@ -108,6 +116,38 @@ def run(command: list[str], environment: dict[str, str] | None = None) -> None:
         raise click.ClickException(f"{command[0]} is not installed or not on PATH") from e
     except subprocess.CalledProcessError as e:
         raise click.ClickException(f"{command[0]} exited with status {e.returncode}") from e
+
+
+def capture(command: list[str]) -> str:
+    """Run command in ROOT and return its standard output, echoing the command first.
+
+    Raises:
+        click.ClickException: if the command exits non-zero or is not installed.
+    """
+    click.echo(click.style(f"$ {' '.join(command)}", fg="cyan"))
+    try:
+        result = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True)
+    except FileNotFoundError as e:
+        raise click.ClickException(f"{command[0]} is not installed or not on PATH") from e
+    except subprocess.CalledProcessError as e:
+        detail = e.stderr.strip()
+        message = f"{command[0]} exited with status {e.returncode}"
+        raise click.ClickException(f"{message}: {detail}" if detail else message) from e
+    return result.stdout
+
+
+def remote_branch_exists(remote_name: str, branch: str) -> bool:
+    """Returns True if branch is published on remote_name.
+
+    Raises:
+        click.ClickException: if the remote cannot be reached.
+    """
+    return bool(capture(["git", "ls-remote", "--heads", remote_name, branch]).strip())
+
+
+def local_branch_exists(branch: str) -> bool:
+    """Returns True if a local branch named branch exists."""
+    return bool(capture(["git", "branch", "--list", branch]).strip())
 
 
 def sphinx(command: str, arguments: list[str]) -> None:
@@ -172,7 +212,7 @@ def docs(is_build: bool, host: str, port: int, strict: bool, is_clean: bool) -> 
 @click.option("--branch", default="gh-pages", show_default=True, help="Branch to deploy the built site to.")
 @click.option("--remote-name", default="origin", show_default=True, help="Git remote to push the branch to.")
 @click.option("--message", default="Deploy documentation", show_default=True, help="Commit message for the deploy.")
-@click.option("--force", is_flag=True, help="Force-push the branch, discarding its remote history.")
+@click.option("--force", is_flag=True, help="Discard the deploy branch's history and republish it from scratch.")
 @click.option("--allow-warnings", is_flag=True, help="Deploy even if Sphinx reports broken refs or missing pages.")
 def docs_publish(branch: str, remote_name: str, message: str, force: bool, allow_warnings: bool) -> None:
     if DOCS_BUILD.exists():
@@ -181,11 +221,26 @@ def docs_publish(branch: str, remote_name: str, message: str, force: bool, allow
     if not (DOCS_HTML / "index.html").exists():
         raise click.ClickException(f"{DOCS_HTML / 'index.html'} is missing; the documentation build produced no site")
 
-    # Deploy from a detached worktree rather than checking the branch out in place, so
-    # an interrupted publish can never leave the working tree on gh-pages.
+    # Each deploy must extend the published branch, so fetch its tip and base the
+    # worktree on that. A worktree added with no commit-ish checks out whatever the
+    # current branch is, which makes the deploy commit a descendant of main: the push
+    # is then rejected as non-fast-forward, and the branch carries the source history.
+    is_fresh = force or not remote_branch_exists(remote_name, branch)
+
+    # Deploy from a worktree rather than checking the branch out in place, so an
+    # interrupted publish can never leave the working tree on the deploy branch.
     with tempfile.TemporaryDirectory() as directory:
-        worktree = Path(directory) / "gh-pages"
-        run(["git", "worktree", "add", "--detach", str(worktree)])
+        worktree = Path(directory) / "deploy"
+        if is_fresh:
+            # Nothing to extend — start an unborn branch so the deploy commit has no
+            # parent and the published history holds only the site.
+            if local_branch_exists(DEPLOY_STAGING_BRANCH):
+                run(["git", "branch", "--delete", "--force", DEPLOY_STAGING_BRANCH])
+            run(["git", "worktree", "add", "--orphan", "-b", DEPLOY_STAGING_BRANCH, str(worktree)])
+        else:
+            refspec = f"+refs/heads/{branch}:refs/remotes/{remote_name}/{branch}"
+            run(["git", "fetch", remote_name, refspec])
+            run(["git", "worktree", "add", "--detach", str(worktree), f"{remote_name}/{branch}"])
         try:
             for entry in worktree.iterdir():
                 if entry.name == ".git":
@@ -199,10 +254,14 @@ def docs_publish(branch: str, remote_name: str, message: str, force: bool, allow
             (worktree / ".nojekyll").touch()
             run(["git", "-C", str(worktree), "add", "--all"])
             run(["git", "-C", str(worktree), "commit", "--allow-empty", "--message", message])
-            push = ["git", "-C", str(worktree), "push", *(["--force"] if force else []), remote_name]
+            # An orphan deploy shares no history with what is published, so it can only
+            # replace the branch; a based deploy fast-forwards and needs no force.
+            push = ["git", "-C", str(worktree), "push", *(["--force"] if is_fresh else []), remote_name]
             run([*push, f"HEAD:refs/heads/{branch}"])
         finally:
             run(["git", "worktree", "remove", "--force", str(worktree)])
+            if is_fresh and local_branch_exists(DEPLOY_STAGING_BRANCH):
+                run(["git", "branch", "--delete", "--force", DEPLOY_STAGING_BRANCH])
     click.echo(click.style(f"Published documentation to {remote_name}/{branch}", fg="green"))
 
 
