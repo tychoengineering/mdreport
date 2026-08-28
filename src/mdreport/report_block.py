@@ -42,8 +42,8 @@ class DeferredReportBlock(Protocol):
 
     A deferred block is appended as a placeholder and resolved once, at render
     time, against the document as it finally stands. Use it for content that
-    reads the rest of the report — tables of contents, cross-references,
-    figure numbering.
+    reads the rest of the report — tables of contents, summaries, and figure
+    numbering.
     """
 
     def __resolve__(self, document: SyntaxTreeNode, report: MarkdownReport) -> BlockContent:

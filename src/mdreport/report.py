@@ -10,8 +10,10 @@ import yaml
 from markdown_it.token import Token
 from markdown_it.tree import SyntaxTreeNode
 
+from .callout import Callout, CalloutKind
 from .code_block import CodeBlock
 from .dataframe_formatting import format_dataframe_csv
+from .figure import Figure
 from .heading_anchors import HeadingAnchorStyle, anchored_tokens
 from .markdown_parser import create_parser
 from .markdown_tokens import (
@@ -63,6 +65,8 @@ class MarkdownReport:
     - Jinja2 template support for dynamic content
     - Polars DataFrame integration for tables and CSV exports
     - Automatic formatting of numeric data with configurable precision
+    - Numbered figures and captions
+    - Portable semantic callouts
     - Support for nested lists and various markdown elements
     - Export to file or string rendering
 
@@ -340,6 +344,32 @@ class MarkdownReport:
             self.markdown(str(block), params)
         return self
 
+    def callout(
+        self,
+        message: str,
+        kind: CalloutKind = CalloutKind.NOTE,
+        title: str | None = None,
+        params: Mapping[str, Any] | None = None,
+    ) -> MarkdownReport:
+        """Append a titled block quote drawing attention to content.
+
+        Args:
+            message: Markdown content displayed inside the callout.
+            kind: Semantic category supplying the default title.
+            title: Custom title replacing the category name.
+            params: Template variables applied to the message and custom title.
+
+        Example:
+
+            .. code-block:: python
+
+               report.callout(
+                   "Numbers are provisional.",
+                   kind=CalloutKind.WARNING,
+               )
+        """
+        return self.append(Callout(message, kind=kind, title=title, params=params))
+
     def bullet_list(
         self,
         items: list[NestedListItem],
@@ -498,6 +528,50 @@ class MarkdownReport:
                report.code_block("select 1", language="sql", title="Query")
         """
         return self.append(CodeBlock(code, language=language, title=title, params=params))
+
+    def figure(
+        self,
+        source: str | Path,
+        alt_text: str,
+        caption: str | None = None,
+        params: Mapping[str, Any] | None = None,
+        is_embedded: bool = False,
+    ) -> MarkdownReport:
+        """Append an image with an optional numbered caption.
+
+        Figures are numbered in document order during ``render``.
+
+        Args:
+            source: Image path or URL written into the Markdown image destination.
+            alt_text: Literal alternative text describing the image.
+            caption: Optional inline-Markdown caption.
+            params: Template variables applied to source, alternative text, and caption.
+            is_embedded: True reads a local raster image into a base64 data URL or
+                inserts a local SVG as inline markup. False links to source.
+
+        Raises:
+            FigureEmbeddingError: during rendering, if an embedded source is not
+                a supported local image.
+
+        Example:
+
+            .. code-block:: python
+
+               report.figure(
+                   "charts/revenue.png",
+                   alt_text="Revenue by region",
+                   caption="Quarterly revenue by region.",
+               )
+        """
+        return self.append(
+            Figure(
+                source,
+                alt_text,
+                caption=caption,
+                params=params,
+                is_embedded=is_embedded,
+            )
+        )
 
     def line_break(self) -> MarkdownReport:
         """Append one additional blank line between document blocks.

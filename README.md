@@ -1,10 +1,10 @@
 # mdreport
 
-Build Markdown reports in Python with a chainable API. `mdreport` supports headings, text, nested lists, code blocks,
-YAML frontmatter, tables of contents, Jinja templates, and Polars DataFrames.
+Build Markdown reports in Python with a chainable API. `mdreport` supports headings, text, nested lists, callouts,
+figures, captions, code blocks, YAML frontmatter, tables of contents, Jinja templates, and Polars DataFrames.
 
 ```python
-from mdreport import MarkdownReport
+from mdreport import CalloutKind, MarkdownReport
 
 report = (
     MarkdownReport()
@@ -14,7 +14,12 @@ report = (
     .table_of_contents(start_level=2, depth=2)
     .heading("Summary")
     .text("Revenue grew {{growth}}%.", params={"growth": 4})
-    .markdown("> Numbers are provisional.")
+    .callout("Numbers are provisional.", kind=CalloutKind.WARNING)
+    .figure(
+        "charts/revenue.png",
+        alt_text="Revenue by region",
+        caption="Quarterly revenue by region.",
+    )
     .bullet_list(["EMEA", ["Enterprise", "Consumer"], "APAC"])
     .numbered_list(["Collect", "Review", "Publish"])
     .table(metrics, title="Revenue by region", decimal_places=1)
@@ -117,6 +122,21 @@ report.directive("class", "title")  # <!-- _class: title -->
 report.directive("paginate")        # <!-- _paginate -->
 ```
 
+#### `callout(message, kind=CalloutKind.NOTE, title=None, params=None)`
+
+Adds a titled block quote. The message supports Markdown. Choose `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, or `CAUTION`,
+or pass a custom `title`.
+
+```python
+from mdreport import CalloutKind
+
+report.callout(
+    "Numbers for **{{ period }}** are provisional.",
+    kind=CalloutKind.WARNING,
+    params={"period": "Q3"},
+)
+```
+
 ### Lists and spacing
 
 #### `bullet_list(items, params=None)`
@@ -177,6 +197,25 @@ report.code_block("select 1", language="sql", title="Health check")
 
 Leave `params` as `None` when code contains Jinja-like braces that must remain literal.
 
+### Figures and captions
+
+#### `figure(source, alt_text, caption=None, params=None, is_embedded=False)`
+
+Adds a figure numbered in document order. The alternative text is literal, while the optional caption supports inline
+Markdown and Jinja parameters.
+
+```python
+report.figure(
+    "charts/revenue.png",
+    alt_text="Revenue by region",
+    caption="Quarterly **revenue** by region.",
+)
+```
+
+The default leaves the source as a path or URL. With `is_embedded=True`, a local raster image becomes a base64 data URL
+and a local SVG is copied into the document as inline markup. Embedding does not fetch remote URLs. Only embed trusted
+SVG files because their markup is preserved; some hosted Markdown viewers also disallow image data URLs.
+
 ### Table of contents
 
 #### `table_of_contents(start_level=1, depth=6, is_linked=True)`
@@ -225,8 +264,8 @@ report.text(
 )
 ```
 
-Template values work in headings, text, Markdown, list items at every nesting level, code blocks, and titles for tables,
-CSV, and code blocks. If `params` is `None`, braces pass through unchanged.
+Template values work in headings, text, Markdown, list items at every nesting level, callouts, figures, code blocks, and
+titles for tables and CSV. If `params` is `None`, braces pass through unchanged.
 
 ## Heading links
 
@@ -256,11 +295,13 @@ do not support heading attributes display `{#revenue}` as text.
 The fluent methods use reusable block values internally. You can construct these values directly and pass them to
 `append`, `+=`, or `+`.
 
-| Block             | Constructor                                                   | Purpose                                       |
-| ----------------- | ------------------------------------------------------------- | --------------------------------------------- |
-| `CodeBlock`       | `CodeBlock(code, language="", title=None, params=None)`       | A fenced code block with an optional caption. |
-| `Table`           | `Table(dataframe, title=None, params=None, decimal_places=2)` | A complete Polars DataFrame as a GFM table.   |
-| `TableOfContents` | `TableOfContents(start_level=1, depth=6, is_linked=True)`     | A deferred, nested heading list.              |
+| Block             | Purpose                                       |
+| ----------------- | --------------------------------------------- |
+| `Callout`         | A titled, semantic block quote.               |
+| `CodeBlock`       | A fenced code block with an optional caption. |
+| `Figure`          | A numbered image with an optional caption.    |
+| `Table`           | A complete Polars DataFrame as a GFM table.   |
+| `TableOfContents` | A deferred, nested heading list.              |
 
 `TableOfContentsEntry` is the data record returned by `TableOfContents.entries()`. It contains `level`, the heading's
 inline token, its `slug`, and its child entries. `TableOfContents.end_level` returns the deepest included heading level,
@@ -278,14 +319,14 @@ from mdreport import BlockContent, MarkdownReport
 
 
 @dataclass(frozen=True)
-class Callout:
-    message: str
+class Aside:
+    content: str
 
     def __report__(self, report: MarkdownReport) -> BlockContent:
-        return f"> **Note:** {self.message}"
+        return f"> {self.content}"
 
 
-report = MarkdownReport().append(Callout("Numbers are provisional."))
+report = MarkdownReport().append(Aside("Numbers are provisional."))
 ```
 
 Do not modify the report inside `__report__`. Return the block content instead.
