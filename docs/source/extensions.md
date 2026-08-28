@@ -11,14 +11,14 @@ from dataclasses import dataclass
 from mdreport import BlockContent, MarkdownReport
 
 @dataclass(frozen=True)
-class Callout:
-    message: str
+class Aside:
+    content: str
 
     def __report__(self, report: MarkdownReport) -> BlockContent:
-        return f"> **Note:** {self.message}"
+        return f"> {self.content}"
 
 report = MarkdownReport().title("Findings")
-report.append(Callout("Numbers are provisional."))
+report.append(Aside("Numbers are provisional."))
 ```
 
 You do not need a base class or a registration step. Do not change the report inside `__report__`.
@@ -79,7 +79,7 @@ Three reasons to build tokens instead of a string:
   `Token("text", "", 0, content=value)` when it has to survive as data, and the renderer escapes it
   on the way out.
 
-A Markdown string is the better choice when you write the whole block yourself, as `Callout` does
+A Markdown string is the better choice when you write the whole block yourself, as `Aside` does
 above. Reach for tokens when your data decides the content.
 
 The [API reference](api-reference.rst) lists all token builders.

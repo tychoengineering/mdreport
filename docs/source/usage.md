@@ -35,6 +35,58 @@ Use `markdown` for content such as a quote or an image.
 report.markdown("> Numbers are provisional.")
 ```
 
+## Add a callout
+
+Use `callout` for a portable, titled block quote. Its message supports Markdown and template
+parameters.
+
+```python
+from mdreport import CalloutKind
+
+report.callout(
+    "Numbers for **{{ period }}** are provisional.",
+    kind=CalloutKind.WARNING,
+    params={"period": "Q3"},
+)
+```
+
+The kinds are `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, and `CAUTION`. Pass `title` to replace the
+kind's title.
+
+## Add figures
+
+Use `figure` for a numbered image with alternative text and an optional caption.
+
+```python
+report = (
+    MarkdownReport()
+    .figure(
+        "charts/revenue.png",
+        alt_text="Revenue by region",
+        caption="Quarterly **revenue** by region.",
+    )
+)
+```
+
+Captions receive `Figure 1`, `Figure 2`, and so on in document order during `render`.
+
+By default, the image remains linked to its path or URL. Set `is_embedded=True` to make a local
+image part of the Markdown document:
+
+```python
+report.figure(
+    "charts/revenue.png",
+    alt_text="Revenue by region",
+    is_embedded=True,
+)
+```
+
+Raster images become base64 data URLs. SVG files are copied into the document as inline markup,
+inside an accessible wrapper carrying the alternative text. Embedding reads local files only; it
+does not download a remote URL. Only embed trusted SVG files because their markup is preserved.
+Some hosted Markdown viewers disallow data URLs even though the generated document is
+self-contained.
+
 ## Add a DataFrame
 
 Use `table` for a Markdown table. Use `csv` when readers need to copy the data.
@@ -109,7 +161,7 @@ from mdreport import HeadingAnchorStyle, MarkdownReport, slugify
 MarkdownReport(anchor_style=HeadingAnchorStyle.HTML)       # ## <a id="revenue"></a>Revenue
 MarkdownReport(anchor_style=HeadingAnchorStyle.ATTRIBUTE)  # ## Revenue {#revenue}
 
-report.markdown(f"Back to [revenue](#{slugify('Revenue')}).")  # cross-reference a heading
+report.markdown(f"Back to [revenue](#{slugify('Revenue')}).")  # link to a heading
 ```
 
 `ATTRIBUTE` is the syntax Pandoc, kramdown, and python-markdown's `attr_list` understand; anything

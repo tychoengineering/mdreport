@@ -1,15 +1,18 @@
 """Build Markdown reports from a fluent API, extensible with custom blocks.
 
-Most callers need only ``MarkdownReport`` and the built-in blocks (``CodeBlock``,
-``Table``, ``TableOfContents``). The rest of this surface exists for writing custom
-blocks: implement ``ReportBlock`` (or ``DeferredReportBlock``) and build the
-``BlockContent`` you return with the token builders and ``render_template``.
+Most callers need only ``MarkdownReport`` and the built-in blocks such as
+``Callout``, ``Figure``, ``Table``, and ``TableOfContents``. The rest of this
+surface exists for writing custom blocks: implement ``ReportBlock`` (or
+``DeferredReportBlock``) and build the ``BlockContent`` you return with the token
+builders and ``render_template``.
 """
 
 __version__ = "0.0.1a1"
 
+from .callout import Callout, CalloutKind
 from .code_block import CodeBlock
 from .dataframe_formatting import format_dataframe, format_dataframe_csv
+from .figure import Figure, FigureEmbeddingError
 from .heading_anchors import HeadingAnchorStyle, slugify
 from .markdown_parser import MarkdownParser
 from .markdown_tokens import (
@@ -32,8 +35,12 @@ from .template_rendering import render_template, render_template_items
 
 __all__ = [
     "BlockContent",
+    "Callout",
+    "CalloutKind",
     "CodeBlock",
     "DeferredReportBlock",
+    "Figure",
+    "FigureEmbeddingError",
     "HeadingAnchorStyle",
     "MarkdownParser",
     "MarkdownReport",

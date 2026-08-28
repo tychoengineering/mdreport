@@ -12,7 +12,16 @@ Report
 Blocks
 ------
 
+.. autoclass:: mdreport.Callout
+   :members:
+
+.. autoclass:: mdreport.CalloutKind
+   :members:
+
 .. autoclass:: mdreport.CodeBlock
+   :members:
+
+.. autoclass:: mdreport.Figure
    :members:
 
 .. autoclass:: mdreport.Table
@@ -44,6 +53,11 @@ Extension protocols
    :special-members: __resolve__
 
 .. autodata:: mdreport.report_block.BlockContent
+
+Errors
+------
+
+.. autoclass:: mdreport.FigureEmbeddingError
 
 Token builders
 --------------

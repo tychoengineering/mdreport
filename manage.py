@@ -11,8 +11,10 @@ includes, so `uv run` syncs it automatically and the docs commands need no extra
 provisioning. Sphinx autodoc imports `mdreport`, so the docs must be built inside that
 environment — this is why the commands go through `uv run` rather than `make html`.
 
-`publish` uploads to the real PyPI by default and will refuse to overwrite an
-existing release; test the flow against TestPyPI first.
+`publish` uploads through a section of `~/.pypirc`, which supplies both the index URL
+and the API token — so the section name is what decides which PyPI account owns the
+release. It defaults to `tychoengr-pypi`, publishing as tychoengr, and will refuse to
+overwrite an existing release; test the flow against TestPyPI first.
 
 Usage:
     uv run manage.py docs                          # serve docs at http://127.0.0.1:8000 with livereload
@@ -21,7 +23,7 @@ Usage:
     uv run manage.py docs --build --strict         # treat Sphinx warnings as errors
     uv run manage.py docs-publish                  # push the built docs to the gh-pages branch
     uv run manage.py docs-publish --force          # force-push, discarding gh-pages history
-    uv run manage.py publish                       # build sdist+wheel, upload to PyPI
+    uv run manage.py publish                       # build sdist+wheel, upload to PyPI as tychoengr
     uv run manage.py publish --repository testpypi
     uv run manage.py publish --skip-build          # upload whatever is already in dist/
     uv run manage.py build                         # build sdist+wheel into dist/
@@ -31,7 +33,9 @@ Usage:
 
 from __future__ import annotations
 
+import configparser
 import enum
+import os
 import shutil
 import subprocess
 import tempfile
@@ -41,6 +45,7 @@ import click
 
 ROOT = Path(__file__).parent
 DIST = ROOT / "dist"
+PYPIRC = Path.home() / ".pypirc"
 DOCS = ROOT / "docs"
 DOCS_SOURCE = DOCS / "source"
 DOCS_BUILD = DOCS / "build"
@@ -52,27 +57,53 @@ ARTIFACT_GLOBS = ["**/*.egg-info", "**/*.egg", "**/__pycache__", "**/*.pyc", "**
 
 
 class Repository(enum.StrEnum):
-    """A package index `publish` can upload to."""
+    """A `~/.pypirc` section `publish` uploads through.
 
+    The section holds the index URL and the account's API token, so choosing one
+    chooses the PyPI account that owns the release: TYCHOENGR publishes as tychoengr,
+    PYPI as whichever account the generic `[pypi]` token belongs to.
+    """
+
+    TYCHOENGR = "tychoengr-pypi"
     PYPI = "pypi"
     TESTPYPI = "testpypi"
 
 
-PUBLISH_URLS = {
-    Repository.PYPI: "https://upload.pypi.org/legacy/",
-    Repository.TESTPYPI: "https://test.pypi.org/legacy/",
-}
+def repository_url(target: Repository) -> str:
+    """Returns the upload URL configured for target in ~/.pypirc, or "" if it sets none.
+
+    Reading the file also fails the publish early, before anything is uploaded, when
+    the section a release depends on is absent.
+
+    Raises:
+        click.ClickException: if ~/.pypirc is missing, unparseable, or has no section
+            named target.
+    """
+    if not PYPIRC.exists():
+        raise click.ClickException(f"{PYPIRC} not found; twine has no credentials for [{target.value}]")
+    config = configparser.ConfigParser()
+    try:
+        config.read(PYPIRC)
+    except configparser.Error as e:
+        raise click.ClickException(f"{PYPIRC} could not be parsed: {e}") from e
+    if not config.has_section(target.value):
+        available = ", ".join(config.sections()) or "no sections at all"
+        raise click.ClickException(f"{PYPIRC} has no [{target.value}] section; it has {available}")
+    return config.get(target.value, "repository", fallback="")
 
 
-def run(command: list[str]) -> None:
+def run(command: list[str], environment: dict[str, str] | None = None) -> None:
     """Run command in ROOT, echoing it first.
+
+    Pass environment to replace the child's environment entirely; it is the one place
+    the process environment is written, and only for a subprocess we spawn.
 
     Raises:
         click.ClickException: if the command exits non-zero or is not installed.
     """
     click.echo(click.style(f"$ {' '.join(command)}", fg="cyan"))
     try:
-        subprocess.run(command, cwd=ROOT, check=True)
+        subprocess.run(command, cwd=ROOT, check=True, env=environment)
     except FileNotFoundError as e:
         raise click.ClickException(f"{command[0]} is not installed or not on PATH") from e
     except subprocess.CalledProcessError as e:
@@ -185,36 +216,60 @@ def build(keep_dist: bool) -> None:
         click.echo(f"  {artifact.name}")
 
 
-@main.command(help="Build the distribution and upload it to a package index.")
+@main.command(help="Build the distribution and upload it to a package index as that index's account.")
 @click.option(
     "--repository",
     type=click.Choice([r.value for r in Repository]),
-    default=Repository.PYPI.value,
+    default=Repository.TYCHOENGR.value,
     show_default=True,
-    help="Index to upload to.",
+    help="~/.pypirc section to upload through; its token decides the owning account.",
 )
 @click.option("--skip-build", is_flag=True, help="Upload the existing contents of dist/ without rebuilding.")
-@click.option("--token", default=None, help="Index API token. Falls back to UV_PUBLISH_TOKEN or ~/.pypirc.")
+@click.option("--token", default=None, help="Index API token, overriding the one in the ~/.pypirc section.")
 def publish(repository: str, skip_build: bool, token: str | None) -> None:
     target = Repository(repository)
+    url = repository_url(target)
     if not skip_build:
         if DIST.exists():
             shutil.rmtree(DIST)
         run(["uv", "build", "--out-dir", str(DIST)])
-    artifacts = sorted(DIST.glob("*")) if DIST.exists() else []
+    # Only the distributions: `uv build` also drops a .gitignore into dist/, and twine
+    # rejects the whole upload when handed a file it can't recognise.
+    artifacts = sorted([*DIST.glob("*.whl"), *DIST.glob("*.tar.gz")]) if DIST.exists() else []
     if not artifacts:
-        raise click.ClickException("dist/ is empty; drop --skip-build or run `uv run manage.py build` first")
+        raise click.ClickException("dist/ holds no distributions; drop --skip-build or run `uv run manage.py build`")
 
-    click.echo(f"Uploading to {target.value}:")
+    destination = f"{target.value} ({url})" if url else target.value
+    click.echo(f"Uploading to {destination}:")
     for artifact in artifacts:
         click.echo(f"  {artifact.name}")
-    click.confirm(f"Publish these {len(artifacts)} artifacts to {target.value}?", abort=True)
+    click.confirm(f"Publish these {len(artifacts)} artifacts to {destination}?", abort=True)
 
-    command = ["uv", "publish", "--publish-url", PUBLISH_URLS[target]]
+    # twine reads ~/.pypirc natively, which `uv publish` does not — the section is how
+    # the release gets attributed to the right account.
+    command = [
+        "uv",
+        "run",
+        "--group",
+        "dev",
+        "python",
+        "-m",
+        "twine",
+        "upload",
+        "--config-file",
+        str(PYPIRC),
+        "--repository",
+        target.value,
+        *(str(a) for a in artifacts),
+    ]
+    # A token passed on argv is visible in the process list, so hand it over through the
+    # child's environment instead; twine reads TWINE_USERNAME/TWINE_PASSWORD ahead of
+    # whatever the section holds.
+    environment = None
     if token is not None:
-        command += ["--token", token]
-    run([*command, *(str(a) for a in artifacts)])
-    click.echo(click.style(f"Published to {target.value}", fg="green"))
+        environment = {**os.environ, "TWINE_USERNAME": "__token__", "TWINE_PASSWORD": token}
+    run(command, environment)
+    click.echo(click.style(f"Published to {destination}", fg="green"))
 
 
 @main.command(help="Run the test suite.")
