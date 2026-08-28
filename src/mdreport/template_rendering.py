@@ -7,7 +7,7 @@ from jinja2 import Template
 
 from .markdown_tokens import NestedListItem
 
-__all__ = ["render_nested_template_items", "render_template", "render_template_items"]
+__all__ = ["render_template", "render_template_items"]
 
 
 def render_template(text: str, params: Mapping[str, Any] | None = None) -> str:
@@ -18,22 +18,14 @@ def render_template(text: str, params: Mapping[str, Any] | None = None) -> str:
 
 
 def render_template_items(
-    items: Sequence[object],
-    params: Mapping[str, Any] | None = None,
-) -> list[str]:
-    """Render templates across a flat sequence of list items."""
-    return [render_template(str(item), params) for item in items]
-
-
-def render_nested_template_items(
     items: Sequence[NestedListItem],
     params: Mapping[str, Any] | None = None,
 ) -> list[NestedListItem]:
-    """Render templates throughout a recursively nested list."""
+    """Render templates across list items, descending into nested sublists."""
     rendered_items: list[NestedListItem] = []
     for item in items:
         if isinstance(item, list):
-            rendered_items.append(render_nested_template_items(item, params))
+            rendered_items.append(render_template_items(item, params))
         else:
             rendered_items.append(render_template(str(item), params))
     return rendered_items

@@ -58,8 +58,6 @@ Token builders
 
 .. autofunction:: mdreport.list_item_tokens
 
-.. autofunction:: mdreport.nested_list_tokens
-
 .. autofunction:: mdreport.table_tokens
 
 .. autofunction:: mdreport.table_cell_tokens
@@ -74,8 +72,6 @@ Template helpers
 .. autofunction:: mdreport.render_template
 
 .. autofunction:: mdreport.render_template_items
-
-.. autofunction:: mdreport.render_nested_template_items
 
 DataFrame helpers
 -----------------

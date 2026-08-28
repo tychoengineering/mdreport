@@ -27,7 +27,6 @@ from .markdown_tokens import (
     html_block_token,
     line_break_token,
     list_tokens,
-    nested_list_tokens,
     raw_token,
 )
 from .report_block import (
@@ -37,11 +36,7 @@ from .report_block import (
 )
 from .table import Table
 from .table_of_contents import TableOfContents
-from .template_rendering import (
-    render_nested_template_items,
-    render_template,
-    render_template_items,
-)
+from .template_rendering import render_template, render_template_items
 
 __all__ = ["MarkdownReport"]
 
@@ -88,9 +83,8 @@ class MarkdownReport:
                .text(["Paragraph 1", "Paragraph 2"])
                .heading("Heading level 3", level=3)
                .table(df, title="Data Summary")
-               .bullet_list(["Point 1", "Point 2"])
+               .bullet_list(["Point 1", ["Sub-point 1", "Sub-point 2"], "Point 2"])
                .numbered_list(["Step 1", "Step 2"])
-               .nested_list(["Main point", ["Sub-point 1", "Sub-point 2"]])
                .code_block("print('Hello, World!')", language="python", title="Example Code")
                .horizontal_rule()
                .text("Report generated on {{date}}", params={"date": "2024-06-26"})
@@ -348,23 +342,32 @@ class MarkdownReport:
 
     def bullet_list(
         self,
-        items: list[str],
+        items: list[NestedListItem],
         params: Mapping[str, Any] | None = None,
     ) -> MarkdownReport:
-        """Append an unordered list.
+        """Append an unordered list, nesting sublists to any depth.
 
         Items are parsed as inline Markdown, so they can carry emphasis, code, or
-        links. An empty list appends an empty list block.
+        links. A sublist is written as a list immediately after the item it hangs
+        beneath. An empty list appends an empty list block.
 
         Args:
-            items: List items, each treated as a Jinja template when params is given.
-            params: Template variables, applied to every item.
+            items: Strings, and lists of items that nest under the preceding string.
+            params: Template variables, applied at every depth.
+
+        Raises:
+            ValueError: if a sublist has no preceding item to nest beneath.
 
         Example:
 
             .. code-block:: python
 
                report.bullet_list(["Revenue up 4%", "Churn flat", "See [detail](d.md)"])
+               report.bullet_list([
+                   "Infrastructure",
+                   ["Database", "Cache", ["Redis", "Memcached"]],
+                   "Application",
+               ])
         """
         rendered_items = render_template_items(items, params)
         append_tokens(self.document, list_tokens(self.parser, rendered_items, is_ordered=False))
@@ -372,54 +375,35 @@ class MarkdownReport:
 
     def numbered_list(
         self,
-        items: list[str],
+        items: list[NestedListItem],
         params: Mapping[str, Any] | None = None,
     ) -> MarkdownReport:
-        """Append a consecutively numbered list.
+        """Append a consecutively numbered list, nesting sublists to any depth.
 
-        Numbering is generated from position, starting at 1 — don't write numbers
-        into the items themselves.
+        Numbering is generated from position, starting at 1 at every level — don't
+        write numbers into the items themselves. A sublist is written as a list
+        immediately after the item it hangs beneath.
 
         Args:
-            items: List items, each treated as a Jinja template when params is given.
-            params: Template variables, applied to every item.
+            items: Strings, and lists of items that nest under the preceding string.
+            params: Template variables, applied at every depth.
+
+        Raises:
+            ValueError: if a sublist has no preceding item to nest beneath.
 
         Example:
 
             .. code-block:: python
 
                report.numbered_list(["Extract", "Transform", "Load"])
+               report.numbered_list([
+                   "Extract",
+                   ["Read the source", "Validate the schema"],
+                   "Load",
+               ])
         """
         rendered_items = render_template_items(items, params)
         append_tokens(self.document, list_tokens(self.parser, rendered_items, is_ordered=True))
-        return self
-
-    def nested_list(
-        self,
-        items: list[NestedListItem],
-        params: Mapping[str, Any] | None = None,
-    ) -> MarkdownReport:
-        """Append a recursively nested unordered list.
-
-        A nested list follows the item it belongs to, so a sublist is written as a
-        list immediately after the string it hangs beneath. Nesting is unbounded.
-
-        Args:
-            items: Strings, and lists of items that nest under the preceding string.
-            params: Template variables, applied at every depth.
-
-        Example:
-
-            .. code-block:: python
-
-               report.nested_list([
-                   "Infrastructure",
-                   ["Database", "Cache", ["Redis", "Memcached"]],
-                   "Application",
-               ])
-        """
-        rendered_items = render_nested_template_items(items, params)
-        append_tokens(self.document, nested_list_tokens(self.parser, rendered_items))
         return self
 
     def table(

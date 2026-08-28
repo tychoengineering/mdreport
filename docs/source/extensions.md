@@ -86,11 +86,11 @@ The [API reference](api-reference.rst) lists all token builders.
 
 ## Read the finished document
 
-`__report__` runs the moment you append the block, so it cannot see the rest of the report. Give
-your block a `__resolve__` method instead when it summarizes, counts, or links to other content.
+There are cases where you need to wait till the report is fully constructed before you can determine a block's content. But `__report__` runs the moment you append the block, so it cannot see the rest of the report.
 
-`append` stores a placeholder. The report calls `__resolve__` during `render` and puts the returned
-content where the placeholder sits.
+So if you want to wait until the report is fully constructed before determining a block's content, give your block a `__resolve__` method instead. This is useful when your block summarizes, counts, or links to other content.
+
+When you `append` a deferred block, it stores a placeholder. The report calls `__resolve__` during `render` and puts the returned content where the placeholder sits.
 
 ```python
 from dataclasses import dataclass

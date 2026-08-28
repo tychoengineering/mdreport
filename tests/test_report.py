@@ -83,7 +83,7 @@ def test_report_preserves_block_order_and_markdown_spacing() -> None:
         .text(["First {{ noun }}.", "Second {{ noun }}."], {"noun": "paragraph"})
         .bullet_list(["{{ color }}", "blue"], {"color": "red"})
         .numbered_list(["build", "ship"])
-        .nested_list(["parent", ["child", ["grandchild"]], "sibling"])
+        .bullet_list(["parent", ["child", ["grandchild"]], "sibling"])
         .code_block(
             "print('{{ greeting }}')",
             language="python",
@@ -130,6 +130,45 @@ print('hello')
 
 """
     )
+
+
+def test_numbered_list_nests_ordered_sublists_and_restarts_numbering() -> None:
+    """Nesting carries the outer marker down, so an ordered list nests ordered sublists."""
+    report = MarkdownReport().numbered_list(
+        ["Extract", ["Read source", "Validate", ["Check types", "Check nulls"]], "Load"]
+    )
+
+    assert (
+        report.render()
+        == """1. Extract
+   1. Read source
+   2. Validate
+      1. Check types
+      2. Check nulls
+2. Load
+
+"""
+    )
+
+
+def test_list_renders_template_params_at_every_depth() -> None:
+    report = MarkdownReport().bullet_list(
+        ["{{ env }} cluster", ["{{ env }} primary"]], {"env": "prod"}
+    )
+
+    assert report.render() == "- prod cluster\n  - prod primary\n\n"
+
+
+def test_list_rejects_a_sublist_with_no_item_to_nest_beneath() -> None:
+    """A leading sublist has nothing to hang from; it must not be silently dropped."""
+    with pytest.raises(ValueError, match="must follow the item"):
+        MarkdownReport().bullet_list([["orphan", ["deeper"]]])
+
+
+def test_empty_sublist_adds_no_markup_to_its_parent_item() -> None:
+    report = MarkdownReport().bullet_list(["kept", []])
+
+    assert report.render() == "- kept\n\n"
 
 
 def test_empty_table_of_contents_leaves_no_placeholder() -> None:

@@ -18,6 +18,17 @@ report = (
 )
 ```
 
+Both list methods nest to any depth. Write a sublist as a list immediately after the item it hangs
+beneath.
+
+```python
+report.bullet_list([
+    "Infrastructure",
+    ["Database", "Cache", ["Redis", "Memcached"]],
+    "Application",
+])
+```
+
 Use `markdown` for content such as a quote or an image.
 
 ```python

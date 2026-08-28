@@ -27,7 +27,6 @@ __all__ = [
     "line_break_token",
     "list_item_tokens",
     "list_tokens",
-    "nested_list_tokens",
     "paragraph_tokens",
     "raw_token",
     "table_cell_tokens",
@@ -100,14 +99,37 @@ def heading_tokens(parser: MarkdownParser, content: str, level: int) -> list[Tok
     ]
 
 
-def list_tokens(parser: MarkdownParser, items: Sequence[str], *, is_ordered: bool) -> list[Token]:
-    """Build a flat ordered or unordered list token stream."""
+def list_tokens(
+    parser: MarkdownParser,
+    items: Sequence[NestedListItem],
+    *,
+    is_ordered: bool,
+) -> list[Token]:
+    """Build an ordered or unordered list, nesting sublists to any depth.
+
+    A list element nests beneath the item that precedes it. Every level carries
+    the marker chosen by is_ordered, so an ordered list nests ordered sublists.
+
+    Raises:
+        ValueError: if a sublist has no preceding item to nest beneath.
+    """
     list_type = "ordered_list" if is_ordered else "bullet_list"
     list_tag = "ol" if is_ordered else "ul"
     marker = "." if is_ordered else "-"
     tokens = [Token(f"{list_type}_open", list_tag, 1, markup=marker, block=True)]
+    has_open_item = False
+    index = 0
 
-    for index, item in enumerate(items, 1):
+    for item in items:
+        if isinstance(item, list):
+            if not has_open_item:
+                raise ValueError("A nested list must follow the item it nests beneath")
+            tokens.extend(list_tokens(parser, item, is_ordered=is_ordered))
+            continue
+
+        if has_open_item:
+            tokens.append(Token("list_item_close", "li", -1, markup=marker, block=True))
+        index += 1
         tokens.append(
             Token(
                 "list_item_open",
@@ -119,36 +141,11 @@ def list_tokens(parser: MarkdownParser, items: Sequence[str], *, is_ordered: boo
             )
         )
         tokens.extend(paragraph_tokens(parser, item, is_hidden=True))
-        tokens.append(Token("list_item_close", "li", -1, markup=marker, block=True))
-
-    tokens.append(Token(f"{list_type}_close", list_tag, -1, markup=marker, block=True))
-    return tokens
-
-
-def nested_list_tokens(parser: MarkdownParser, items: Sequence[NestedListItem]) -> list[Token]:
-    """Build recursively nested unordered-list tokens."""
-    tokens = [Token("bullet_list_open", "ul", 1, markup="-", block=True)]
-    has_open_item = False
-
-    for item in items:
-        if isinstance(item, list):
-            if has_open_item:
-                tokens.extend(nested_list_tokens(parser, item))
-            else:
-                leading_items = [entry for entry in item if isinstance(entry, str)]
-                for leading_item in leading_items:
-                    tokens.extend(list_item_tokens(parser, leading_item))
-            continue
-
-        if has_open_item:
-            tokens.append(Token("list_item_close", "li", -1, markup="-", block=True))
-        tokens.append(Token("list_item_open", "li", 1, markup="-", block=True))
-        tokens.extend(paragraph_tokens(parser, item, is_hidden=True))
         has_open_item = True
 
     if has_open_item:
-        tokens.append(Token("list_item_close", "li", -1, markup="-", block=True))
-    tokens.append(Token("bullet_list_close", "ul", -1, markup="-", block=True))
+        tokens.append(Token("list_item_close", "li", -1, markup=marker, block=True))
+    tokens.append(Token(f"{list_type}_close", list_tag, -1, markup=marker, block=True))
     return tokens
 
 
