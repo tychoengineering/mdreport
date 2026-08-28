@@ -128,7 +128,7 @@ def test_deferred_blocks_resolve_independently_at_each_position() -> None:
 
     rendered_report = report.render()
 
-    assert rendered_report == "- First\n\n## First\n\n- First\n\n"
+    assert rendered_report == "- [First](#first)\n\n## First\n\n- [First](#first)\n\n"
 
 
 def test_deferred_blocks_survive_a_copy() -> None:
@@ -137,7 +137,7 @@ def test_deferred_blocks_survive_a_copy() -> None:
     combined = base + Callout("body")
     combined.heading("Later")
 
-    assert combined.render().startswith("- Later\n")
+    assert combined.render().startswith("- [Later](#later)\n")
 
 
 def test_table_block_matches_the_table_method() -> None:

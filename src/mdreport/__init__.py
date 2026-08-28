@@ -10,6 +10,7 @@ __version__ = "0.0.1a1"
 
 from .code_block import CodeBlock
 from .dataframe_formatting import format_dataframe, format_dataframe_csv
+from .heading_anchors import HeadingAnchorStyle, slugify
 from .markdown_parser import MarkdownParser
 from .markdown_tokens import (
     NestedListItem,
@@ -27,7 +28,7 @@ from .markdown_tokens import (
 from .report import MarkdownReport
 from .report_block import BlockContent, DeferredReportBlock, ReportBlock
 from .table import Table
-from .table_of_contents import TableOfContents
+from .table_of_contents import TableOfContents, TableOfContentsEntry
 from .template_rendering import (
     render_nested_template_items,
     render_template,
@@ -38,12 +39,14 @@ __all__ = [
     "BlockContent",
     "CodeBlock",
     "DeferredReportBlock",
+    "HeadingAnchorStyle",
     "MarkdownParser",
     "MarkdownReport",
     "NestedListItem",
     "ReportBlock",
     "Table",
     "TableOfContents",
+    "TableOfContentsEntry",
     "bold_paragraph_tokens",
     "fence_token",
     "format_dataframe",
@@ -57,6 +60,7 @@ __all__ = [
     "render_nested_template_items",
     "render_template",
     "render_template_items",
+    "slugify",
     "table_cell_tokens",
     "table_tokens",
 ]

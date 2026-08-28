@@ -44,9 +44,9 @@ summary: 'line one
 
 # Q3 Report
 
-- Q3 Report
-  - Overview
-    - Details
+- [Q3 Report](#q3-report)
+  - [Overview](#overview)
+    - [Details](#details)
 
 ## Overview
 
@@ -160,13 +160,13 @@ def test_table_of_contents_uses_parsed_heading_structure() -> None:
     rendered_report = report.render()
 
     assert rendered_report.startswith(
-        """- First
-  - Deep
-- Second
+        """- [First](#first)
+  - [Deep](#deep)
+- [Second](#second)
 
 """
     )
-    assert "- Not a heading" not in rendered_report
+    assert "Not a heading" not in rendered_report.split("```markdown")[0]
 
 
 @pytest.mark.parametrize("level", [0, 7])

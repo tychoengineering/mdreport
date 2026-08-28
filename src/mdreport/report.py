@@ -12,6 +12,7 @@ from markdown_it.tree import SyntaxTreeNode
 
 from .code_block import CodeBlock
 from .dataframe_formatting import format_dataframe_csv
+from .heading_anchors import HeadingAnchorStyle, anchored_tokens
 from .markdown_parser import create_parser
 from .markdown_tokens import (
     NestedListItem,
@@ -103,11 +104,30 @@ class MarkdownReport:
     afterwards.
     """
 
-    def __init__(self) -> None:
-        """Create an empty report with its own parser and no frontmatter."""
+    def __init__(
+        self,
+        anchor_style: HeadingAnchorStyle = HeadingAnchorStyle.IMPLICIT,
+    ) -> None:
+        """Create an empty report with its own parser and no frontmatter.
+
+        Args:
+            anchor_style: How each heading's anchor is written into the rendered
+                document. The default writes nothing and relies on the anchor the
+                renderer derives from the heading text, which is what
+                ``table_of_contents`` links to; pass ``HeadingAnchorStyle.HTML``
+                or ``HeadingAnchorStyle.ATTRIBUTE`` for a renderer that derives
+                none.
+
+        Example:
+
+            .. code-block:: python
+
+               report = MarkdownReport(anchor_style=HeadingAnchorStyle.HTML)
+        """
         self.parser = create_parser()
         self.document = SyntaxTreeNode()
         self.frontmatter_data: dict[str, Any] = {}
+        self.anchor_style = anchor_style
 
     def append(self, block: ReportBlock | DeferredReportBlock) -> MarkdownReport:
         """Append a block's content to this report.
@@ -154,7 +174,7 @@ class MarkdownReport:
                for team in teams:
                    preamble.copy().heading(team.name).table(team.metrics).save(f"{team.name}.md")
         """
-        duplicate = type(self)()
+        duplicate = type(self)(anchor_style=self.anchor_style)
         duplicate.document = SyntaxTreeNode(self.document.to_tokens())
         duplicate.parser.environment = copy.deepcopy(self.parser.environment)
         duplicate.frontmatter_data = copy.deepcopy(self.frontmatter_data)
@@ -276,7 +296,8 @@ class MarkdownReport:
 
         Inline Markdown in the text is parsed, so a heading can carry emphasis or
         a link. Every heading becomes an entry in ``table_of_contents``, nested by
-        its level.
+        its level and linked to the heading's anchor — headings repeating the same
+        text are numbered apart, as ``findings`` and ``findings-1``.
 
         Args:
             text: Heading text, treated as a Jinja template when params is given.
@@ -521,12 +542,29 @@ class MarkdownReport:
         append_tokens(self.document, [horizontal_rule_token()])
         return self
 
-    def table_of_contents(self) -> MarkdownReport:
-        """Append a nested table of contents covering every heading in the report.
+    def table_of_contents(
+        self,
+        start_level: int = 1,
+        depth: int = 6,
+        is_linked: bool = True,
+    ) -> MarkdownReport:
+        """Append a nested table of contents covering the report's headings.
 
         Resolved at ``render`` time, not now, so it can be placed near the top and
         still list headings appended afterwards. Entries nest by heading level and
-        are plain text, not links.
+        link to each heading's anchor.
+
+        Args:
+            start_level: Shallowest heading level listed. Raise it to skip the
+                document title, or a section heading a slide deck repeats.
+            depth: How many heading levels to list, counting from ``start_level``.
+                Lower it to keep the contents short in a deeply nested report.
+            is_linked: False renders entries as plain text, for a renderer whose
+                heading anchors cannot be relied on.
+
+        Raises:
+            ValueError: if start_level is outside the Markdown heading range, or
+                depth is less than one.
 
         Example:
 
@@ -534,15 +572,18 @@ class MarkdownReport:
 
                report.title("Q3 Review").table_of_contents().heading("Revenue")
                # the contents list includes "Revenue", added after the call
+
+               report.table_of_contents(start_level=2, depth=2)  # h2 and h3 only
         """
-        return self.append(TableOfContents())
+        return self.append(TableOfContents(start_level=start_level, depth=depth, is_linked=is_linked))
 
     def render(self) -> str:
         """Serialize the complete report as a Markdown string.
 
-        Resolves deferred blocks and prepends the frontmatter, leaving the report
-        itself unchanged — rendering is repeatable, and content can still be
-        appended afterwards.
+        Resolves deferred blocks, writes heading anchors in the report's
+        ``anchor_style``, and prepends the frontmatter, leaving the report itself
+        unchanged — rendering is repeatable, and content can still be appended
+        afterwards.
 
         Returns:
             The rendered document, including a trailing newline.
@@ -562,10 +603,11 @@ class MarkdownReport:
             else:
                 resolved_tokens.append(token)
 
+        anchored = anchored_tokens(resolved_tokens, self.anchor_style)
         if self.frontmatter_data:
-            resolved_tokens.insert(0, frontmatter_token(dict_to_yaml(self.frontmatter_data)))
+            anchored.insert(0, frontmatter_token(dict_to_yaml(self.frontmatter_data)))
 
-        return self.parser.render(SyntaxTreeNode(resolved_tokens).to_tokens())
+        return self.parser.render(SyntaxTreeNode(anchored).to_tokens())
 
     def save(self, filename: str | Path) -> MarkdownReport:
         """Render the report and write it to a file as UTF-8.
