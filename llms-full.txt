@@ -1,0 +1,1105 @@
+# index.html.md
+
+# mdreport
+
+Build Markdown reports programmatically using a chainable fluent interface. Add headings, text, lists, code blocks,
+templates, and Polars DataFrames.
+
+## Install
+
+```bash
+pip install mdreport
+```
+
+`mdreport` requires Python 3.12 or later.
+
+## Create a report
+
+```python
+from mdreport import MarkdownReport
+
+report = (
+    MarkdownReport()
+    .title("Q3 review")
+    .heading("Revenue")
+    .text("Revenue grew {{revenue_growth}}%.", params={"revenue_growth": 4})
+    .bullet_list(["EMEA grew 6%", "APAC grew 2%"])
+)
+
+report.save("q3-review.md")
+```
+
+Each method adds content and returns the report. You can chain methods or call them one at a time.
+
+## Read the documentation
+
+* [Usage examples](usage.html.md)
+  * [Add common content](usage.html.md#add-common-content)
+  * [Add a callout](usage.html.md#add-a-callout)
+  * [Add figures](usage.html.md#add-figures)
+  * [Add a DataFrame](usage.html.md#add-a-dataframe)
+  * [Add template values](usage.html.md#add-template-values)
+  * [Add frontmatter](usage.html.md#add-frontmatter)
+  * [Add a table of contents](usage.html.md#add-a-table-of-contents)
+  * [Link to headings](usage.html.md#link-to-headings)
+  * [Render or save](usage.html.md#render-or-save)
+* [API reference](api-reference.html.md)
+  * [Report](api-reference.html.md#report)
+  * [Blocks](api-reference.html.md#blocks)
+  * [Heading anchors](api-reference.html.md#heading-anchors)
+  * [Extension protocols](api-reference.html.md#extension-protocols)
+  * [Errors](api-reference.html.md#errors)
+  * [Token builders](api-reference.html.md#token-builders)
+  * [Template helpers](api-reference.html.md#template-helpers)
+  * [DataFrame helpers](api-reference.html.md#dataframe-helpers)
+  * [Parser](api-reference.html.md#parser)
+* [Extensions](extensions.html.md)
+  * [Create a block](extensions.html.md#create-a-block)
+  * [Add a block](extensions.html.md#add-a-block)
+  * [Return tokens](extensions.html.md#return-tokens)
+  * [Read the finished document](extensions.html.md#read-the-finished-document)
+
+
+# api-reference.html.md
+
+# API reference
+
+## Report
+
+### *class* MarkdownReport
+
+Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+
+Build a Markdown document.
+
+Provides a fluent interface for building markdown documents with various content types
+including headings, text, tables, lists, code blocks, and more. Supports Jinja2
+template rendering for dynamic content generation.
+
+- Method chaining for fluent report building
+- Jinja2 template support for dynamic content
+- Polars DataFrame integration for tables and CSV exports
+- Automatic formatting of numeric data with configurable precision
+- Numbered figures and captions
+- Portable semantic callouts
+- Support for nested lists and various markdown elements
+- Export to file or string rendering
+
+Every content method returns the report itself, so calls chain. Content is
+held as a Markdown syntax tree rather than as text, so `render` is what
+serializes it; a report can be rendered repeatedly and keeps building
+afterwards.
+
+#### \_\_init_\_(anchor_style=HeadingAnchorStyle.IMPLICIT)
+
+Create an empty report with its own parser and no frontmatter.
+
+* **Parameters:**
+  **anchor_style** ([*HeadingAnchorStyle*](api-reference.html.md#mdreport.HeadingAnchorStyle)) – How each heading’s anchor is written into the rendered
+  document. The default writes nothing and relies on the anchor the
+  renderer derives from the heading text, which is what
+  `table_of_contents` links to; pass `HeadingAnchorStyle.HTML`
+  or `HeadingAnchorStyle.ATTRIBUTE` for a renderer that derives
+  none.
+
+#### append(block)
+
+Append a block’s content to this report.
+
+This is the extension point behind `table`, `code_block`, and
+`table_of_contents`, and the way to add a block of your own: any object
+with a `__report__` method satisfies `ReportBlock`.
+
+A block implementing `__resolve__` (a `DeferredReportBlock`) is stored as
+a placeholder and resolved during `render`, once the whole document is
+known; every other block contributes its content immediately.
+
+#### copy()
+
+Return an independent report holding the same content and metadata.
+
+Content, frontmatter, and parser state are independent, so appending to
+the copy never affects this report. Use it to build several documents
+from a shared preamble.
+
+#### \_\_add_\_(block)
+
+Return a copy of this report with a block appended, leaving it unchanged.
+
+#### \_\_iadd_\_(block)
+
+Append a block to this report in place.
+
+#### frontmatter(data=None, \*\*kwargs)
+
+Merge YAML frontmatter fields into the report metadata.
+
+Fields accumulate across calls and later values win, so frontmatter can
+be set up front and amended once results are known. The block is emitted
+at the top of the document by `render`, in insertion order, and is
+omitted entirely when no fields were set.
+
+* **Parameters:**
+  * **data** ([*Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* [*Any*](https://docs.python.org/3/library/typing.html#typing.Any) *]*  *|* *None*) – Fields to merge, for keys that are not valid identifiers.
+  * **\*\*kwargs** ([*Any*](https://docs.python.org/3/library/typing.html#typing.Any)) – Fields to merge, for keys that are.
+
+#### markdown(content, params=None)
+
+Parse and append raw Markdown content.
+
+The escape hatch for Markdown the other methods don’t build: block quotes,
+footnotes, images, or a whole section held as a string. Content is parsed,
+not inserted verbatim, so it must be valid Markdown; use `raw_token` via
+`append` for text that must survive untouched.
+
+* **Parameters:**
+  * **content** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – Markdown source, treated as a Jinja template when params is given.
+  * **params** ([*Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* [*Any*](https://docs.python.org/3/library/typing.html#typing.Any) *]*  *|* *None*) – Template variables. None leaves the content unrendered, so
+    literal braces pass through safely.
+
+#### directive(name, value=None)
+
+Append a smolslides HTML-comment directive.
+
+Directives are HTML comments, so they are invisible to Markdown renderers
+that don’t understand them.
+
+* **Parameters:**
+  * **name** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – Directive name, written with the leading underscore smolslides
+    expects (`class` becomes `<!-- _class: ... -->`).
+  * **value** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* *None*) – Directive argument, or None for a bare flag directive.
+
+#### title(text, params=None)
+
+Append an H1 heading.
+
+Shorthand for `heading(text, level=1)`. Headings added by any method are
+what `table_of_contents` later collects.
+
+#### heading(text, level=2, params=None)
+
+Append a heading at a level from one through six.
+
+Inline Markdown in the text is parsed, so a heading can carry emphasis or
+a link. Every heading becomes an entry in `table_of_contents`, nested by
+its level and linked to the heading’s anchor — headings repeating the same
+text are numbered apart, as `findings` and `findings-1`.
+
+* **Parameters:**
+  * **text** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – Heading text, treated as a Jinja template when params is given.
+  * **level** ([*int*](https://docs.python.org/3/library/functions.html#int)) – Heading level, 1 (`#`) through 6 (`######`).
+  * **params** ([*Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* [*Any*](https://docs.python.org/3/library/typing.html#typing.Any) *]*  *|* *None*) – Template variables.
+* **Raises:**
+  [**ValueError**](https://docs.python.org/3/library/exceptions.html#ValueError) – if level is outside the Markdown heading range.
+
+#### text(content, params=None)
+
+Parse and append one or more Markdown text blocks.
+
+A list appends each entry as its own separate block, which is how to get
+distinct paragraphs; a single string containing blank lines parses into
+paragraphs too.
+
+* **Parameters:**
+  * **content** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* [*list*](https://docs.python.org/3/library/stdtypes.html#list) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *]*) – One Markdown block, or a list of them.
+  * **params** ([*Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* [*Any*](https://docs.python.org/3/library/typing.html#typing.Any) *]*  *|* *None*) – Template variables, applied to every block.
+
+#### callout(message, kind=CalloutKind.NOTE, title=None, params=None)
+
+Append a titled block quote drawing attention to content.
+
+* **Parameters:**
+  * **message** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – Markdown content displayed inside the callout.
+  * **kind** ([*CalloutKind*](api-reference.html.md#mdreport.CalloutKind)) – Semantic category supplying the default title.
+  * **title** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* *None*) – Custom title replacing the category name.
+  * **params** ([*Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* [*Any*](https://docs.python.org/3/library/typing.html#typing.Any) *]*  *|* *None*) – Template variables applied to the message and custom title.
+
+#### bullet_list(items, params=None)
+
+Append an unordered list, nesting sublists to any depth.
+
+Items are parsed as inline Markdown, so they can carry emphasis, code, or
+links. A sublist is written as a list immediately after the item it hangs
+beneath. An empty list appends an empty list block.
+
+* **Parameters:**
+  * **items** ([*list*](https://docs.python.org/3/library/stdtypes.html#list) *[**NestedListItem* *]*) – Strings, and lists of items that nest under the preceding string.
+  * **params** ([*Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* [*Any*](https://docs.python.org/3/library/typing.html#typing.Any) *]*  *|* *None*) – Template variables, applied at every depth.
+* **Raises:**
+  [**ValueError**](https://docs.python.org/3/library/exceptions.html#ValueError) – if a sublist has no preceding item to nest beneath.
+
+#### numbered_list(items, params=None)
+
+Append a consecutively numbered list, nesting sublists to any depth.
+
+Numbering is generated from position, starting at 1 at every level — don’t
+write numbers into the items themselves. A sublist is written as a list
+immediately after the item it hangs beneath.
+
+* **Parameters:**
+  * **items** ([*list*](https://docs.python.org/3/library/stdtypes.html#list) *[**NestedListItem* *]*) – Strings, and lists of items that nest under the preceding string.
+  * **params** ([*Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* [*Any*](https://docs.python.org/3/library/typing.html#typing.Any) *]*  *|* *None*) – Template variables, applied at every depth.
+* **Raises:**
+  [**ValueError**](https://docs.python.org/3/library/exceptions.html#ValueError) – if a sublist has no preceding item to nest beneath.
+
+#### table(df, title=None, params=None, decimal_places=2)
+
+Append every DataFrame column and row as a GFM Markdown table.
+
+The whole frame is written — there is no row or column limit, so slice
+the frame first if it is large. Column names become the header row and
+floats are rounded for display only.
+
+* **Parameters:**
+  * **df** (*DataFrame*) – The frame to render.
+  * **title** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* *None*) – Bold caption placed above the table.
+  * **params** ([*Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* [*Any*](https://docs.python.org/3/library/typing.html#typing.Any) *]*  *|* *None*) – Template variables, applied to the title.
+  * **decimal_places** ([*int*](https://docs.python.org/3/library/functions.html#int)) – Digits after the point for float columns.
+
+#### csv(df, title=None, params=None, decimal_places=2, wrap_code=True)
+
+Append a DataFrame as CSV, optionally inside a fenced code block.
+
+Useful where a reader is meant to copy the numbers out rather than read
+them in a table.
+
+* **Parameters:**
+  * **df** (*DataFrame*) – The frame to serialize.
+  * **title** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* *None*) – Bold caption placed above the block.
+  * **params** ([*Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* [*Any*](https://docs.python.org/3/library/typing.html#typing.Any) *]*  *|* *None*) – Template variables, applied to the title.
+  * **decimal_places** ([*int*](https://docs.python.org/3/library/functions.html#int)) – Digits after the point for float columns.
+  * **wrap_code** ([*bool*](https://docs.python.org/3/library/functions.html#bool)) – True fences the CSV in a `csv` code block. False emits it as
+    raw document text, which is only valid where the surrounding
+    Markdown tolerates it.
+
+#### code_block(code, language='', title=None, params=None)
+
+Append a syntax-highlighted fenced code block.
+
+Code is fenced, not parsed, so Markdown inside it stays literal.
+
+* **Parameters:**
+  * **code** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – Source text, reproduced as given.
+  * **language** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – Info string driving highlighting; “” for a plain fence.
+  * **title** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* *None*) – Bold caption placed above the block.
+  * **params** ([*Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* [*Any*](https://docs.python.org/3/library/typing.html#typing.Any) *]*  *|* *None*) – Template variables, applied to the code as well as the title.
+    Leave it None — the default — when the code contains Jinja-like
+    braces of its own, which templating would otherwise substitute.
+
+#### figure(source, alt_text, caption=None, params=None, is_embedded=False)
+
+Append an image with an optional numbered caption.
+
+Figures are numbered in document order during `render`.
+
+* **Parameters:**
+  * **source** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* [*Path*](https://docs.python.org/3/library/pathlib.html#pathlib.Path)) – Image path or URL written into the Markdown image destination.
+  * **alt_text** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – Literal alternative text describing the image.
+  * **caption** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* *None*) – Optional inline-Markdown caption.
+  * **params** ([*Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* [*Any*](https://docs.python.org/3/library/typing.html#typing.Any) *]*  *|* *None*) – Template variables applied to source, alternative text, and caption.
+  * **is_embedded** ([*bool*](https://docs.python.org/3/library/functions.html#bool)) – True reads a local raster image into a base64 data URL or
+    inserts a local SVG as inline markup. False links to source.
+* **Raises:**
+  [**FigureEmbeddingError**](api-reference.html.md#mdreport.FigureEmbeddingError) – during rendering, if an embedded source is not
+      a supported local image.
+
+#### line_break()
+
+Append one additional blank line between document blocks.
+
+Blocks are already separated by a blank line when rendered; this adds one
+more for extra visual spacing.
+
+#### horizontal_rule()
+
+Append a thematic break, rendered as `---`.
+
+#### table_of_contents(start_level=1, depth=6, is_linked=True)
+
+Append a nested table of contents covering the report’s headings.
+
+Resolved at `render` time, not now, so it can be placed near the top and
+still list headings appended afterwards. Entries nest by heading level and
+link to each heading’s anchor.
+
+* **Parameters:**
+  * **start_level** ([*int*](https://docs.python.org/3/library/functions.html#int)) – Shallowest heading level listed. Raise it to skip the
+    document title, or a section heading a slide deck repeats.
+  * **depth** ([*int*](https://docs.python.org/3/library/functions.html#int)) – How many heading levels to list, counting from `start_level`.
+    Lower it to keep the contents short in a deeply nested report.
+  * **is_linked** ([*bool*](https://docs.python.org/3/library/functions.html#bool)) – False renders entries as plain text, for a renderer whose
+    heading anchors cannot be relied on.
+* **Raises:**
+  [**ValueError**](https://docs.python.org/3/library/exceptions.html#ValueError) – if start_level is outside the Markdown heading range, or
+      depth is less than one.
+
+#### render()
+
+Serialize the complete report as a Markdown string.
+
+Resolves deferred blocks, writes heading anchors in the report’s
+`anchor_style`, and prepends the frontmatter, leaving the report itself
+unchanged — rendering is repeatable, and content can still be appended
+afterwards.
+
+* **Returns:**
+  The rendered document, including a trailing newline.
+* **Return type:**
+  [str](https://docs.python.org/3/library/stdtypes.html#str)
+
+#### save(filename)
+
+Render the report and write it to a file as UTF-8.
+
+Overwrites an existing file. The parent directory must already exist.
+
+* **Parameters:**
+  **filename** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* [*Path*](https://docs.python.org/3/library/pathlib.html#pathlib.Path)) – Destination path.
+* **Raises:**
+  [**OSError**](https://docs.python.org/3/library/exceptions.html#OSError) – if the path is not writable or its directory is missing.
+
+#### \_\_str_\_()
+
+Return the rendered Markdown, so `print(report)` shows the document.
+
+Equivalent to `render`.
+
+## Blocks
+
+### *class* Callout
+
+Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+
+A titled block quote drawing attention to report content.
+
+* **Variables:**
+  * **message** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – Markdown content displayed inside the callout.
+  * **kind** ([*mdreport.callout.CalloutKind*](api-reference.html.md#mdreport.CalloutKind)) – Semantic category supplying the default title.
+  * **title** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* *None*) – Optional title overriding the category name.
+  * **params** ([*collections.abc.Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* *Any* *]*  *|* *None*) – Template variables applied to the message and custom title.
+
+#### message *: [str](https://docs.python.org/3/library/stdtypes.html#str)*
+
+#### kind *: [CalloutKind](api-reference.html.md#mdreport.CalloutKind)* *= 'note'*
+
+#### title *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+
+#### params *: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping)[[str](https://docs.python.org/3/library/stdtypes.html#str), [Any](https://docs.python.org/3/library/typing.html#typing.Any)] | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+
+#### \_\_report_\_(report)
+
+Return a portable block quote containing a bold title and body.
+
+#### \_\_init_\_(message, kind=CalloutKind.NOTE, title=None, params=None)
+
+### *class* CalloutKind
+
+Bases: [`StrEnum`](https://docs.python.org/3/library/enum.html#enum.StrEnum)
+
+Portable semantic categories for a report callout.
+
+#### NOTE *= 'note'*
+
+#### TIP *= 'tip'*
+
+#### IMPORTANT *= 'important'*
+
+#### WARNING *= 'warning'*
+
+#### CAUTION *= 'caution'*
+
+#### \_\_new_\_(value)
+
+### *class* CodeBlock
+
+Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+
+A fenced code block tagged with an optional language.
+
+The block behind `MarkdownReport.code_block`. Construct it directly to hold a
+snippet as a value and append it with `report.append(...)` or `report + ...`.
+
+* **Variables:**
+  * **code** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – Source text, fenced rather than parsed, so Markdown in it stays literal.
+  * **language** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – Info string driving highlighting; “” for a plain fence.
+  * **title** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* *None*) – Bold caption placed above the block.
+  * **params** ([*collections.abc.Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* *Any* *]*  *|* *None*) – Template variables, applied to the code as well as the title.
+    Leave it None when the code contains Jinja-like braces of its own.
+
+#### code *: [str](https://docs.python.org/3/library/stdtypes.html#str)*
+
+#### language *: [str](https://docs.python.org/3/library/stdtypes.html#str)* *= ''*
+
+#### title *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+
+#### params *: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping)[[str](https://docs.python.org/3/library/stdtypes.html#str), [Any](https://docs.python.org/3/library/typing.html#typing.Any)] | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+
+#### \_\_report_\_(report)
+
+Return the fence token, preceded by a bold title when one is set.
+
+#### \_\_init_\_(code, language='', title=None, params=None)
+
+### *class* Figure
+
+Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+
+An image with alternative text and an optional numbered caption.
+
+Figures are numbered in document order during rendering.
+
+* **Variables:**
+  * **source** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* [*pathlib.Path*](https://docs.python.org/3/library/pathlib.html#pathlib.Path)) – Image path or URL written into the Markdown image destination.
+  * **alt_text** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – Literal alternative text describing the image.
+  * **caption** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* *None*) – Optional inline-Markdown caption, prefixed with its figure number.
+  * **params** ([*collections.abc.Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* *Any* *]*  *|* *None*) – Template variables applied to source, alternative text, and caption.
+  * **is_embedded** ([*bool*](https://docs.python.org/3/library/functions.html#bool)) – True reads a local raster image into a base64 data URL or
+    inserts a local SVG as inline markup. False leaves source as a link.
+
+#### source *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [Path](https://docs.python.org/3/library/pathlib.html#pathlib.Path)*
+
+#### alt_text *: [str](https://docs.python.org/3/library/stdtypes.html#str)*
+
+#### caption *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+
+#### params *: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping)[[str](https://docs.python.org/3/library/stdtypes.html#str), [Any](https://docs.python.org/3/library/typing.html#typing.Any)] | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+
+#### is_embedded *: [bool](https://docs.python.org/3/library/functions.html#bool)* *= False*
+
+#### \_\_resolve_\_(document, report)
+
+Return the image and its number-aware caption.
+
+#### \_\_init_\_(source, alt_text, caption=None, params=None, is_embedded=False)
+
+### *class* Table
+
+Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+
+Every column and row of a DataFrame as a GFM table.
+
+The block behind `MarkdownReport.table`. Construct it directly to hold a
+table as a value — to pass it around, reuse it across reports, or append it
+with `report + table`.
+
+* **Variables:**
+  * **dataframe** (*polars.dataframe.frame.DataFrame*) – The frame to render, in full; slice it first if it is large.
+  * **title** ([*str*](https://docs.python.org/3/library/stdtypes.html#str) *|* *None*) – Bold caption placed above the table.
+  * **params** ([*collections.abc.Mapping*](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping) *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *,* *Any* *]*  *|* *None*) – Template variables, applied to the title.
+  * **decimal_places** ([*int*](https://docs.python.org/3/library/functions.html#int)) – Digits after the point for float columns.
+
+#### dataframe *: DataFrame*
+
+#### title *: [str](https://docs.python.org/3/library/stdtypes.html#str) | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+
+#### params *: [Mapping](https://docs.python.org/3/library/collections.abc.html#collections.abc.Mapping)[[str](https://docs.python.org/3/library/stdtypes.html#str), [Any](https://docs.python.org/3/library/typing.html#typing.Any)] | [None](https://docs.python.org/3/library/constants.html#None)* *= None*
+
+#### decimal_places *: [int](https://docs.python.org/3/library/functions.html#int)* *= 2*
+
+#### \_\_report_\_(report)
+
+Return the table tokens, preceded by a bold title when one is set.
+
+#### \_\_init_\_(dataframe, title=None, params=None, decimal_places=2)
+
+### *class* TableOfContents
+
+Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+
+A nested list of the report’s headings, linked to their anchors.
+
+The block behind `MarkdownReport.table_of_contents`, and the reference
+`DeferredReportBlock`: it is appended as a placeholder and resolved during
+`render`, so it lists headings added after it as well as before. Entries
+nest by heading level.
+
+Entries link to the anchor a renderer derives from the heading text, which
+resolves as-is on GitHub, GitLab, Pandoc, and MkDocs. Where the renderer
+generates no anchors, build the report with a `MarkdownReport`
+`anchor_style` that writes them into the document.
+
+* **Parameters:**
+  * **start_level** – Shallowest heading level listed; headings above it are
+    skipped along with the nesting they would have introduced.
+  * **depth** – How many heading levels to list, counting from `start_level`.
+  * **is_linked** – False renders entries as plain text, for a document whose
+    anchors cannot be relied on.
+* **Raises:**
+  [**ValueError**](https://docs.python.org/3/library/exceptions.html#ValueError) – if start_level is outside the Markdown heading range, or
+      depth is less than one.
+
+#### start_level *: [int](https://docs.python.org/3/library/functions.html#int)* *= 1*
+
+#### depth *: [int](https://docs.python.org/3/library/functions.html#int)* *= 6*
+
+#### is_linked *: [bool](https://docs.python.org/3/library/functions.html#bool)* *= True*
+
+#### \_\_post_init_\_()
+
+Reject a scope that no heading could fall in.
+
+#### *property* end_level *: [int](https://docs.python.org/3/library/functions.html#int)*
+
+Deepest heading level listed, clamped to the Markdown heading range.
+
+#### \_\_resolve_\_(document, report)
+
+Return list tokens mirroring the document’s heading hierarchy.
+
+#### entries(document)
+
+Collect the headings in scope into a hierarchy, in document order.
+
+* **Raises:**
+  [**ValueError**](https://docs.python.org/3/library/exceptions.html#ValueError) – if a heading node contains no inline token.
+
+#### contents_tokens(entries)
+
+Build nested unordered-list tokens for table-of-contents entries.
+
+#### entry_inline(entry)
+
+Build one entry’s inline content, linked to its heading’s anchor.
+
+#### \_\_init_\_(start_level=1, depth=6, is_linked=True)
+
+### *class* TableOfContentsEntry
+
+Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+
+A heading, the anchor linking to it, and the headings nested beneath it.
+
+#### level *: [int](https://docs.python.org/3/library/functions.html#int)*
+
+#### inline *: Token*
+
+#### slug *: [str](https://docs.python.org/3/library/stdtypes.html#str)*
+
+#### children *: [list](https://docs.python.org/3/library/stdtypes.html#list)[[TableOfContentsEntry](api-reference.html.md#mdreport.TableOfContentsEntry)]*
+
+#### \_\_init_\_(level, inline, slug, children=<factory>)
+
+## Heading anchors
+
+### *class* HeadingAnchorStyle
+
+Bases: [`StrEnum`](https://docs.python.org/3/library/enum.html#enum.StrEnum)
+
+How a heading’s anchor is written into the rendered Markdown.
+
+`IMPLICIT` writes nothing and relies on the anchor the renderer derives
+from the heading text — what GitHub, GitLab, Pandoc, MkDocs, and Docusaurus
+all do, and what `slugify` reproduces. `HTML` prefixes the heading with
+an `<a id="...">` element, for renderers that generate no anchors of their
+own. `ATTRIBUTE` appends the `{#slug}` attribute Pandoc, kramdown, and
+python-markdown’s `attr_list` understand; anything else renders it as
+visible text.
+
+#### IMPLICIT *= 'implicit'*
+
+#### HTML *= 'html'*
+
+#### ATTRIBUTE *= 'attribute'*
+
+#### \_\_new_\_(value)
+
+### slugify(text)
+
+Return the anchor slug a heading of this text is linked by.
+
+Follows the GitHub algorithm — case folded, punctuation dropped, spaces
+turned into hyphens — so a link to the slug resolves on every renderer that
+derives heading anchors the same way, with nothing written into the
+document. Text that slugifies to nothing yields `section`.
+
+## Extension protocols
+
+### *class* ReportBlock
+
+Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
+
+A self-contained unit of report content.
+
+#### \_\_report_\_(report)
+
+Return this block’s content, as Markdown text or as tokens.
+
+The report is passed for its `parser`, which the token builders in
+`markdown_tokens` (`paragraph_tokens`, `table_tokens`, `list_tokens`)
+take. Implementations must not append to it.
+
+#### \_\_init_\_(\*args, \*\*kwargs)
+
+### *class* DeferredReportBlock
+
+Bases: [`Protocol`](https://docs.python.org/3/library/typing.html#typing.Protocol)
+
+Report content whose value depends on the completed document.
+
+A deferred block is appended as a placeholder and resolved once, at render
+time, against the document as it finally stands. Use it for content that
+reads the rest of the report — tables of contents, summaries, and figure
+numbering.
+
+#### \_\_resolve_\_(document, report)
+
+Return this block’s content for the completed document.
+
+The document excludes deferred placeholders’ own content, so a
+deferred block never observes another deferred block’s output.
+
+#### \_\_init_\_(\*args, \*\*kwargs)
+
+### BlockContent *= BlockContent*
+
+Type alias.
+
+Type aliases are created through the type statement:
+
+```default
+type Alias = int
+```
+
+In this example, Alias and int will be treated equivalently by static
+type checkers.
+
+At runtime, Alias is an instance of TypeAliasType. The \_\_name_\_
+attribute holds the name of the type alias. The value of the type alias
+is stored in the \_\_value_\_ attribute. It is evaluated lazily, so the
+value is computed only if the attribute is accessed.
+
+Type aliases can also be generic:
+
+```default
+type ListOrSet[T] = list[T] | set[T]
+```
+
+In this case, the type parameters of the alias are stored in the
+\_\_type_params_\_ attribute.
+
+See PEP 695 for more information.
+
+## Errors
+
+### *class* FigureEmbeddingError
+
+Bases: [`ValueError`](https://docs.python.org/3/library/exceptions.html#ValueError)
+
+A figure source cannot be embedded as an image in the report.
+
+## Token builders
+
+### paragraph_tokens(parser, content, , is_hidden=False)
+
+Build a paragraph token pair containing parsed inline Markdown.
+
+### bold_paragraph_tokens(parser, content)
+
+Build a paragraph whose complete inline content is strong text.
+
+### heading_tokens(parser, content, level)
+
+Build a heading at a level from one through six.
+
+* **Raises:**
+  [**ValueError**](https://docs.python.org/3/library/exceptions.html#ValueError) – if level is outside the Markdown heading range.
+
+### list_tokens(parser, items, , is_ordered)
+
+Build an ordered or unordered list, nesting sublists to any depth.
+
+A list element nests beneath the item that precedes it. Every level carries
+the marker chosen by is_ordered, so an ordered list nests ordered sublists.
+
+* **Raises:**
+  [**ValueError**](https://docs.python.org/3/library/exceptions.html#ValueError) – if a sublist has no preceding item to nest beneath.
+
+### list_item_tokens(parser, content)
+
+Build one complete unordered-list item.
+
+### table_tokens(parser, dataframe)
+
+Build a GFM table from every DataFrame column and row.
+
+### table_cell_tokens(parser, content, , is_header)
+
+Build one table header or body cell with inline Markdown.
+
+### fence_token(content, language='')
+
+Build a fenced code block, terminating the content with a newline.
+
+### raw_token(content)
+
+Build content that renders verbatim, bypassing Markdown formatting.
+
+## Template helpers
+
+### render_template(text, params=None)
+
+Render a short Jinja template when parameters are supplied.
+
+### render_template_items(items, params=None)
+
+Render templates across list items, descending into nested sublists.
+
+## DataFrame helpers
+
+### format_dataframe(dataframe, decimal_places)
+
+Normalize list and float columns for report exports.
+
+### format_dataframe_csv(dataframe, decimal_places=2)
+
+Serialize a normalized DataFrame as CSV without its record terminator.
+
+## Parser
+
+### *class* MarkdownParser
+
+Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+
+Parse and serialize Markdown for one report.
+
+The environment accumulates the link reference definitions collected while
+parsing, so a reference defined in one block resolves in a later one.
+
+#### parser *: MarkdownIt*
+
+#### environment *: [dict](https://docs.python.org/3/library/stdtypes.html#dict)[[str](https://docs.python.org/3/library/stdtypes.html#str), [Any](https://docs.python.org/3/library/typing.html#typing.Any)]*
+
+#### parse(content)
+
+Parse Markdown text into a block-level token stream.
+
+#### parse_inline(content)
+
+Parse inline Markdown into its container token.
+
+#### render(tokens)
+
+Serialize a token stream as Markdown, leaving the environment intact.
+
+#### \_\_init_\_(parser, environment=<factory>)
+
+
+# extensions.html.md
+
+# Extensions
+
+Create a block when the report methods do not support the content you need.
+
+## Create a block
+
+A block has a `__report__` method. The method returns Markdown text or Markdown tokens.
+
+```python
+from dataclasses import dataclass
+from mdreport import BlockContent, MarkdownReport
+
+@dataclass(frozen=True)
+class Aside:
+    content: str
+
+    def __report__(self, report: MarkdownReport) -> BlockContent:
+        return f"> {self.content}"
+
+report = MarkdownReport().title("Findings")
+report.append(Aside("Numbers are provisional."))
+```
+
+You do not need a base class or a registration step. Do not change the report inside `__report__`.
+
+## Add a block
+
+```python
+report.append(block)
+report += block
+new_report = report + block
+```
+
+`append` and `+=` change the report. The `+` operator returns a changed copy.
+
+## Return tokens
+
+A report holds its content as a Markdown syntax tree, not as text. The string you return from
+`__report__` is parsed into tokens before it joins that tree, so both routes end in the same place.
+Return tokens to skip the parse and build the tree yourself.
+
+The token builders assemble the pieces. This block pairs a bold caption with a fenced query:
+
+```python
+from dataclasses import dataclass
+from markdown_it.token import Token
+from mdreport import MarkdownReport, bold_paragraph_tokens, fence_token
+
+@dataclass(frozen=True)
+class Query:
+    sql: str
+    title: str
+
+    def __report__(self, report: MarkdownReport) -> list[Token]:
+        tokens = bold_paragraph_tokens(report.parser, self.title)
+        tokens.append(fence_token(self.sql, "sql"))
+        return tokens
+
+report.append(Query("select count(*) from orders", "Order volume"))
+```
+
+```markdown
+**Order volume**
+
+```sql
+select count(*) from orders
+```
+```
+
+Three reasons to build tokens instead of a string:
+
+- **The builders get the format’s edge cases right.** `fence_token` widens the fence when the code
+  contains backticks. `table_tokens` escapes the pipes and turns the newlines in a DataFrame cell
+  into `<br>`. Written as a string, both corrupt the document instead.
+- **`raw_token` bypasses Markdown.** Its content reaches the file untouched. No string can do this,
+  because a string is always parsed.
+- **A `text` token stays literal.** The builders that take `report.parser` parse their argument as
+  inline Markdown, so a caption of `Top _accounts_` comes out as emphasis. Put the value in a
+  `Token("text", "", 0, content=value)` when it has to survive as data, and the renderer escapes it
+  on the way out.
+
+A Markdown string is the better choice when you write the whole block yourself, as `Aside` does
+above. Reach for tokens when your data decides the content.
+
+The [API reference](api-reference.html.md) lists all token builders.
+
+## Read the finished document
+
+There are cases where you need to wait till the report is fully constructed before you can determine a block’s content. But `__report__` runs the moment you append the block, so it cannot see the rest of the report.
+
+So if you want to wait until the report is fully constructed before determining a block’s content, give your block a `__resolve__` method instead. This is useful when your block summarizes, counts, or links to other content.
+
+When you `append` a deferred block, it stores a placeholder. The report calls `__resolve__` during `render` and puts the returned content where the placeholder sits.
+
+```python
+from dataclasses import dataclass
+from markdown_it.tree import SyntaxTreeNode
+from mdreport import BlockContent, MarkdownReport
+
+@dataclass(frozen=True)
+class HeadingCount:
+    def __resolve__(self, document: SyntaxTreeNode, report: MarkdownReport) -> BlockContent:
+        headings = sum(1 for node in document.walk() if node.type == "heading")
+        return f"This report has {headings} headings."
+
+report = MarkdownReport().append(HeadingCount())
+report.title("Findings").heading("Revenue")
+print(report.render())
+```
+
+The count is 2, even though the block went in before either heading:
+
+```markdown
+This report has 2 headings.
+
+# Findings
+
+## Revenue
+```
+
+`document` is the report parsed into a [markdown-it-py](https://markdown-it-py.readthedocs.io)
+syntax tree. Walk it to find the nodes you care about. `report` gives you the parser, the same as
+in `__report__`.
+
+Two rules follow from resolving at render time:
+
+- A deferred block never sees another deferred block’s output, so the order you append them in does
+  not change what each one reads.
+- `render` resolves the block again every time you call it, so a report that grows between renders
+  produces an up-to-date block each time.
+
+`TableOfContents` works this way. It is why you place the contents at the top and still list the
+headings you add later.
+
+
+# usage.html.md
+
+# Usage examples
+
+Create a `MarkdownReport`, add content, and then render or save it.
+
+## Add common content
+
+```python
+from mdreport import MarkdownReport
+
+report = (
+    MarkdownReport()
+    .title("Pipeline health")
+    .heading("Summary")
+    .text("All nightly jobs finished before 06:00.")
+    .bullet_list(["12 jobs passed", "0 jobs failed"])
+    .numbered_list(["Collect data", "Check data", "Publish report"])
+    .code_block("select count(*) from jobs", language="sql")
+)
+```
+
+Both list methods nest to any depth. Write a sublist as a list immediately after the item it hangs
+beneath.
+
+```python
+report.bullet_list([
+    "Infrastructure",
+    ["Database", "Cache", ["Redis", "Memcached"]],
+    "Application",
+])
+```
+
+Use `markdown` for content such as a quote or an image.
+
+```python
+report.markdown("> Numbers are provisional.")
+```
+
+## Add a callout
+
+Use `callout` for a portable, titled block quote. Its message supports Markdown and template
+parameters.
+
+```python
+from mdreport import CalloutKind
+
+report.callout(
+    "Numbers for **{{ period }}** are provisional.",
+    kind=CalloutKind.WARNING,
+    params={"period": "Q3"},
+)
+```
+
+The kinds are `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, and `CAUTION`. Pass `title` to replace the
+kind’s title.
+
+## Add figures
+
+Use `figure` for a numbered image with alternative text and an optional caption.
+
+```python
+report = (
+    MarkdownReport()
+    .figure(
+        "charts/revenue.png",
+        alt_text="Revenue by region",
+        caption="Quarterly **revenue** by region.",
+    )
+)
+```
+
+Captions receive `Figure 1`, `Figure 2`, and so on in document order during `render`.
+
+By default, the image remains linked to its path or URL. Set `is_embedded=True` to make a local
+image part of the Markdown document:
+
+```python
+report.figure(
+    "charts/revenue.png",
+    alt_text="Revenue by region",
+    is_embedded=True,
+)
+```
+
+Raster images become base64 data URLs. SVG files are copied into the document as inline markup,
+inside an accessible wrapper carrying the alternative text. Embedding reads local files only; it
+does not download a remote URL. Only embed trusted SVG files because their markup is preserved.
+Some hosted Markdown viewers disallow data URLs even though the generated document is
+self-contained.
+
+## Add a DataFrame
+
+Use `table` for a Markdown table. Use `csv` when readers need to copy the data.
+
+```python
+import polars as pl
+
+metrics = pl.DataFrame({
+    "region": ["EMEA", "APAC"],
+    "revenue": [1234.567, 890.1],
+})
+
+report.table(metrics, title="Revenue by region", decimal_places=1)
+report.csv(metrics, title="Revenue data")
+```
+
+Both methods include every row and column. Slice a large DataFrame before you add it.
+
+## Add template values
+
+Pass a `params` mapping to fill Jinja variables.
+
+```python
+report.text(
+    "Generated on {{date}} by {{author}}.",
+    params={"date": "2026-08-28", "author": "Asif"},
+)
+```
+
+Templating runs only when you pass `params`. Leave it out when the content contains literal Jinja braces.
+
+## Add frontmatter
+
+Use `frontmatter` to add YAML metadata to the top of the report.
+
+```python
+report.frontmatter(title="Q3 review", author="Asif")
+report.frontmatter({"table-of-contents": True})
+```
+
+Later calls can add fields or replace their values.
+
+## Add a table of contents
+
+Place `table_of_contents` where you want the list. It includes headings that you add later.
+
+```python
+report = (
+    MarkdownReport()
+    .title("Q3 review")
+    .table_of_contents()
+    .heading("Revenue")
+    .heading("Costs")
+)
+```
+
+Entries link to each heading’s anchor, so the list reads as `- [Revenue](#revenue)`. Narrow the
+list with `start_level` and `depth` — `table_of_contents(start_level=2, depth=2)` covers level 2
+and level 3 headings, skipping the title.
+
+## Link to headings
+
+The anchors the contents link to are the ones a renderer derives from the heading text. GitHub,
+GitLab, Pandoc, and MkDocs all generate them, so the links resolve with nothing written into the
+document. Two headings with the same text are numbered apart, as `#findings` and `#findings-1`.
+
+For a renderer that generates no anchors, write them into the document:
+
+```python
+from mdreport import HeadingAnchorStyle, MarkdownReport, slugify
+
+MarkdownReport(anchor_style=HeadingAnchorStyle.HTML)       # ## <a id="revenue"></a>Revenue
+MarkdownReport(anchor_style=HeadingAnchorStyle.ATTRIBUTE)  # ## Revenue {#revenue}
+
+report.markdown(f"Back to [revenue](#{slugify('Revenue')}).")  # link to a heading
+```
+
+`ATTRIBUTE` is the syntax Pandoc, kramdown, and python-markdown’s `attr_list` understand; anything
+else renders it as visible text.
+
+## Render or save
+
+```python
+markdown = report.render()
+print(report)
+report.save("reports/q3.md")
+```
+
+`render` returns a string. `save` writes the same Markdown to a UTF-8 file.
+
+

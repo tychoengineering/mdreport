@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Usage examples &#8212; Markdown Report</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=0fc419ee" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=4418a689" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=0208f335" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="_static/documentation_options.js?v=01285bff"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=30646c52"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'usage';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://mdreport.tycho.engineering/usage.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API reference" href="api-reference.html" />
+    <link rel="prev" title="mdreport" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.0.1a2" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Markdown Report</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Usage examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/usage.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Usage examples</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-common-content">Add common content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-callout">Add a callout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-figures">Add figures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-dataframe">Add a DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-template-values">Add template values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-frontmatter">Add frontmatter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-table-of-contents">Add a table of contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-to-headings">Link to headings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#render-or-save">Render or save</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="usage-examples">
+<h1>Usage examples<a class="headerlink" href="#usage-examples" title="Link to this heading">#</a></h1>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">MarkdownReport</span></code>, add content, and then render or save it.</p>
+<section id="add-common-content">
+<h2>Add common content<a class="headerlink" href="#add-common-content" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mdreport</span><span class="w"> </span><span class="kn">import</span> <span class="n">MarkdownReport</span>
+
+<span class="n">report</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">MarkdownReport</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Pipeline health"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s2">"Summary"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"All nightly jobs finished before 06:00."</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">bullet_list</span><span class="p">([</span><span class="s2">"12 jobs passed"</span><span class="p">,</span> <span class="s2">"0 jobs failed"</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">numbered_list</span><span class="p">([</span><span class="s2">"Collect data"</span><span class="p">,</span> <span class="s2">"Check data"</span><span class="p">,</span> <span class="s2">"Publish report"</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">code_block</span><span class="p">(</span><span class="s2">"select count(*) from jobs"</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s2">"sql"</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Both list methods nest to any depth. Write a sublist as a list immediately after the item it hangs
+beneath.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">report</span><span class="o">.</span><span class="n">bullet_list</span><span class="p">([</span>
+    <span class="s2">"Infrastructure"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"Database"</span><span class="p">,</span> <span class="s2">"Cache"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Redis"</span><span class="p">,</span> <span class="s2">"Memcached"</span><span class="p">]],</span>
+    <span class="s2">"Application"</span><span class="p">,</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">markdown</span></code> for content such as a quote or an image.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">report</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">"&gt; Numbers are provisional."</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="add-a-callout">
+<h2>Add a callout<a class="headerlink" href="#add-a-callout" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">callout</span></code> for a portable, titled block quote. Its message supports Markdown and template
+parameters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mdreport</span><span class="w"> </span><span class="kn">import</span> <span class="n">CalloutKind</span>
+
+<span class="n">report</span><span class="o">.</span><span class="n">callout</span><span class="p">(</span>
+    <span class="s2">"Numbers for **{{ period }}** are provisional."</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="n">CalloutKind</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"period"</span><span class="p">:</span> <span class="s2">"Q3"</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The kinds are <code class="docutils literal notranslate"><span class="pre">NOTE</span></code>, <code class="docutils literal notranslate"><span class="pre">TIP</span></code>, <code class="docutils literal notranslate"><span class="pre">IMPORTANT</span></code>, <code class="docutils literal notranslate"><span class="pre">WARNING</span></code>, and <code class="docutils literal notranslate"><span class="pre">CAUTION</span></code>. Pass <code class="docutils literal notranslate"><span class="pre">title</span></code> to replace the
+kind’s title.</p>
+</section>
+<section id="add-figures">
+<h2>Add figures<a class="headerlink" href="#add-figures" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">figure</span></code> for a numbered image with alternative text and an optional caption.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">MarkdownReport</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">figure</span><span class="p">(</span>
+        <span class="s2">"charts/revenue.png"</span><span class="p">,</span>
+        <span class="n">alt_text</span><span class="o">=</span><span class="s2">"Revenue by region"</span><span class="p">,</span>
+        <span class="n">caption</span><span class="o">=</span><span class="s2">"Quarterly **revenue** by region."</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Captions receive <code class="docutils literal notranslate"><span class="pre">Figure</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">Figure</span> <span class="pre">2</span></code>, and so on in document order during <code class="docutils literal notranslate"><span class="pre">render</span></code>.</p>
+<p>By default, the image remains linked to its path or URL. Set <code class="docutils literal notranslate"><span class="pre">is_embedded=True</span></code> to make a local
+image part of the Markdown document:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">report</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span>
+    <span class="s2">"charts/revenue.png"</span><span class="p">,</span>
+    <span class="n">alt_text</span><span class="o">=</span><span class="s2">"Revenue by region"</span><span class="p">,</span>
+    <span class="n">is_embedded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Raster images become base64 data URLs. SVG files are copied into the document as inline markup,
+inside an accessible wrapper carrying the alternative text. Embedding reads local files only; it
+does not download a remote URL. Only embed trusted SVG files because their markup is preserved.
+Some hosted Markdown viewers disallow data URLs even though the generated document is
+self-contained.</p>
+</section>
+<section id="add-a-dataframe">
+<h2>Add a DataFrame<a class="headerlink" href="#add-a-dataframe" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">table</span></code> for a Markdown table. Use <code class="docutils literal notranslate"><span class="pre">csv</span></code> when readers need to copy the data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"region"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"EMEA"</span><span class="p">,</span> <span class="s2">"APAC"</span><span class="p">],</span>
+    <span class="s2">"revenue"</span><span class="p">:</span> <span class="p">[</span><span class="mf">1234.567</span><span class="p">,</span> <span class="mf">890.1</span><span class="p">],</span>
+<span class="p">})</span>
+
+<span class="n">report</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Revenue by region"</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">metrics</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Revenue data"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Both methods include every row and column. Slice a large DataFrame before you add it.</p>
+</section>
+<section id="add-template-values">
+<h2>Add template values<a class="headerlink" href="#add-template-values" title="Link to this heading">#</a></h2>
+<p>Pass a <code class="docutils literal notranslate"><span class="pre">params</span></code> mapping to fill Jinja variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">report</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+    <span class="s2">"Generated on {{date}} by {{author}}."</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"date"</span><span class="p">:</span> <span class="s2">"2026-08-28"</span><span class="p">,</span> <span class="s2">"author"</span><span class="p">:</span> <span class="s2">"Asif"</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Templating runs only when you pass <code class="docutils literal notranslate"><span class="pre">params</span></code>. Leave it out when the content contains literal Jinja braces.</p>
+</section>
+<section id="add-frontmatter">
+<h2>Add frontmatter<a class="headerlink" href="#add-frontmatter" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">frontmatter</span></code> to add YAML metadata to the top of the report.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">report</span><span class="o">.</span><span class="n">frontmatter</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Q3 review"</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="s2">"Asif"</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">frontmatter</span><span class="p">({</span><span class="s2">"table-of-contents"</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Later calls can add fields or replace their values.</p>
+</section>
+<section id="add-a-table-of-contents">
+<h2>Add a table of contents<a class="headerlink" href="#add-a-table-of-contents" title="Link to this heading">#</a></h2>
+<p>Place <code class="docutils literal notranslate"><span class="pre">table_of_contents</span></code> where you want the list. It includes headings that you add later.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">MarkdownReport</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Q3 review"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">table_of_contents</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s2">"Revenue"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s2">"Costs"</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Entries link to each heading’s anchor, so the list reads as <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">[Revenue](#revenue)</span></code>. Narrow the
+list with <code class="docutils literal notranslate"><span class="pre">start_level</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code> — <code class="docutils literal notranslate"><span class="pre">table_of_contents(start_level=2,</span> <span class="pre">depth=2)</span></code> covers level 2
+and level 3 headings, skipping the title.</p>
+</section>
+<section id="link-to-headings">
+<h2>Link to headings<a class="headerlink" href="#link-to-headings" title="Link to this heading">#</a></h2>
+<p>The anchors the contents link to are the ones a renderer derives from the heading text. GitHub,
+GitLab, Pandoc, and MkDocs all generate them, so the links resolve with nothing written into the
+document. Two headings with the same text are numbered apart, as <code class="docutils literal notranslate"><span class="pre">#findings</span></code> and <code class="docutils literal notranslate"><span class="pre">#findings-1</span></code>.</p>
+<p>For a renderer that generates no anchors, write them into the document:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mdreport</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeadingAnchorStyle</span><span class="p">,</span> <span class="n">MarkdownReport</span><span class="p">,</span> <span class="n">slugify</span>
+
+<span class="n">MarkdownReport</span><span class="p">(</span><span class="n">anchor_style</span><span class="o">=</span><span class="n">HeadingAnchorStyle</span><span class="o">.</span><span class="n">HTML</span><span class="p">)</span>       <span class="c1"># ## &lt;a id="revenue"&gt;&lt;/a&gt;Revenue</span>
+<span class="n">MarkdownReport</span><span class="p">(</span><span class="n">anchor_style</span><span class="o">=</span><span class="n">HeadingAnchorStyle</span><span class="o">.</span><span class="n">ATTRIBUTE</span><span class="p">)</span>  <span class="c1"># ## Revenue {#revenue}</span>
+
+<span class="n">report</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Back to [revenue](#</span><span class="si">{</span><span class="n">slugify</span><span class="p">(</span><span class="s1">'Revenue'</span><span class="p">)</span><span class="si">}</span><span class="s2">)."</span><span class="p">)</span>  <span class="c1"># link to a heading</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ATTRIBUTE</span></code> is the syntax Pandoc, kramdown, and python-markdown’s <code class="docutils literal notranslate"><span class="pre">attr_list</span></code> understand; anything
+else renders it as visible text.</p>
+</section>
+<section id="render-or-save">
+<h2>Render or save<a class="headerlink" href="#render-or-save" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">markdown</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"reports/q3.md"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">render</span></code> returns a string. <code class="docutils literal notranslate"><span class="pre">save</span></code> writes the same Markdown to a UTF-8 file.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">mdreport</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="api-reference.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">API reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-common-content">Add common content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-callout">Add a callout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-figures">Add figures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-dataframe">Add a DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-template-values">Add template values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-frontmatter">Add frontmatter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-table-of-contents">Add a table of contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-to-headings">Link to headings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#render-or-save">Render or save</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tycho Engineering
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Tycho Engineering, MIT License.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

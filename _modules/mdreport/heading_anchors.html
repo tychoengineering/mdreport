@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mdreport.heading_anchors &#8212; Markdown Report</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=0fc419ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=4418a689" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0208f335" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../_static/documentation_options.js?v=01285bff"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mdreport/heading_anchors';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://mdreport.tycho.engineering/_modules/mdreport/heading_anchors.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.0.1a2" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Markdown Report</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api-reference.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions.html">Extensions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for mdreport.heading_anchors</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">enum</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">unicodedata</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">markdown_it.token</span><span class="w"> </span><span class="kn">import</span> <span class="n">Token</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">markdown_it.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">SyntaxTreeNode</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"HeadingAnchor"</span><span class="p">,</span>
+    <span class="s2">"HeadingAnchorStyle"</span><span class="p">,</span>
+    <span class="s2">"anchor_link_inline"</span><span class="p">,</span>
+    <span class="s2">"anchored_inline"</span><span class="p">,</span>
+    <span class="s2">"anchored_tokens"</span><span class="p">,</span>
+    <span class="s2">"document_anchors"</span><span class="p">,</span>
+    <span class="s2">"heading_text"</span><span class="p">,</span>
+    <span class="s2">"slugify"</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="HeadingAnchorStyle">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.HeadingAnchorStyle">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">HeadingAnchorStyle</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""How a heading's anchor is written into the rendered Markdown.</span>
+
+<span class="sd">    ``IMPLICIT`` writes nothing and relies on the anchor the renderer derives</span>
+<span class="sd">    from the heading text — what GitHub, GitLab, Pandoc, MkDocs, and Docusaurus</span>
+<span class="sd">    all do, and what ``slugify`` reproduces. ``HTML`` prefixes the heading with</span>
+<span class="sd">    an ``&lt;a id="..."&gt;`` element, for renderers that generate no anchors of their</span>
+<span class="sd">    own. ``ATTRIBUTE`` appends the ``{#slug}`` attribute Pandoc, kramdown, and</span>
+<span class="sd">    python-markdown's ``attr_list`` understand; anything else renders it as</span>
+<span class="sd">    visible text.</span>
+<span class="sd">    """</span>
+
+    <span class="n">IMPLICIT</span> <span class="o">=</span> <span class="s2">"implicit"</span>
+    <span class="n">HTML</span> <span class="o">=</span> <span class="s2">"html"</span>
+    <span class="n">ATTRIBUTE</span> <span class="o">=</span> <span class="s2">"attribute"</span></div>
+
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HeadingAnchor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""A heading, its level, and the slug that links to it."""</span>
+
+    <span class="n">level</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">inline</span><span class="p">:</span> <span class="n">Token</span>
+    <span class="n">slug</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="c1"># Everything a slug does not keep: anything that is not a word character, a</span>
+<span class="c1"># space, or a hyphen. Dropping the rest is what makes a slug safe to write into</span>
+<span class="c1"># an HTML id attribute or a link destination without escaping.</span>
+<span class="n">DISCARDED_SLUG_CHARACTERS</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[^\w\- ]"</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">UNICODE</span><span class="p">)</span>
+
+<span class="c1"># The inline tokens that carry a heading's visible words. Emphasis and link</span>
+<span class="c1"># markup wrap these rather than containing text of their own, so building the</span>
+<span class="c1"># slug from these alone strips the markup without a second traversal.</span>
+<span class="n">TEXT_TOKEN_TYPES</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">"text"</span><span class="p">,</span> <span class="s2">"code_inline"</span><span class="p">})</span>
+<span class="n">BREAK_TOKEN_TYPES</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">"softbreak"</span><span class="p">,</span> <span class="s2">"hardbreak"</span><span class="p">})</span>
+<span class="n">LINK_TOKEN_TYPES</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">({</span><span class="s2">"link_open"</span><span class="p">,</span> <span class="s2">"link_close"</span><span class="p">})</span>
+
+<span class="n">FALLBACK_SLUG</span> <span class="o">=</span> <span class="s2">"section"</span>
+
+
+<div class="viewcode-block" id="slugify">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.slugify">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">slugify</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the anchor slug a heading of this text is linked by.</span>
+
+<span class="sd">    Follows the GitHub algorithm — case folded, punctuation dropped, spaces</span>
+<span class="sd">    turned into hyphens — so a link to the slug resolves on every renderer that</span>
+<span class="sd">    derives heading anchors the same way, with nothing written into the</span>
+<span class="sd">    document. Text that slugifies to nothing yields ``section``.</span>
+<span class="sd">    """</span>
+    <span class="n">folded</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s2">"NFKC"</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">slug</span> <span class="o">=</span> <span class="n">DISCARDED_SLUG_CHARACTERS</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="n">folded</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">slug</span> <span class="ow">or</span> <span class="n">FALLBACK_SLUG</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">unique_slug</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">taken</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return a slug for text that is not in taken, and record it there.</span>
+
+<span class="sd">    Repeats are numbered the way GitHub numbers them, so a second "Revenue"</span>
+<span class="sd">    heading anchors at ``revenue-1``.</span>
+<span class="sd">    """</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">slug</span> <span class="o">=</span> <span class="n">base</span>
+    <span class="n">occurrence</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">slug</span> <span class="ow">in</span> <span class="n">taken</span><span class="p">:</span>
+        <span class="n">occurrence</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">slug</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">occurrence</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">taken</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">slug</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">slug</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">heading_text</span><span class="p">(</span><span class="n">inline</span><span class="p">:</span> <span class="n">Token</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return a heading's visible text, with inline markup removed."""</span>
+    <span class="k">if</span> <span class="n">inline</span><span class="o">.</span><span class="n">children</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">inline</span><span class="o">.</span><span class="n">content</span>
+
+    <span class="n">words</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">inline</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="n">TEXT_TOKEN_TYPES</span><span class="p">:</span>
+            <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">child</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="n">BREAK_TOKEN_TYPES</span><span class="p">:</span>
+            <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">" "</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">document_anchors</span><span class="p">(</span><span class="n">document</span><span class="p">:</span> <span class="n">SyntaxTreeNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">HeadingAnchor</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Return every heading in the document, in order, with a unique slug.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if a heading node contains no inline token.</span>
+<span class="sd">    """</span>
+    <span class="n">anchors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">HeadingAnchor</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">taken</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">walk</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="s2">"heading"</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">inline_node</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">child</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span> <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">"inline"</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">inline_node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">inline_node</span><span class="o">.</span><span class="n">token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Heading inline node must contain a token"</span><span class="p">)</span>
+
+        <span class="n">anchors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">HeadingAnchor</span><span class="p">(</span>
+                <span class="n">level</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">tag</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s2">"h"</span><span class="p">)),</span>
+                <span class="n">inline</span><span class="o">=</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">inline_node</span><span class="o">.</span><span class="n">token</span><span class="p">),</span>
+                <span class="n">slug</span><span class="o">=</span><span class="n">unique_slug</span><span class="p">(</span><span class="n">heading_text</span><span class="p">(</span><span class="n">inline_node</span><span class="o">.</span><span class="n">token</span><span class="p">),</span> <span class="n">taken</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">anchors</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">anchored_tokens</span><span class="p">(</span><span class="n">tokens</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Token</span><span class="p">],</span> <span class="n">style</span><span class="p">:</span> <span class="n">HeadingAnchorStyle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Token</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Return a token stream whose headings carry an explicit anchor.</span>
+
+<span class="sd">    Slugs are derived from the stream itself, so they match the ones</span>
+<span class="sd">    ``document_anchors`` collects from the same headings. The given tokens are</span>
+<span class="sd">    left unmodified.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">style</span> <span class="ow">is</span> <span class="n">HeadingAnchorStyle</span><span class="o">.</span><span class="n">IMPLICIT</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+
+    <span class="n">taken</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">anchored</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Token</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">is_heading_inline</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_heading_inline</span> <span class="ow">and</span> <span class="n">token</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">"inline"</span><span class="p">:</span>
+            <span class="n">slug</span> <span class="o">=</span> <span class="n">unique_slug</span><span class="p">(</span><span class="n">heading_text</span><span class="p">(</span><span class="n">token</span><span class="p">),</span> <span class="n">taken</span><span class="p">)</span>
+            <span class="n">anchored</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">anchored_inline</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">slug</span><span class="p">,</span> <span class="n">style</span><span class="p">))</span>
+            <span class="n">is_heading_inline</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">continue</span>
+        <span class="n">is_heading_inline</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">"heading_open"</span>
+        <span class="n">anchored</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">anchored</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">anchored_inline</span><span class="p">(</span><span class="n">inline</span><span class="p">:</span> <span class="n">Token</span><span class="p">,</span> <span class="n">slug</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="n">HeadingAnchorStyle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Token</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return a copy of a heading's inline content carrying its anchor.</span>
+
+<span class="sd">    The slug is written unescaped into an HTML attribute under</span>
+<span class="sd">    ``HeadingAnchorStyle.HTML``; ``slugify`` is what makes that safe, having</span>
+<span class="sd">    already dropped every character that could close the attribute or the tag.</span>
+<span class="sd">    """</span>
+    <span class="n">anchored</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">inline</span><span class="p">)</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">anchored</span><span class="o">.</span><span class="n">children</span> <span class="ow">or</span> <span class="p">[])</span>
+
+    <span class="k">match</span> <span class="n">style</span><span class="p">:</span>
+        <span class="k">case</span> <span class="n">HeadingAnchorStyle</span><span class="o">.</span><span class="n">IMPLICIT</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">anchored</span>
+        <span class="k">case</span> <span class="n">HeadingAnchorStyle</span><span class="o">.</span><span class="n">HTML</span><span class="p">:</span>
+            <span class="n">anchor</span> <span class="o">=</span> <span class="n">Token</span><span class="p">(</span><span class="s2">"html_inline"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s1">'&lt;a id="</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s1">"&gt;&lt;/a&gt;'</span><span class="p">)</span>
+            <span class="n">anchored</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">anchor</span><span class="p">,</span> <span class="o">*</span><span class="n">children</span><span class="p">]</span>
+        <span class="k">case</span> <span class="n">HeadingAnchorStyle</span><span class="o">.</span><span class="n">ATTRIBUTE</span><span class="p">:</span>
+            <span class="n">attribute</span> <span class="o">=</span> <span class="n">Token</span><span class="p">(</span><span class="s2">"html_inline"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">" </span><span class="se">{{</span><span class="s2">#</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="se">}}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="n">anchored</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">children</span><span class="p">,</span> <span class="n">attribute</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">anchored</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">anchor_link_inline</span><span class="p">(</span><span class="n">inline</span><span class="p">:</span> <span class="n">Token</span><span class="p">,</span> <span class="n">slug</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Token</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return a copy of inline content wrapped in a link to a heading's anchor.</span>
+
+<span class="sd">    A link already inside the content is unwrapped, keeping its text: Markdown</span>
+<span class="sd">    has no nested links, so the link to the heading has to be the one that</span>
+<span class="sd">    survives.</span>
+<span class="sd">    """</span>
+    <span class="n">linked</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">inline</span><span class="p">)</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">child</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="p">(</span><span class="n">linked</span><span class="o">.</span><span class="n">children</span> <span class="ow">or</span> <span class="p">[])</span> <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">LINK_TOKEN_TYPES</span><span class="p">]</span>
+
+    <span class="n">link_open</span> <span class="o">=</span> <span class="n">Token</span><span class="p">(</span><span class="s2">"link_open"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">link_open</span><span class="o">.</span><span class="n">attrSet</span><span class="p">(</span><span class="s2">"href"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"#</span><span class="si">{</span><span class="n">slug</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">linked</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">link_open</span><span class="p">,</span> <span class="o">*</span><span class="n">children</span><span class="p">,</span> <span class="n">Token</span><span class="p">(</span><span class="s2">"link_close"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">linked</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tycho Engineering
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Tycho Engineering, MIT License.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,598 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mdreport.markdown_tokens &#8212; Markdown Report</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=0fc419ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=4418a689" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0208f335" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../_static/documentation_options.js?v=01285bff"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mdreport/markdown_tokens';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://mdreport.tycho.engineering/_modules/mdreport/markdown_tokens.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.0.1a2" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Markdown Report</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api-reference.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions.html">Extensions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for mdreport.markdown_tokens</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">markdown_it.token</span><span class="w"> </span><span class="kn">import</span> <span class="n">Token</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">markdown_it.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">SyntaxTreeNode</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.dataframe_formatting</span><span class="w"> </span><span class="kn">import</span> <span class="n">format_table_cell</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.report_block</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFERRED_BLOCK_TOKEN_TYPE</span><span class="p">,</span> <span class="n">BlockContent</span><span class="p">,</span> <span class="n">DeferredReportBlock</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.markdown_parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">MarkdownParser</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"NestedListItem"</span><span class="p">,</span>
+    <span class="s2">"append_tokens"</span><span class="p">,</span>
+    <span class="s2">"block_tokens"</span><span class="p">,</span>
+    <span class="s2">"bold_paragraph_tokens"</span><span class="p">,</span>
+    <span class="s2">"deferred_block_token"</span><span class="p">,</span>
+    <span class="s2">"fence_token"</span><span class="p">,</span>
+    <span class="s2">"frontmatter_token"</span><span class="p">,</span>
+    <span class="s2">"heading_tokens"</span><span class="p">,</span>
+    <span class="s2">"horizontal_rule_token"</span><span class="p">,</span>
+    <span class="s2">"html_block_token"</span><span class="p">,</span>
+    <span class="s2">"line_break_token"</span><span class="p">,</span>
+    <span class="s2">"list_item_tokens"</span><span class="p">,</span>
+    <span class="s2">"list_tokens"</span><span class="p">,</span>
+    <span class="s2">"paragraph_tokens"</span><span class="p">,</span>
+    <span class="s2">"raw_token"</span><span class="p">,</span>
+    <span class="s2">"table_cell_tokens"</span><span class="p">,</span>
+    <span class="s2">"table_tokens"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="nb">type</span> <span class="n">NestedListItem</span> <span class="o">=</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">NestedListItem</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">append_tokens</span><span class="p">(</span><span class="n">document</span><span class="p">:</span> <span class="n">SyntaxTreeNode</span><span class="p">,</span> <span class="n">tokens</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Token</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Append a valid token fragment to a report syntax tree."""</span>
+    <span class="n">fragment</span> <span class="o">=</span> <span class="n">SyntaxTreeNode</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">fragment</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+        <span class="n">child</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">document</span>
+        <span class="n">document</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">block_tokens</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n">MarkdownParser</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="n">BlockContent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Token</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Normalize block content into a token stream, parsing Markdown text."""</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">Token</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">content</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="paragraph_tokens">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.paragraph_tokens">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">paragraph_tokens</span><span class="p">(</span>
+    <span class="n">parser</span><span class="p">:</span> <span class="n">MarkdownParser</span><span class="p">,</span>
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">is_hidden</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Token</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Build a paragraph token pair containing parsed inline Markdown."""</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"paragraph_open"</span><span class="p">,</span> <span class="s2">"p"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="n">is_hidden</span><span class="p">),</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">parse_inline</span><span class="p">(</span><span class="n">content</span><span class="p">),</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"paragraph_close"</span><span class="p">,</span> <span class="s2">"p"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="n">is_hidden</span><span class="p">),</span>
+    <span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="bold_paragraph_tokens">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.bold_paragraph_tokens">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">bold_paragraph_tokens</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n">MarkdownParser</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Token</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Build a paragraph whose complete inline content is strong text."""</span>
+    <span class="n">inline</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_inline</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+    <span class="n">inline</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"strong_open"</span><span class="p">,</span> <span class="s2">"strong"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="s2">"**"</span><span class="p">),</span>
+        <span class="o">*</span><span class="p">(</span><span class="n">inline</span><span class="o">.</span><span class="n">children</span> <span class="ow">or</span> <span class="p">[]),</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"strong_close"</span><span class="p">,</span> <span class="s2">"strong"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="s2">"**"</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"paragraph_open"</span><span class="p">,</span> <span class="s2">"p"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">inline</span><span class="p">,</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"paragraph_close"</span><span class="p">,</span> <span class="s2">"p"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="heading_tokens">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.heading_tokens">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">heading_tokens</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n">MarkdownParser</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Token</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Build a heading at a level from one through six.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if level is outside the Markdown heading range.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Heading level must be between 1 and 6"</span><span class="p">)</span>
+
+    <span class="n">markup</span> <span class="o">=</span> <span class="s2">"#"</span> <span class="o">*</span> <span class="n">level</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"heading_open"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"h</span><span class="si">{</span><span class="n">level</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="n">markup</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">parse_inline</span><span class="p">(</span><span class="n">content</span><span class="p">),</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"heading_close"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"h</span><span class="si">{</span><span class="n">level</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="n">markup</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="list_tokens">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.list_tokens">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_tokens</span><span class="p">(</span>
+    <span class="n">parser</span><span class="p">:</span> <span class="n">MarkdownParser</span><span class="p">,</span>
+    <span class="n">items</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">NestedListItem</span><span class="p">],</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">is_ordered</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Token</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Build an ordered or unordered list, nesting sublists to any depth.</span>
+
+<span class="sd">    A list element nests beneath the item that precedes it. Every level carries</span>
+<span class="sd">    the marker chosen by is_ordered, so an ordered list nests ordered sublists.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: if a sublist has no preceding item to nest beneath.</span>
+<span class="sd">    """</span>
+    <span class="n">list_type</span> <span class="o">=</span> <span class="s2">"ordered_list"</span> <span class="k">if</span> <span class="n">is_ordered</span> <span class="k">else</span> <span class="s2">"bullet_list"</span>
+    <span class="n">list_tag</span> <span class="o">=</span> <span class="s2">"ol"</span> <span class="k">if</span> <span class="n">is_ordered</span> <span class="k">else</span> <span class="s2">"ul"</span>
+    <span class="n">marker</span> <span class="o">=</span> <span class="s2">"."</span> <span class="k">if</span> <span class="n">is_ordered</span> <span class="k">else</span> <span class="s2">"-"</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">Token</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">list_type</span><span class="si">}</span><span class="s2">_open"</span><span class="p">,</span> <span class="n">list_tag</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+    <span class="n">has_open_item</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">has_open_item</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"A nested list must follow the item it nests beneath"</span><span class="p">)</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">list_tokens</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">is_ordered</span><span class="o">=</span><span class="n">is_ordered</span><span class="p">))</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="n">has_open_item</span><span class="p">:</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="s2">"list_item_close"</span><span class="p">,</span> <span class="s2">"li"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">Token</span><span class="p">(</span>
+                <span class="s2">"list_item_open"</span><span class="p">,</span>
+                <span class="s2">"li"</span><span class="p">,</span>
+                <span class="mi">1</span><span class="p">,</span>
+                <span class="n">markup</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span>
+                <span class="n">info</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_ordered</span> <span class="k">else</span> <span class="s2">""</span><span class="p">,</span>
+                <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">tokens</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">paragraph_tokens</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">is_hidden</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">has_open_item</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="n">has_open_item</span><span class="p">:</span>
+        <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="s2">"list_item_close"</span><span class="p">,</span> <span class="s2">"li"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">list_type</span><span class="si">}</span><span class="s2">_close"</span><span class="p">,</span> <span class="n">list_tag</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">tokens</span></div>
+
+
+
+<div class="viewcode-block" id="list_item_tokens">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.list_item_tokens">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_item_tokens</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n">MarkdownParser</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Token</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Build one complete unordered-list item."""</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"list_item_open"</span><span class="p">,</span> <span class="s2">"li"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="s2">"-"</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="o">*</span><span class="n">paragraph_tokens</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">is_hidden</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"list_item_close"</span><span class="p">,</span> <span class="s2">"li"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="s2">"-"</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="table_tokens">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.table_tokens">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">table_tokens</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n">MarkdownParser</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Token</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Build a GFM table from every DataFrame column and row."""</span>
+    <span class="k">if</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">width</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">raw_token</span><span class="p">(</span><span class="s2">"||"</span><span class="p">)]</span>
+
+    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"table_open"</span><span class="p">,</span> <span class="s2">"table"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"thead_open"</span><span class="p">,</span> <span class="s2">"thead"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">Token</span><span class="p">(</span><span class="s2">"tr_open"</span><span class="p">,</span> <span class="s2">"tr"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">column_name</span> <span class="ow">in</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">tokens</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">table_cell_tokens</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">format_table_cell</span><span class="p">(</span><span class="n">column_name</span><span class="p">),</span> <span class="n">is_header</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="n">tokens</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">Token</span><span class="p">(</span><span class="s2">"tr_close"</span><span class="p">,</span> <span class="s2">"tr"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+            <span class="n">Token</span><span class="p">(</span><span class="s2">"thead_close"</span><span class="p">,</span> <span class="s2">"thead"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+            <span class="n">Token</span><span class="p">(</span><span class="s2">"tbody_open"</span><span class="p">,</span> <span class="s2">"tbody"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">():</span>
+        <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="s2">"tr_open"</span><span class="p">,</span> <span class="s2">"tr"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">table_cell_tokens</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="n">format_table_cell</span><span class="p">(</span><span class="n">cell</span><span class="p">),</span> <span class="n">is_header</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+        <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Token</span><span class="p">(</span><span class="s2">"tr_close"</span><span class="p">,</span> <span class="s2">"tr"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+    <span class="n">tokens</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">Token</span><span class="p">(</span><span class="s2">"tbody_close"</span><span class="p">,</span> <span class="s2">"tbody"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+            <span class="n">Token</span><span class="p">(</span><span class="s2">"table_close"</span><span class="p">,</span> <span class="s2">"table"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">tokens</span></div>
+
+
+
+<div class="viewcode-block" id="table_cell_tokens">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.table_cell_tokens">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">table_cell_tokens</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n">MarkdownParser</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">is_header</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Token</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Build one table header or body cell with inline Markdown."""</span>
+    <span class="n">cell_type</span> <span class="o">=</span> <span class="s2">"th"</span> <span class="k">if</span> <span class="n">is_header</span> <span class="k">else</span> <span class="s2">"td"</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">Token</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">cell_type</span><span class="si">}</span><span class="s2">_open"</span><span class="p">,</span> <span class="n">cell_type</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">parse_inline</span><span class="p">(</span><span class="n">content</span><span class="p">),</span>
+        <span class="n">Token</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">cell_type</span><span class="si">}</span><span class="s2">_close"</span><span class="p">,</span> <span class="n">cell_type</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="fence_token">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.fence_token">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">fence_token</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">language</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Token</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build a fenced code block, terminating the content with a newline."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">content</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">):</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="n">Token</span><span class="p">(</span><span class="s2">"fence"</span><span class="p">,</span> <span class="s2">"code"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="s2">"```"</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="n">language</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="raw_token">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.raw_token">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">raw_token</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Token</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build content that renders verbatim, bypassing Markdown formatting."""</span>
+    <span class="k">return</span> <span class="n">Token</span><span class="p">(</span><span class="s2">"report_raw"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">html_block_token</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Token</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build a raw HTML block."""</span>
+    <span class="k">return</span> <span class="n">Token</span><span class="p">(</span><span class="s2">"html_block"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">frontmatter_token</span><span class="p">(</span><span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Token</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build the YAML metadata block that opens a report."""</span>
+    <span class="k">return</span> <span class="n">Token</span><span class="p">(</span><span class="s2">"report_frontmatter"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">line_break_token</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Token</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build one additional blank line between document blocks."""</span>
+    <span class="k">return</span> <span class="n">Token</span><span class="p">(</span><span class="s2">"report_line_break"</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">horizontal_rule_token</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Token</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build a thematic break."""</span>
+    <span class="k">return</span> <span class="n">Token</span><span class="p">(</span><span class="s2">"hr"</span><span class="p">,</span> <span class="s2">"hr"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">markup</span><span class="o">=</span><span class="s2">"---"</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">deferred_block_token</span><span class="p">(</span><span class="n">block</span><span class="p">:</span> <span class="n">DeferredReportBlock</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Token</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build the placeholder standing in for a block resolved at render time."""</span>
+    <span class="n">meta</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"block"</span><span class="p">:</span> <span class="n">block</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">Token</span><span class="p">(</span><span class="n">DEFERRED_BLOCK_TOKEN_TYPE</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">block</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">meta</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tycho Engineering
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Tycho Engineering, MIT License.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+# Markdown Report
+
+> Build Markdown reports with Python.
+
+
+Tycho Engineering, MIT License
+
+## Pages
+
+- [mdreport](index.html.md): Build Markdown reports programmatically using a chainable fluent interface. Add headings, text, list...
+- [Usage examples](usage.html.md): Create a `MarkdownReport`, add content, and then render or save it.
+- [API reference](api-reference.html.md): Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+- [Extensions](extensions.html.md): Create a block when the report methods do not support the content you need.
+
+---
+
+For more comprehensive documentation, see [llms-full.txt](llms-full.txt)

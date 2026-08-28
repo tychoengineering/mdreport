@@ -1,0 +1,1100 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mdreport.report &#8212; Markdown Report</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=0fc419ee" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=4418a689" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0208f335" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../_static/documentation_options.js?v=01285bff"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mdreport/report';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://mdreport.tycho.engineering/_modules/mdreport/report.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.0.1a2" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Markdown Report</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api-reference.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions.html">Extensions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for mdreport.report</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mapping</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Self</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">markdown_it.token</span><span class="w"> </span><span class="kn">import</span> <span class="n">Token</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">markdown_it.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">SyntaxTreeNode</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.callout</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callout</span><span class="p">,</span> <span class="n">CalloutKind</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.code_block</span><span class="w"> </span><span class="kn">import</span> <span class="n">CodeBlock</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.dataframe_formatting</span><span class="w"> </span><span class="kn">import</span> <span class="n">format_dataframe_csv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.figure</span><span class="w"> </span><span class="kn">import</span> <span class="n">Figure</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.heading_anchors</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeadingAnchorStyle</span><span class="p">,</span> <span class="n">anchored_tokens</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.markdown_parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_parser</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.markdown_tokens</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">NestedListItem</span><span class="p">,</span>
+    <span class="n">append_tokens</span><span class="p">,</span>
+    <span class="n">block_tokens</span><span class="p">,</span>
+    <span class="n">bold_paragraph_tokens</span><span class="p">,</span>
+    <span class="n">deferred_block_token</span><span class="p">,</span>
+    <span class="n">fence_token</span><span class="p">,</span>
+    <span class="n">frontmatter_token</span><span class="p">,</span>
+    <span class="n">heading_tokens</span><span class="p">,</span>
+    <span class="n">horizontal_rule_token</span><span class="p">,</span>
+    <span class="n">html_block_token</span><span class="p">,</span>
+    <span class="n">line_break_token</span><span class="p">,</span>
+    <span class="n">list_tokens</span><span class="p">,</span>
+    <span class="n">raw_token</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.report_block</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DEFERRED_BLOCK_TOKEN_TYPE</span><span class="p">,</span>
+    <span class="n">DeferredReportBlock</span><span class="p">,</span>
+    <span class="n">ReportBlock</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.table_of_contents</span><span class="w"> </span><span class="kn">import</span> <span class="n">TableOfContents</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.template_rendering</span><span class="w"> </span><span class="kn">import</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">render_template_items</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"MarkdownReport"</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dict_to_yaml</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Serialize report metadata as safe YAML."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">""</span>
+    <span class="k">return</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span>
+        <span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+        <span class="n">allow_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="MarkdownReport">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MarkdownReport</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">"""Build a Markdown document.</span>
+
+<span class="sd">    Provides a fluent interface for building markdown documents with various content types</span>
+<span class="sd">    including headings, text, tables, lists, code blocks, and more. Supports Jinja2</span>
+<span class="sd">    template rendering for dynamic content generation.</span>
+
+<span class="sd">    - Method chaining for fluent report building</span>
+<span class="sd">    - Jinja2 template support for dynamic content</span>
+<span class="sd">    - Polars DataFrame integration for tables and CSV exports</span>
+<span class="sd">    - Automatic formatting of numeric data with configurable precision</span>
+<span class="sd">    - Numbered figures and captions</span>
+<span class="sd">    - Portable semantic callouts</span>
+<span class="sd">    - Support for nested lists and various markdown elements</span>
+<span class="sd">    - Export to file or string rendering</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">           report = (MarkdownReport()</span>
+<span class="sd">               .frontmatter(title="My Report", author="John Doe", date="2024-06-26")</span>
+<span class="sd">               .frontmatter({"description": "A comprehensive analysis\nwith multiple sections"})</span>
+<span class="sd">               .directive("class", "title")</span>
+<span class="sd">               .title("My Report")</span>
+<span class="sd">               .horizontal_rule()</span>
+<span class="sd">               .directive("class", "segue")</span>
+<span class="sd">               .heading("Overview")</span>
+<span class="sd">               .table_of_contents()</span>
+<span class="sd">               .heading("Heading level 2")</span>
+<span class="sd">               .text(["Paragraph 1", "Paragraph 2"])</span>
+<span class="sd">               .heading("Heading level 3", level=3)</span>
+<span class="sd">               .table(df, title="Data Summary")</span>
+<span class="sd">               .bullet_list(["Point 1", ["Sub-point 1", "Sub-point 2"], "Point 2"])</span>
+<span class="sd">               .numbered_list(["Step 1", "Step 2"])</span>
+<span class="sd">               .code_block("print('Hello, World!')", language="python", title="Example Code")</span>
+<span class="sd">               .horizontal_rule()</span>
+<span class="sd">               .text("Report generated on {{date}}", params={"date": "2024-06-26"})</span>
+<span class="sd">               .save("report.md")</span>
+<span class="sd">           )</span>
+<span class="sd">           print(report)</span>
+
+<span class="sd">    Every content method returns the report itself, so calls chain. Content is</span>
+<span class="sd">    held as a Markdown syntax tree rather than as text, so ``render`` is what</span>
+<span class="sd">    serializes it; a report can be rendered repeatedly and keeps building</span>
+<span class="sd">    afterwards.</span>
+<span class="sd">    """</span>
+
+<div class="viewcode-block" id="MarkdownReport.__init__">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">anchor_style</span><span class="p">:</span> <span class="n">HeadingAnchorStyle</span> <span class="o">=</span> <span class="n">HeadingAnchorStyle</span><span class="o">.</span><span class="n">IMPLICIT</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create an empty report with its own parser and no frontmatter.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            anchor_style: How each heading's anchor is written into the rendered</span>
+<span class="sd">                document. The default writes nothing and relies on the anchor the</span>
+<span class="sd">                renderer derives from the heading text, which is what</span>
+<span class="sd">                ``table_of_contents`` links to; pass ``HeadingAnchorStyle.HTML``</span>
+<span class="sd">                or ``HeadingAnchorStyle.ATTRIBUTE`` for a renderer that derives</span>
+<span class="sd">                none.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report = MarkdownReport(anchor_style=HeadingAnchorStyle.HTML)</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="n">create_parser</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">document</span> <span class="o">=</span> <span class="n">SyntaxTreeNode</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frontmatter_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">anchor_style</span> <span class="o">=</span> <span class="n">anchor_style</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.append">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.append">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">ReportBlock</span> <span class="o">|</span> <span class="n">DeferredReportBlock</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append a block's content to this report.</span>
+
+<span class="sd">        This is the extension point behind ``table``, ``code_block``, and</span>
+<span class="sd">        ``table_of_contents``, and the way to add a block of your own: any object</span>
+<span class="sd">        with a ``__report__`` method satisfies ``ReportBlock``.</span>
+
+<span class="sd">        A block implementing ``__resolve__`` (a ``DeferredReportBlock``) is stored as</span>
+<span class="sd">        a placeholder and resolved during ``render``, once the whole document is</span>
+<span class="sd">        known; every other block contributes its content immediately.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               @dataclass(frozen=True)</span>
+<span class="sd">               class Callout:</span>
+<span class="sd">                   message: str</span>
+
+<span class="sd">                   def __report__(self, report: MarkdownReport) -&gt; BlockContent:</span>
+<span class="sd">                       return f"&gt; **Note:** {self.message}"</span>
+
+<span class="sd">               report.append(Callout("Numbers are provisional."))</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="n">DeferredReportBlock</span><span class="p">):</span>
+            <span class="n">append_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="p">[</span><span class="n">deferred_block_token</span><span class="p">(</span><span class="n">block</span><span class="p">)])</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="n">append_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="n">block_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="p">,</span> <span class="n">block</span><span class="o">.</span><span class="n">__report__</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.copy">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.copy">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return an independent report holding the same content and metadata.</span>
+
+<span class="sd">        Content, frontmatter, and parser state are independent, so appending to</span>
+<span class="sd">        the copy never affects this report. Use it to build several documents</span>
+<span class="sd">        from a shared preamble.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               preamble = MarkdownReport().title("Weekly Report").table_of_contents()</span>
+<span class="sd">               for team in teams:</span>
+<span class="sd">                   preamble.copy().heading(team.name).table(team.metrics).save(f"{team.name}.md")</span>
+<span class="sd">        """</span>
+        <span class="n">duplicate</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span><span class="n">anchor_style</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">anchor_style</span><span class="p">)</span>
+        <span class="n">duplicate</span><span class="o">.</span><span class="n">document</span> <span class="o">=</span> <span class="n">SyntaxTreeNode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">to_tokens</span><span class="p">())</span>
+        <span class="n">duplicate</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">environment</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">environment</span><span class="p">)</span>
+        <span class="n">duplicate</span><span class="o">.</span><span class="n">frontmatter_data</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frontmatter_data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">duplicate</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.__add__">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.__add__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">ReportBlock</span> <span class="o">|</span> <span class="n">DeferredReportBlock</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return a copy of this report with a block appended, leaving it unchanged.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               summary = base + Callout("All checks passed")  # base is untouched</span>
+<span class="sd">        """</span>
+        <span class="n">duplicate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">duplicate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">duplicate</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.__iadd__">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.__iadd__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block</span><span class="p">:</span> <span class="n">ReportBlock</span> <span class="o">|</span> <span class="n">DeferredReportBlock</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append a block to this report in place.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report += Callout("All checks passed")</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.frontmatter">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.frontmatter">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">frontmatter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Merge YAML frontmatter fields into the report metadata.</span>
+
+<span class="sd">        Fields accumulate across calls and later values win, so frontmatter can</span>
+<span class="sd">        be set up front and amended once results are known. The block is emitted</span>
+<span class="sd">        at the top of the document by ``render``, in insertion order, and is</span>
+<span class="sd">        omitted entirely when no fields were set.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data: Fields to merge, for keys that are not valid identifiers.</span>
+<span class="sd">            **kwargs: Fields to merge, for keys that are.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.frontmatter(title="Q3 Review", author="Asif")</span>
+<span class="sd">               report.frontmatter({"table-of-contents": True})  # key needs the mapping form</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frontmatter_data</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="o">**</span><span class="p">(</span><span class="n">data</span> <span class="ow">or</span> <span class="p">{}),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">})</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.markdown">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.markdown">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">markdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Parse and append raw Markdown content.</span>
+
+<span class="sd">        The escape hatch for Markdown the other methods don't build: block quotes,</span>
+<span class="sd">        footnotes, images, or a whole section held as a string. Content is parsed,</span>
+<span class="sd">        not inserted verbatim, so it must be valid Markdown; use ``raw_token`` via</span>
+<span class="sd">        ``append`` for text that must survive untouched.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            content: Markdown source, treated as a Jinja template when params is given.</span>
+<span class="sd">            params: Template variables. None leaves the content unrendered, so</span>
+<span class="sd">                literal braces pass through safely.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.markdown("&gt; Quoted, with an ![image](chart.png)")</span>
+<span class="sd">               report.markdown("Owner: {{name}}", params={"name": "Asif"})</span>
+<span class="sd">        """</span>
+        <span class="n">append_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">render_template</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">params</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.directive">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.directive">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">directive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append a smolslides HTML-comment directive.</span>
+
+<span class="sd">        Directives are HTML comments, so they are invisible to Markdown renderers</span>
+<span class="sd">        that don't understand them.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: Directive name, written with the leading underscore smolslides</span>
+<span class="sd">                expects (``class`` becomes ``&lt;!-- _class: ... --&gt;``).</span>
+<span class="sd">            value: Directive argument, or None for a bare flag directive.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.directive("class", "title")  # &lt;!-- _class: title --&gt;</span>
+<span class="sd">               report.directive("paginate")        # &lt;!-- _paginate --&gt;</span>
+<span class="sd">        """</span>
+        <span class="n">directive</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"&lt;!-- _</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> --&gt;"</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">"&lt;!-- _</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> --&gt;"</span>
+        <span class="n">append_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="p">[</span><span class="n">html_block_token</span><span class="p">(</span><span class="n">directive</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.title">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.title">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append an H1 heading.</span>
+
+<span class="sd">        Shorthand for ``heading(text, level=1)``. Headings added by any method are</span>
+<span class="sd">        what ``table_of_contents`` later collects.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.title("Q3 Review")</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.heading">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.heading">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">heading</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append a heading at a level from one through six.</span>
+
+<span class="sd">        Inline Markdown in the text is parsed, so a heading can carry emphasis or</span>
+<span class="sd">        a link. Every heading becomes an entry in ``table_of_contents``, nested by</span>
+<span class="sd">        its level and linked to the heading's anchor — headings repeating the same</span>
+<span class="sd">        text are numbered apart, as ``findings`` and ``findings-1``.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            text: Heading text, treated as a Jinja template when params is given.</span>
+<span class="sd">            level: Heading level, 1 (``#``) through 6 (``######``).</span>
+<span class="sd">            params: Template variables.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: if level is outside the Markdown heading range.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.heading("Findings")</span>
+<span class="sd">               report.heading("Region: {{region}}", level=3, params={"region": "EMEA"})</span>
+<span class="sd">        """</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">heading_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="p">,</span> <span class="n">render_template</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">params</span><span class="p">),</span> <span class="n">level</span><span class="p">)</span>
+        <span class="n">append_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.text">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.text">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">text</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">content</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Parse and append one or more Markdown text blocks.</span>
+
+<span class="sd">        A list appends each entry as its own separate block, which is how to get</span>
+<span class="sd">        distinct paragraphs; a single string containing blank lines parses into</span>
+<span class="sd">        paragraphs too.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            content: One Markdown block, or a list of them.</span>
+<span class="sd">            params: Template variables, applied to every block.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.text("A single paragraph with **emphasis**.")</span>
+<span class="sd">               report.text(["First paragraph.", "Second paragraph."])</span>
+<span class="sd">               report.text("Generated {{date}}", params={"date": "2024-06-26"})</span>
+<span class="sd">        """</span>
+        <span class="n">blocks</span> <span class="o">=</span> <span class="p">[</span><span class="n">content</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">content</span>
+        <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">block</span><span class="p">),</span> <span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.callout">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.callout">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">callout</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">kind</span><span class="p">:</span> <span class="n">CalloutKind</span> <span class="o">=</span> <span class="n">CalloutKind</span><span class="o">.</span><span class="n">NOTE</span><span class="p">,</span>
+        <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append a titled block quote drawing attention to content.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            message: Markdown content displayed inside the callout.</span>
+<span class="sd">            kind: Semantic category supplying the default title.</span>
+<span class="sd">            title: Custom title replacing the category name.</span>
+<span class="sd">            params: Template variables applied to the message and custom title.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.callout(</span>
+<span class="sd">                   "Numbers are provisional.",</span>
+<span class="sd">                   kind=CalloutKind.WARNING,</span>
+<span class="sd">               )</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Callout</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.bullet_list">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.bullet_list">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">bullet_list</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">NestedListItem</span><span class="p">],</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append an unordered list, nesting sublists to any depth.</span>
+
+<span class="sd">        Items are parsed as inline Markdown, so they can carry emphasis, code, or</span>
+<span class="sd">        links. A sublist is written as a list immediately after the item it hangs</span>
+<span class="sd">        beneath. An empty list appends an empty list block.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            items: Strings, and lists of items that nest under the preceding string.</span>
+<span class="sd">            params: Template variables, applied at every depth.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: if a sublist has no preceding item to nest beneath.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.bullet_list(["Revenue up 4%", "Churn flat", "See [detail](d.md)"])</span>
+<span class="sd">               report.bullet_list([</span>
+<span class="sd">                   "Infrastructure",</span>
+<span class="sd">                   ["Database", "Cache", ["Redis", "Memcached"]],</span>
+<span class="sd">                   "Application",</span>
+<span class="sd">               ])</span>
+<span class="sd">        """</span>
+        <span class="n">rendered_items</span> <span class="o">=</span> <span class="n">render_template_items</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="n">append_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="n">list_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="p">,</span> <span class="n">rendered_items</span><span class="p">,</span> <span class="n">is_ordered</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.numbered_list">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.numbered_list">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">numbered_list</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">NestedListItem</span><span class="p">],</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append a consecutively numbered list, nesting sublists to any depth.</span>
+
+<span class="sd">        Numbering is generated from position, starting at 1 at every level — don't</span>
+<span class="sd">        write numbers into the items themselves. A sublist is written as a list</span>
+<span class="sd">        immediately after the item it hangs beneath.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            items: Strings, and lists of items that nest under the preceding string.</span>
+<span class="sd">            params: Template variables, applied at every depth.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: if a sublist has no preceding item to nest beneath.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.numbered_list(["Extract", "Transform", "Load"])</span>
+<span class="sd">               report.numbered_list([</span>
+<span class="sd">                   "Extract",</span>
+<span class="sd">                   ["Read the source", "Validate the schema"],</span>
+<span class="sd">                   "Load",</span>
+<span class="sd">               ])</span>
+<span class="sd">        """</span>
+        <span class="n">rendered_items</span> <span class="o">=</span> <span class="n">render_template_items</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="n">append_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="n">list_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="p">,</span> <span class="n">rendered_items</span><span class="p">,</span> <span class="n">is_ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.table">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.table">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">table</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">decimal_places</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append every DataFrame column and row as a GFM Markdown table.</span>
+
+<span class="sd">        The whole frame is written — there is no row or column limit, so slice</span>
+<span class="sd">        the frame first if it is large. Column names become the header row and</span>
+<span class="sd">        floats are rounded for display only.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            df: The frame to render.</span>
+<span class="sd">            title: Bold caption placed above the table.</span>
+<span class="sd">            params: Template variables, applied to the title.</span>
+<span class="sd">            decimal_places: Digits after the point for float columns.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.table(metrics.head(20), title="Top 20 by revenue", decimal_places=1)</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="n">decimal_places</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.csv">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.csv">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">csv</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">df</span><span class="p">:</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">decimal_places</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">wrap_code</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append a DataFrame as CSV, optionally inside a fenced code block.</span>
+
+<span class="sd">        Useful where a reader is meant to copy the numbers out rather than read</span>
+<span class="sd">        them in a table.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            df: The frame to serialize.</span>
+<span class="sd">            title: Bold caption placed above the block.</span>
+<span class="sd">            params: Template variables, applied to the title.</span>
+<span class="sd">            decimal_places: Digits after the point for float columns.</span>
+<span class="sd">            wrap_code: True fences the CSV in a ``csv`` code block. False emits it as</span>
+<span class="sd">                raw document text, which is only valid where the surrounding</span>
+<span class="sd">                Markdown tolerates it.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.csv(metrics, title="Raw data")</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+            <span class="n">append_tokens</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span>
+                <span class="n">bold_paragraph_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="p">,</span> <span class="n">render_template</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">params</span><span class="p">)),</span>
+            <span class="p">)</span>
+
+        <span class="n">csv_content</span> <span class="o">=</span> <span class="n">format_dataframe_csv</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="n">decimal_places</span><span class="p">)</span>
+        <span class="n">content_token</span> <span class="o">=</span> <span class="n">fence_token</span><span class="p">(</span><span class="n">csv_content</span><span class="p">,</span> <span class="s2">"csv"</span><span class="p">)</span> <span class="k">if</span> <span class="n">wrap_code</span> <span class="k">else</span> <span class="n">raw_token</span><span class="p">(</span><span class="n">csv_content</span><span class="p">)</span>
+        <span class="n">append_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="p">[</span><span class="n">content_token</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.code_block">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.code_block">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">code_block</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">language</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append a syntax-highlighted fenced code block.</span>
+
+<span class="sd">        Code is fenced, not parsed, so Markdown inside it stays literal.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            code: Source text, reproduced as given.</span>
+<span class="sd">            language: Info string driving highlighting; "" for a plain fence.</span>
+<span class="sd">            title: Bold caption placed above the block.</span>
+<span class="sd">            params: Template variables, applied to the code as well as the title.</span>
+<span class="sd">                Leave it None — the default — when the code contains Jinja-like</span>
+<span class="sd">                braces of its own, which templating would otherwise substitute.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.code_block("select 1", language="sql", title="Query")</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CodeBlock</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="n">language</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.figure">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.figure">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">figure</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span>
+        <span class="n">alt_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">caption</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">is_embedded</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append an image with an optional numbered caption.</span>
+
+<span class="sd">        Figures are numbered in document order during ``render``.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            source: Image path or URL written into the Markdown image destination.</span>
+<span class="sd">            alt_text: Literal alternative text describing the image.</span>
+<span class="sd">            caption: Optional inline-Markdown caption.</span>
+<span class="sd">            params: Template variables applied to source, alternative text, and caption.</span>
+<span class="sd">            is_embedded: True reads a local raster image into a base64 data URL or</span>
+<span class="sd">                inserts a local SVG as inline markup. False links to source.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            FigureEmbeddingError: during rendering, if an embedded source is not</span>
+<span class="sd">                a supported local image.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.figure(</span>
+<span class="sd">                   "charts/revenue.png",</span>
+<span class="sd">                   alt_text="Revenue by region",</span>
+<span class="sd">                   caption="Quarterly revenue by region.",</span>
+<span class="sd">               )</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">Figure</span><span class="p">(</span>
+                <span class="n">source</span><span class="p">,</span>
+                <span class="n">alt_text</span><span class="p">,</span>
+                <span class="n">caption</span><span class="o">=</span><span class="n">caption</span><span class="p">,</span>
+                <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                <span class="n">is_embedded</span><span class="o">=</span><span class="n">is_embedded</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.line_break">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.line_break">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">line_break</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append one additional blank line between document blocks.</span>
+
+<span class="sd">        Blocks are already separated by a blank line when rendered; this adds one</span>
+<span class="sd">        more for extra visual spacing.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.text("Above").line_break().text("Below")</span>
+<span class="sd">        """</span>
+        <span class="n">append_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="p">[</span><span class="n">line_break_token</span><span class="p">()])</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.horizontal_rule">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.horizontal_rule">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">horizontal_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append a thematic break, rendered as ``---``.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.horizontal_rule()</span>
+<span class="sd">        """</span>
+        <span class="n">append_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="p">,</span> <span class="p">[</span><span class="n">horizontal_rule_token</span><span class="p">()])</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.table_of_contents">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.table_of_contents">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">table_of_contents</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">start_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="n">is_linked</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Append a nested table of contents covering the report's headings.</span>
+
+<span class="sd">        Resolved at ``render`` time, not now, so it can be placed near the top and</span>
+<span class="sd">        still list headings appended afterwards. Entries nest by heading level and</span>
+<span class="sd">        link to each heading's anchor.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            start_level: Shallowest heading level listed. Raise it to skip the</span>
+<span class="sd">                document title, or a section heading a slide deck repeats.</span>
+<span class="sd">            depth: How many heading levels to list, counting from ``start_level``.</span>
+<span class="sd">                Lower it to keep the contents short in a deeply nested report.</span>
+<span class="sd">            is_linked: False renders entries as plain text, for a renderer whose</span>
+<span class="sd">                heading anchors cannot be relied on.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: if start_level is outside the Markdown heading range, or</span>
+<span class="sd">                depth is less than one.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.title("Q3 Review").table_of_contents().heading("Revenue")</span>
+<span class="sd">               # the contents list includes "Revenue", added after the call</span>
+
+<span class="sd">               report.table_of_contents(start_level=2, depth=2)  # h2 and h3 only</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TableOfContents</span><span class="p">(</span><span class="n">start_level</span><span class="o">=</span><span class="n">start_level</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span> <span class="n">is_linked</span><span class="o">=</span><span class="n">is_linked</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.render">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.render">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Serialize the complete report as a Markdown string.</span>
+
+<span class="sd">        Resolves deferred blocks, writes heading anchors in the report's</span>
+<span class="sd">        ``anchor_style``, and prepends the frontmatter, leaving the report itself</span>
+<span class="sd">        unchanged — rendering is repeatable, and content can still be appended</span>
+<span class="sd">        afterwards.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The rendered document, including a trailing newline.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               markdown = report.render()</span>
+<span class="sd">        """</span>
+        <span class="n">document</span> <span class="o">=</span> <span class="n">SyntaxTreeNode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">to_tokens</span><span class="p">())</span>
+        <span class="n">resolved_tokens</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Token</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">to_tokens</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">DEFERRED_BLOCK_TOKEN_TYPE</span><span class="p">:</span>
+                <span class="n">block</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">DeferredReportBlock</span><span class="p">,</span> <span class="n">token</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">"block"</span><span class="p">])</span>
+                <span class="n">resolved_tokens</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">block_tokens</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="p">,</span> <span class="n">block</span><span class="o">.</span><span class="n">__resolve__</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="bp">self</span><span class="p">)))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">resolved_tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+        <span class="n">anchored</span> <span class="o">=</span> <span class="n">anchored_tokens</span><span class="p">(</span><span class="n">resolved_tokens</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">anchor_style</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frontmatter_data</span><span class="p">:</span>
+            <span class="n">anchored</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">frontmatter_token</span><span class="p">(</span><span class="n">dict_to_yaml</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frontmatter_data</span><span class="p">)))</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">SyntaxTreeNode</span><span class="p">(</span><span class="n">anchored</span><span class="p">)</span><span class="o">.</span><span class="n">to_tokens</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.save">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.save">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MarkdownReport</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Render the report and write it to a file as UTF-8.</span>
+
+<span class="sd">        Overwrites an existing file. The parent directory must already exist.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            filename: Destination path.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            OSError: if the path is not writable or its directory is missing.</span>
+
+<span class="sd">        Example:</span>
+
+<span class="sd">            .. code-block:: python</span>
+
+<span class="sd">               report.save("reports/q3.md")</span>
+<span class="sd">        """</span>
+        <span class="n">Path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">(),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="MarkdownReport.__str__">
+<a class="viewcode-back" href="../../api-reference.html#mdreport.MarkdownReport.__str__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return the rendered Markdown, so ``print(report)`` shows the document.</span>
+
+<span class="sd">        Equivalent to ``render``.</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tycho Engineering
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Tycho Engineering, MIT License.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
