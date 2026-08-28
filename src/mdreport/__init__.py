@@ -1,12 +1,18 @@
-from __future__ import annotations
+"""Build Markdown reports from a fluent API, extensible with custom blocks.
+
+Most callers need only `MarkdownReport` and the built-in blocks (`CodeBlock`,
+`Table`, `TableOfContents`). The rest of this surface exists for writing custom
+blocks: implement `ReportBlock` (or `DeferredReportBlock`) and build the
+`BlockContent` you return with the token builders and `render_template`.
+"""
+
+__version__ = "0.0.1a1"
 
 from .code_block import CodeBlock
-from .dataframe_formatting import format_dataframe, format_dataframe_csv, format_table_cell
-from .markdown_parser import MarkdownParser, create_parser
+from .dataframe_formatting import format_dataframe, format_dataframe_csv
+from .markdown_parser import MarkdownParser
 from .markdown_tokens import (
     NestedListItem,
-    append_tokens,
-    block_tokens,
     bold_paragraph_tokens,
     fence_token,
     heading_tokens,
@@ -38,14 +44,10 @@ __all__ = [
     "ReportBlock",
     "Table",
     "TableOfContents",
-    "append_tokens",
-    "block_tokens",
     "bold_paragraph_tokens",
-    "create_parser",
     "fence_token",
     "format_dataframe",
     "format_dataframe_csv",
-    "format_table_cell",
     "heading_tokens",
     "list_item_tokens",
     "list_tokens",
