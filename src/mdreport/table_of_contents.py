@@ -25,7 +25,18 @@ class TableOfContentsEntry:
 
 @dataclass(frozen=True)
 class TableOfContents:
-    """A nested list of every heading in the finished report."""
+    """A nested list of every heading in the finished report.
+
+    The block behind `MarkdownReport.table_of_contents`, and the reference
+    `DeferredReportBlock`: it is appended as a placeholder and resolved during
+    `render`, so it lists headings added after it as well as before. Entries nest
+    by heading level and are plain text, not links.
+
+    Example:
+        ```python
+        report.append(TableOfContents())
+        ```
+    """
 
     def __resolve__(self, document: SyntaxTreeNode, report: MarkdownReport) -> list[Token]:
         """Return list tokens mirroring the document's heading hierarchy."""
