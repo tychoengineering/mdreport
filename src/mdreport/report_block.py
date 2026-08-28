@@ -29,8 +29,8 @@ class ReportBlock(Protocol):
     def __report__(self, report: MarkdownReport) -> BlockContent:
         """Return this block's content, as Markdown text or as tokens.
 
-        The report is passed for its `parser`, which the token builders in
-        `markdown_tokens` (`paragraph_tokens`, `table_tokens`, `list_tokens`)
+        The report is passed for its ``parser``, which the token builders in
+        ``markdown_tokens`` (``paragraph_tokens``, ``table_tokens``, ``list_tokens``)
         take. Implementations must not append to it.
         """
         ...

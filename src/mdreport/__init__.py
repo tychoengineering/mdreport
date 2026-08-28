@@ -1,9 +1,9 @@
 """Build Markdown reports from a fluent API, extensible with custom blocks.
 
-Most callers need only `MarkdownReport` and the built-in blocks (`CodeBlock`,
-`Table`, `TableOfContents`). The rest of this surface exists for writing custom
-blocks: implement `ReportBlock` (or `DeferredReportBlock`) and build the
-`BlockContent` you return with the token builders and `render_template`.
+Most callers need only ``MarkdownReport`` and the built-in blocks (``CodeBlock``,
+``Table``, ``TableOfContents``). The rest of this surface exists for writing custom
+blocks: implement ``ReportBlock`` (or ``DeferredReportBlock``) and build the
+``BlockContent`` you return with the token builders and ``render_template``.
 """
 
 __version__ = "0.0.1a1"

@@ -63,65 +63,42 @@ class MarkdownReport:
     including headings, text, tables, lists, code blocks, and more. Supports Jinja2
     template rendering for dynamic content generation.
 
-    Features:
-
-        - Method chaining for fluent report building
-        - Jinja2 template support for dynamic content
-        - Polars DataFrame integration for tables and CSV exports
-        - Automatic formatting of numeric data with configurable precision
-        - Support for nested lists and various markdown elements
-        - Export to file or string rendering
-
-    Methods:
-
-        - frontmatter(data=None, **kwargs): Add YAML frontmatter
-        - directive(name, value=None): Add smolslides directive
-        - markdown(content, params=None): Add raw markdown content
-        - title(text, params=None): Add H1 heading
-        - heading(text, level=2, params=None): Add heading (H1-H6)
-        - text(content, params=None): Add text paragraphs
-        - bullet_list(items, params=None): Add bullet list
-        - numbered_list(items, params=None): Add numbered list
-        - nested_list(items, params=None): Add nested list with sublists
-        - table(df, title=None, params=None, decimal_places=2): Add DataFrame as markdown table
-        - csv(df, title=None, params=None, decimal_places=2): Add DataFrame as CSV code block
-        - code_block(code, language="", title=None, params=None): Add syntax-highlighted code block
-        - line_break(): Add line break
-        - horizontal_rule(): Add horizontal rule
-        - table_of_contents(): Add table of contents based on headings
-        - append(block): Add a custom ReportBlock or DeferredReportBlock
-        - render(): Get final markdown as string
-        - save(filename): Save report to file
+    - Method chaining for fluent report building
+    - Jinja2 template support for dynamic content
+    - Polars DataFrame integration for tables and CSV exports
+    - Automatic formatting of numeric data with configurable precision
+    - Support for nested lists and various markdown elements
+    - Export to file or string rendering
 
     Example:
-        ```python
-        report = (MarkdownReport()
-            .frontmatter(title="My Report", author="John Doe", date="2024-06-26")
-            .frontmatter({"description": "A comprehensive analysis\nwith multiple sections"})
-            .directive("class", "title")
-            .title("My Report")
-            .text("---")  # Slide separator for smolslides
-            .directive("class", "segue")
-            .heading("Overview")
-            .text("---")
-            .table_of_contents()
-            .heading("Heading level 2")
-            .text(["Paragraph 1", "Paragraph 2"])
-            .heading("Heading level 3", level=3)
-            .table(df, title="Data Summary")
-            .bullet_list(["Point 1", "Point 2"])
-            .numbered_list(["Step 1", "Step 2"])
-            .nested_list(["Main point", ["Sub-point 1", "Sub-point 2"]])
-            .code_block("print('Hello, World!')", language="python", title="Example Code")
-            .horizontal_rule()
-            .text("Report generated on {{date}}", params={"date": "2024-06-26"})
-            .save("report.md")
-        )
-        print(report)
-        ```
+
+        .. code-block:: python
+
+           report = (MarkdownReport()
+               .frontmatter(title="My Report", author="John Doe", date="2024-06-26")
+               .frontmatter({"description": "A comprehensive analysis\nwith multiple sections"})
+               .directive("class", "title")
+               .title("My Report")
+               .horizontal_rule()
+               .directive("class", "segue")
+               .heading("Overview")
+               .table_of_contents()
+               .heading("Heading level 2")
+               .text(["Paragraph 1", "Paragraph 2"])
+               .heading("Heading level 3", level=3)
+               .table(df, title="Data Summary")
+               .bullet_list(["Point 1", "Point 2"])
+               .numbered_list(["Step 1", "Step 2"])
+               .nested_list(["Main point", ["Sub-point 1", "Sub-point 2"]])
+               .code_block("print('Hello, World!')", language="python", title="Example Code")
+               .horizontal_rule()
+               .text("Report generated on {{date}}", params={"date": "2024-06-26"})
+               .save("report.md")
+           )
+           print(report)
 
     Every content method returns the report itself, so calls chain. Content is
-    held as a Markdown syntax tree rather than as text, so `render` is what
+    held as a Markdown syntax tree rather than as text, so ``render`` is what
     serializes it; a report can be rendered repeatedly and keeps building
     afterwards.
     """
@@ -135,25 +112,26 @@ class MarkdownReport:
     def append(self, block: ReportBlock | DeferredReportBlock) -> MarkdownReport:
         """Append a block's content to this report.
 
-        This is the extension point behind `table`, `code_block`, and
-        `table_of_contents`, and the way to add a block of your own: any object
-        with a `__report__` method satisfies `ReportBlock`.
+        This is the extension point behind ``table``, ``code_block``, and
+        ``table_of_contents``, and the way to add a block of your own: any object
+        with a ``__report__`` method satisfies ``ReportBlock``.
 
-        A block implementing `__resolve__` (a `DeferredReportBlock`) is stored as
-        a placeholder and resolved during `render`, once the whole document is
+        A block implementing ``__resolve__`` (a ``DeferredReportBlock``) is stored as
+        a placeholder and resolved during ``render``, once the whole document is
         known; every other block contributes its content immediately.
 
         Example:
-            ```python
-            @dataclass(frozen=True)
-            class Callout:
-                message: str
 
-                def __report__(self, report: MarkdownReport) -> BlockContent:
-                    return f"> **Note:** {self.message}"
+            .. code-block:: python
 
-            report.append(Callout("Numbers are provisional."))
-            ```
+               @dataclass(frozen=True)
+               class Callout:
+                   message: str
+
+                   def __report__(self, report: MarkdownReport) -> BlockContent:
+                       return f"> **Note:** {self.message}"
+
+               report.append(Callout("Numbers are provisional."))
         """
         if isinstance(block, DeferredReportBlock):
             append_tokens(self.document, [deferred_block_token(block)])
@@ -169,11 +147,12 @@ class MarkdownReport:
         from a shared preamble.
 
         Example:
-            ```python
-            preamble = MarkdownReport().title("Weekly Report").table_of_contents()
-            for team in teams:
-                preamble.copy().heading(team.name).table(team.metrics).save(f"{team.name}.md")
-            ```
+
+            .. code-block:: python
+
+               preamble = MarkdownReport().title("Weekly Report").table_of_contents()
+               for team in teams:
+                   preamble.copy().heading(team.name).table(team.metrics).save(f"{team.name}.md")
         """
         duplicate = type(self)()
         duplicate.document = SyntaxTreeNode(self.document.to_tokens())
@@ -185,9 +164,10 @@ class MarkdownReport:
         """Return a copy of this report with a block appended, leaving it unchanged.
 
         Example:
-            ```python
-            summary = base + Callout("All checks passed")  # base is untouched
-            ```
+
+            .. code-block:: python
+
+               summary = base + Callout("All checks passed")  # base is untouched
         """
         duplicate = self.copy()
         duplicate.append(block)
@@ -197,9 +177,10 @@ class MarkdownReport:
         """Append a block to this report in place.
 
         Example:
-            ```python
-            report += Callout("All checks passed")
-            ```
+
+            .. code-block:: python
+
+               report += Callout("All checks passed")
         """
         self.append(block)
         return self
@@ -209,7 +190,7 @@ class MarkdownReport:
 
         Fields accumulate across calls and later values win, so frontmatter can
         be set up front and amended once results are known. The block is emitted
-        at the top of the document by `render`, in insertion order, and is
+        at the top of the document by ``render``, in insertion order, and is
         omitted entirely when no fields were set.
 
         Args:
@@ -217,10 +198,11 @@ class MarkdownReport:
             **kwargs: Fields to merge, for keys that are.
 
         Example:
-            ```python
-            report.frontmatter(title="Q3 Review", author="Asif")
-            report.frontmatter({"table-of-contents": True})  # key needs the mapping form
-            ```
+
+            .. code-block:: python
+
+               report.frontmatter(title="Q3 Review", author="Asif")
+               report.frontmatter({"table-of-contents": True})  # key needs the mapping form
         """
         self.frontmatter_data.update({**(data or {}), **kwargs})
         return self
@@ -230,8 +212,8 @@ class MarkdownReport:
 
         The escape hatch for Markdown the other methods don't build: block quotes,
         footnotes, images, or a whole section held as a string. Content is parsed,
-        not inserted verbatim, so it must be valid Markdown; use `raw_token` via
-        `append` for text that must survive untouched.
+        not inserted verbatim, so it must be valid Markdown; use ``raw_token`` via
+        ``append`` for text that must survive untouched.
 
         Args:
             content: Markdown source, treated as a Jinja template when params is given.
@@ -239,10 +221,11 @@ class MarkdownReport:
                 literal braces pass through safely.
 
         Example:
-            ```python
-            report.markdown("> Quoted, with an ![image](chart.png)")
-            report.markdown("Owner: {{name}}", params={"name": "Asif"})
-            ```
+
+            .. code-block:: python
+
+               report.markdown("> Quoted, with an ![image](chart.png)")
+               report.markdown("Owner: {{name}}", params={"name": "Asif"})
         """
         append_tokens(self.document, self.parser.parse(render_template(content, params)))
         return self
@@ -255,14 +238,15 @@ class MarkdownReport:
 
         Args:
             name: Directive name, written with the leading underscore smolslides
-                expects (`class` becomes `<!-- _class: ... -->`).
+                expects (``class`` becomes ``<!-- _class: ... -->``).
             value: Directive argument, or None for a bare flag directive.
 
         Example:
-            ```python
-            report.directive("class", "title")  # <!-- _class: title -->
-            report.directive("paginate")        # <!-- _paginate -->
-            ```
+
+            .. code-block:: python
+
+               report.directive("class", "title")  # <!-- _class: title -->
+               report.directive("paginate")        # <!-- _paginate -->
         """
         directive = f"<!-- _{name}: {value} -->" if value is not None else f"<!-- _{name} -->"
         append_tokens(self.document, [html_block_token(directive)])
@@ -271,13 +255,14 @@ class MarkdownReport:
     def title(self, text: str, params: Mapping[str, Any] | None = None) -> MarkdownReport:
         """Append an H1 heading.
 
-        Shorthand for `heading(text, level=1)`. Headings added by any method are
-        what `table_of_contents` later collects.
+        Shorthand for ``heading(text, level=1)``. Headings added by any method are
+        what ``table_of_contents`` later collects.
 
         Example:
-            ```python
-            report.title("Q3 Review")
-            ```
+
+            .. code-block:: python
+
+               report.title("Q3 Review")
         """
         return self.heading(text, level=1, params=params)
 
@@ -290,22 +275,23 @@ class MarkdownReport:
         """Append a heading at a level from one through six.
 
         Inline Markdown in the text is parsed, so a heading can carry emphasis or
-        a link. Every heading becomes an entry in `table_of_contents`, nested by
+        a link. Every heading becomes an entry in ``table_of_contents``, nested by
         its level.
 
         Args:
             text: Heading text, treated as a Jinja template when params is given.
-            level: Heading level, 1 (`#`) through 6 (`######`).
+            level: Heading level, 1 (``#``) through 6 (``######``).
             params: Template variables.
 
         Raises:
             ValueError: if level is outside the Markdown heading range.
 
         Example:
-            ```python
-            report.heading("Findings")
-            report.heading("Region: {{region}}", level=3, params={"region": "EMEA"})
-            ```
+
+            .. code-block:: python
+
+               report.heading("Findings")
+               report.heading("Region: {{region}}", level=3, params={"region": "EMEA"})
         """
         tokens = heading_tokens(self.parser, render_template(text, params), level)
         append_tokens(self.document, tokens)
@@ -327,11 +313,12 @@ class MarkdownReport:
             params: Template variables, applied to every block.
 
         Example:
-            ```python
-            report.text("A single paragraph with **emphasis**.")
-            report.text(["First paragraph.", "Second paragraph."])
-            report.text("Generated {{date}}", params={"date": "2024-06-26"})
-            ```
+
+            .. code-block:: python
+
+               report.text("A single paragraph with **emphasis**.")
+               report.text(["First paragraph.", "Second paragraph."])
+               report.text("Generated {{date}}", params={"date": "2024-06-26"})
         """
         blocks = [content] if isinstance(content, str) else content
         for block in blocks:
@@ -353,9 +340,10 @@ class MarkdownReport:
             params: Template variables, applied to every item.
 
         Example:
-            ```python
-            report.bullet_list(["Revenue up 4%", "Churn flat", "See [detail](d.md)"])
-            ```
+
+            .. code-block:: python
+
+               report.bullet_list(["Revenue up 4%", "Churn flat", "See [detail](d.md)"])
         """
         rendered_items = render_template_items(items, params)
         append_tokens(self.document, list_tokens(self.parser, rendered_items, is_ordered=False))
@@ -376,9 +364,10 @@ class MarkdownReport:
             params: Template variables, applied to every item.
 
         Example:
-            ```python
-            report.numbered_list(["Extract", "Transform", "Load"])
-            ```
+
+            .. code-block:: python
+
+               report.numbered_list(["Extract", "Transform", "Load"])
         """
         rendered_items = render_template_items(items, params)
         append_tokens(self.document, list_tokens(self.parser, rendered_items, is_ordered=True))
@@ -399,13 +388,14 @@ class MarkdownReport:
             params: Template variables, applied at every depth.
 
         Example:
-            ```python
-            report.nested_list([
-                "Infrastructure",
-                ["Database", "Cache", ["Redis", "Memcached"]],
-                "Application",
-            ])
-            ```
+
+            .. code-block:: python
+
+               report.nested_list([
+                   "Infrastructure",
+                   ["Database", "Cache", ["Redis", "Memcached"]],
+                   "Application",
+               ])
         """
         rendered_items = render_nested_template_items(items, params)
         append_tokens(self.document, nested_list_tokens(self.parser, rendered_items))
@@ -431,9 +421,10 @@ class MarkdownReport:
             decimal_places: Digits after the point for float columns.
 
         Example:
-            ```python
-            report.table(metrics.head(20), title="Top 20 by revenue", decimal_places=1)
-            ```
+
+            .. code-block:: python
+
+               report.table(metrics.head(20), title="Top 20 by revenue", decimal_places=1)
         """
         return self.append(Table(df, title=title, params=params, decimal_places=decimal_places))
 
@@ -455,14 +446,15 @@ class MarkdownReport:
             title: Bold caption placed above the block.
             params: Template variables, applied to the title.
             decimal_places: Digits after the point for float columns.
-            wrap_code: True fences the CSV as a ```csv block. False emits it as
+            wrap_code: True fences the CSV in a ``csv`` code block. False emits it as
                 raw document text, which is only valid where the surrounding
                 Markdown tolerates it.
 
         Example:
-            ```python
-            report.csv(metrics, title="Raw data")
-            ```
+
+            .. code-block:: python
+
+               report.csv(metrics, title="Raw data")
         """
         if title:
             append_tokens(
@@ -495,9 +487,10 @@ class MarkdownReport:
                 braces of its own, which templating would otherwise substitute.
 
         Example:
-            ```python
-            report.code_block("select 1", language="sql", title="Query")
-            ```
+
+            .. code-block:: python
+
+               report.code_block("select 1", language="sql", title="Query")
         """
         return self.append(CodeBlock(code, language=language, title=title, params=params))
 
@@ -508,20 +501,22 @@ class MarkdownReport:
         more for extra visual spacing.
 
         Example:
-            ```python
-            report.text("Above").line_break().text("Below")
-            ```
+
+            .. code-block:: python
+
+               report.text("Above").line_break().text("Below")
         """
         append_tokens(self.document, [line_break_token()])
         return self
 
     def horizontal_rule(self) -> MarkdownReport:
-        """Append a thematic break, rendered as `---`.
+        """Append a thematic break, rendered as ``---``.
 
         Example:
-            ```python
-            report.horizontal_rule()
-            ```
+
+            .. code-block:: python
+
+               report.horizontal_rule()
         """
         append_tokens(self.document, [horizontal_rule_token()])
         return self
@@ -529,15 +524,16 @@ class MarkdownReport:
     def table_of_contents(self) -> MarkdownReport:
         """Append a nested table of contents covering every heading in the report.
 
-        Resolved at `render` time, not now, so it can be placed near the top and
+        Resolved at ``render`` time, not now, so it can be placed near the top and
         still list headings appended afterwards. Entries nest by heading level and
         are plain text, not links.
 
         Example:
-            ```python
-            report.title("Q3 Review").table_of_contents().heading("Revenue")
-            # the contents list includes "Revenue", added after the call
-            ```
+
+            .. code-block:: python
+
+               report.title("Q3 Review").table_of_contents().heading("Revenue")
+               # the contents list includes "Revenue", added after the call
         """
         return self.append(TableOfContents())
 
@@ -552,9 +548,10 @@ class MarkdownReport:
             The rendered document, including a trailing newline.
 
         Example:
-            ```python
-            markdown = report.render()
-            ```
+
+            .. code-block:: python
+
+               markdown = report.render()
         """
         document = SyntaxTreeNode(self.document.to_tokens())
         resolved_tokens: list[Token] = []
@@ -582,16 +579,17 @@ class MarkdownReport:
             OSError: if the path is not writable or its directory is missing.
 
         Example:
-            ```python
-            report.save("reports/q3.md")
-            ```
+
+            .. code-block:: python
+
+               report.save("reports/q3.md")
         """
         Path(filename).write_text(self.render(), encoding="utf-8")
         return self
 
     def __str__(self) -> str:
-        """Return the rendered Markdown, so `print(report)` shows the document.
+        """Return the rendered Markdown, so ``print(report)`` shows the document.
 
-        Equivalent to `render`.
+        Equivalent to ``render``.
         """
         return self.render()

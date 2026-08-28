@@ -23,9 +23,9 @@ __all__ = ["Table"]
 class Table:
     """Every column and row of a DataFrame as a GFM table.
 
-    The block behind `MarkdownReport.table`. Construct it directly to hold a
+    The block behind ``MarkdownReport.table``. Construct it directly to hold a
     table as a value — to pass it around, reuse it across reports, or append it
-    with `report + table`.
+    with ``report + table``.
 
     Attributes:
         dataframe: The frame to render, in full; slice it first if it is large.
@@ -34,10 +34,11 @@ class Table:
         decimal_places: Digits after the point for float columns.
 
     Example:
-        ```python
-        summary = Table(metrics, title="Q3 {{region}}", params={"region": "EMEA"})
-        report.append(summary)
-        ```
+
+        .. code-block:: python
+
+           summary = Table(metrics, title="Q3 {{region}}", params={"region": "EMEA"})
+           report.append(summary)
     """
 
     dataframe: pl.DataFrame

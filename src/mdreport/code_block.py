@@ -19,8 +19,8 @@ __all__ = ["CodeBlock"]
 class CodeBlock:
     """A fenced code block tagged with an optional language.
 
-    The block behind `MarkdownReport.code_block`. Construct it directly to hold a
-    snippet as a value and append it with `report.append(...)` or `report + ...`.
+    The block behind ``MarkdownReport.code_block``. Construct it directly to hold a
+    snippet as a value and append it with ``report.append(...)`` or ``report + ...``.
 
     Attributes:
         code: Source text, fenced rather than parsed, so Markdown in it stays literal.
@@ -30,9 +30,10 @@ class CodeBlock:
             Leave it None when the code contains Jinja-like braces of its own.
 
     Example:
-        ```python
-        report.append(CodeBlock("select 1", language="sql", title="Query"))
-        ```
+
+        .. code-block:: python
+
+           report.append(CodeBlock("select 1", language="sql", title="Query"))
     """
 
     code: str
