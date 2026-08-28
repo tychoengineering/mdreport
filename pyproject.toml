@@ -1,12 +1,20 @@
 [project]
 name = "mdreport"
-version = "0.1.0"
-description = "Add your description here"
+description = "Build Markdown reports programmatically using a chainable fluent interface"
+dynamic = ["version"]
 readme = "README.md"
 authors = [
-    { name = "Asif Rahman", email = "asiftr@gmail.com" }
+    { name = "Tycho Engineering", email = "tychoengr@gmail.com" }
 ]
 requires-python = ">=3.12"
+keywords = ["markdown"]
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Environment :: Web Environment",
+    "Topic :: Internet :: WWW/HTTP",
+]
 dependencies = [
     "jinja2>=3.1.6",
     "markdown-it-py>=4.0.0",
@@ -16,15 +24,64 @@ dependencies = [
     "pyyaml>=6.0",
 ]
 
-[project.scripts]
-mdreport = "mdreport:main"
-
-[build-system]
-requires = ["uv_build>=0.12.3,<0.13.0"]
-build-backend = "uv_build"
-
 [dependency-groups]
 dev = [
     "ipykernel>=7.3.0",
     "pytest>=9.1.1",
+    "ruff",
+    "ipykernel",
+    "pytest",
+    "pytest-cov",
+    "nbformat",
+    "setuptools",
+    "wheel",
+    "twine",
+    "build",
+    "uvicorn>=0.37.0",
+    "httpx>=0.28.1",
+    "mypy>=1.17.1",
+    "pytest-asyncio>=1.1.0",
+    { include-group = "docs" },
 ]
+# Also mirrored in docs/requirements.txt for tools that don't read dependency groups.
+docs = [
+    "sphinx>=8.1",
+    "sphinx-book-theme>=1.1",
+    "sphinx-copybutton>=0.5.2",
+    "myst-parser>=4.0",
+    "sphinx-llm>=0.4.1",
+    "sphinx-autobuild>=2024.10.3",
+]
+
+# Read the version from the package
+[tool.setuptools.dynamic]
+version = { attr = "mdreport.__version__" }
+
+[tool.setuptools]
+
+[tool.setuptools.packages.find]
+# where tells setuptools which directory to search in
+where = ["src"]
+# include tells setuptools which packages to include once it's searching in that directory
+include = ["mdreport*"]
+# exclude tells setuptools to not include any packages matching tests* inside src/ when building distribution
+exclude = ["tests*"]
+
+# Include the dashboard files in the package directory
+[tool.setuptools.package-data]
+mdreport = ["templates/**/*", "static/**/*"]
+
+# Linting configuration
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+# Pytest configuration
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+# Use the setuptools build system
+[build-system]
+requires = ["setuptools", "wheel", "pip"]
+build-backend = "setuptools.build_meta"

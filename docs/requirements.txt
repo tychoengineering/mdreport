@@ -1,0 +1,17 @@
+# Sphinx documentation requirements.
+#
+# These are also defined in pyproject.toml under [dependency-groups] docs. This file
+# exists for tools that don't read dependency groups (Read the Docs, plain pip).
+#
+# With uv (recommended):
+#   uv sync --group docs
+#
+# With pip:
+#   pip install -r requirements.txt
+
+sphinx>=8.1
+sphinx-book-theme>=1.1
+sphinx-copybutton>=0.5.2
+myst-parser>=4.0
+sphinx-llm>=0.4.1
+sphinx-autobuild>=2024.10.3
