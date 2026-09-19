@@ -7,7 +7,7 @@ surface exists for writing custom blocks: implement ``ReportBlock`` (or
 builders and ``render_template``.
 """
 
-__version__ = "0.0.1a3"
+__version__ = "0.0.1a4"
 
 from .callout import Callout, CalloutKind
 from .code_block import CodeBlock
