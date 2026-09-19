@@ -96,6 +96,13 @@ report.save("ingest.md")
   * [Return tokens](extensions.html.md#return-tokens)
   * [Read the finished document](extensions.html.md#read-the-finished-document)
 
+## LLMs and coding agents
+
+LLMs and coding agents can read the documentation in Markdown format:
+
+- [llms.txt](llms.txt) — a linked index of every page.
+- [llms-full.txt](llms-full.txt) — the whole documentation as a single Markdown file.
+
 
 # api-reference.html.md
 

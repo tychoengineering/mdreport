@@ -55,3 +55,11 @@ Read the documentation
    diagrams
    api-reference
    extensions
+
+LLMs and coding agents
+----------------------
+
+LLMs and coding agents can read the documentation in Markdown format:
+
+- `llms.txt <llms.txt>`_ — a linked index of every page.
+- `llms-full.txt <llms-full.txt>`_ — the whole documentation as a single Markdown file.
