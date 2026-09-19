@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="987" height="144" viewBox="0 0 987 144" role="img" aria-label="Ingest">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ffffff" />
+    </marker>
+  </defs>
+  <rect width="987" height="144" fill="#000000" />
+  <rect x="89" y="44.5" width="288" height="55" rx="13" fill="#2b2b2b" stroke="none" stroke-width="2" />
+  <text x="233" y="79.35" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#ffffff"><tspan x="233" dy="0">Source</tspan></text>
+  <rect x="610" y="44.5" width="288" height="55" rx="13" fill="#2b2b2b" stroke="none" stroke-width="2" />
+  <text x="754" y="79.35" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#ffffff"><tspan x="754" dy="0">Store</tspan></text>
+  <line x1="398" y1="72" x2="589" y2="72" stroke="#ffffff" stroke-width="2" marker-end="url(#arrow)" />
+</svg>

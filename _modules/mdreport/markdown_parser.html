@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=0fc419ee" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=0208f335" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=54fd5c55" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
@@ -40,7 +40,7 @@
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="../../_static/documentation_options.js?v=01285bff"></script>
+    <script src="../../_static/documentation_options.js?v=2fc15b33"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
     <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -53,7 +53,7 @@
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.1a2" />
+  <meta name="docsearch:version" content="0.0.1a4" />
   
     
     <script src="../../_static/searchtools.js"></script>
@@ -149,7 +149,8 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown.html">Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diagrams.html">Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api-reference.html">API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../extensions.html">Extensions</a></li>
 </ul>
@@ -270,12 +271,27 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">mdformat.plugins</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">markdown_it</span><span class="w"> </span><span class="kn">import</span> <span class="n">MarkdownIt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">markdown_it.common.normalize_url</span><span class="w"> </span><span class="kn">import</span> <span class="n">validateLink</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">markdown_it.renderer</span><span class="w"> </span><span class="kn">import</span> <span class="n">RendererProtocol</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">markdown_it.token</span><span class="w"> </span><span class="kn">import</span> <span class="n">Token</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">mdformat.renderer</span><span class="w"> </span><span class="kn">import</span> <span class="n">MDRenderer</span><span class="p">,</span> <span class="n">RenderContext</span><span class="p">,</span> <span class="n">RenderTreeNode</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">mdformat.renderer.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Postprocess</span><span class="p">,</span> <span class="n">Render</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"MarkdownParser"</span><span class="p">,</span> <span class="s2">"ReportSyntaxExtension"</span><span class="p">,</span> <span class="s2">"create_parser"</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_link</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Allow every scheme markdown-it allows by default, plus ``file:``.</span>
+
+<span class="sd">    markdown-it-py's default validator blocks ``file:`` links because it is</span>
+<span class="sd">    designed for HTML output, where a stray ``file:`` link is an XSS/local-</span>
+<span class="sd">    disclosure risk. Reports render back to Markdown text (or a terminal), not</span>
+<span class="sd">    HTML a browser executes, and ``file://`` links to local paths are a</span>
+<span class="sd">    routine, legitimate result here — so that scheme shouldn't be rejected.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"file:"</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">validateLink</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">create_markdown_renderer</span><span class="p">(</span><span class="n">parser</span><span class="p">:</span> <span class="n">MarkdownIt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RendererProtocol</span><span class="p">:</span>
@@ -401,6 +417,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">create_parser</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">MarkdownParser</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Create the Markdown parser and serializer a report builds with."""</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">MarkdownIt</span><span class="p">(</span><span class="n">renderer_cls</span><span class="o">=</span><span class="n">create_markdown_renderer</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">validateLink</span> <span class="o">=</span> <span class="n">validate_link</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">"mdformat"</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"number"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"wrap"</span><span class="p">:</span> <span class="s2">"keep"</span><span class="p">}</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">"store_labels"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">"parser_extension"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>

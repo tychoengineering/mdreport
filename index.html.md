@@ -1,7 +1,7 @@
 # mdreport
 
-Build Markdown reports programmatically using a chainable fluent interface. Add headings, text, lists, code blocks,
-templates, and Polars DataFrames.
+Build Markdown reports programmatically with a chainable API. Add headings, text, lists, callouts, figures, code blocks,
+templates, Polars DataFrames, and SVG diagrams.
 
 ## Install
 
@@ -27,23 +27,60 @@ report = (
 report.save("q3-review.md")
 ```
 
-Each method adds content and returns the report. You can chain methods or call them one at a time.
+Each method adds content and returns the report. Chain methods when the sequence is clear, or call them one at a time.
+
+Create a diagram and embed it in a report:
+
+```python
+from mdreport import Diagram, DiagramTheme, MarkdownReport, NodeRole, title_node
+
+diagram = Diagram("Ingest", width=466, height=89, theme=DiagramTheme.LIGHT)
+title_node(diagram, 89, 17, 288, "Source", role=NodeRole.ROOT)
+
+report = MarkdownReport().title("Ingest")
+report.append(diagram.figure(caption="Source node"))
+report.save("ingest.md")
+```
 
 ## Read the documentation
 
-* [Usage examples](usage.html.md)
-  * [Add common content](usage.html.md#add-common-content)
-  * [Add a callout](usage.html.md#add-a-callout)
-  * [Add figures](usage.html.md#add-figures)
-  * [Add a DataFrame](usage.html.md#add-a-dataframe)
-  * [Add template values](usage.html.md#add-template-values)
-  * [Add frontmatter](usage.html.md#add-frontmatter)
-  * [Add a table of contents](usage.html.md#add-a-table-of-contents)
-  * [Link to headings](usage.html.md#link-to-headings)
-  * [Render or save](usage.html.md#render-or-save)
+* [Markdown](markdown.html.md)
+  * [Add common content](markdown.html.md#add-common-content)
+  * [Add a callout](markdown.html.md#add-a-callout)
+  * [Add figures](markdown.html.md#add-figures)
+  * [Add a DataFrame](markdown.html.md#add-a-dataframe)
+  * [Add template values](markdown.html.md#add-template-values)
+  * [Add frontmatter](markdown.html.md#add-frontmatter)
+  * [Add a table of contents](markdown.html.md#add-a-table-of-contents)
+  * [Link to headings](markdown.html.md#link-to-headings)
+  * [Render or save](markdown.html.md#render-or-save)
+* [Diagrams](diagrams.html.md)
+  * [Draw one node](diagrams.html.md#draw-one-node)
+  * [Embed the diagram](diagrams.html.md#embed-the-diagram)
+  * [Join two nodes](diagrams.html.md#join-two-nodes)
+  * [Fit the node to the copy](diagrams.html.md#fit-the-node-to-the-copy)
+  * [Add a legend](diagrams.html.md#add-a-legend)
+  * [Group the flow](diagrams.html.md#group-the-flow)
+  * [Branch on a condition](diagrams.html.md#branch-on-a-condition)
+  * [Show a record and annotate it](diagrams.html.md#show-a-record-and-annotate-it)
+  * [Divide work into lanes](diagrams.html.md#divide-work-into-lanes)
+  * [Name a node with an icon](diagrams.html.md#name-a-node-with-an-icon)
+  * [Choose a theme](diagrams.html.md#choose-a-theme)
+  * [Palette keys](diagrams.html.md#palette-keys)
+  * [Brand the palette](diagrams.html.md#brand-the-palette)
+  * [Adjust border widths](diagrams.html.md#adjust-border-widths)
+  * [Use gradients](diagrams.html.md#use-gradients)
+  * [Frame the canvas](diagrams.html.md#frame-the-canvas)
+  * [Draw a shape the library does not have](diagrams.html.md#draw-a-shape-the-library-does-not-have)
+  * [Save or serialize](diagrams.html.md#save-or-serialize)
+  * [The scale](diagrams.html.md#the-scale)
+  * [Component sizes](diagrams.html.md#component-sizes)
 * [API reference](api-reference.html.md)
   * [Report](api-reference.html.md#report)
   * [Blocks](api-reference.html.md#blocks)
+  * [Diagrams](api-reference.html.md#diagrams)
+  * [Golden-ratio scale](api-reference.html.md#golden-ratio-scale)
+  * [Diagram components](api-reference.html.md#diagram-components)
   * [Heading anchors](api-reference.html.md#heading-anchors)
   * [Extension protocols](api-reference.html.md#extension-protocols)
   * [Errors](api-reference.html.md#errors)

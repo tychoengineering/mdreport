@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="342" viewBox="0 0 1220 342" role="img" aria-label="Ingest pipeline">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#202429" />
+    </marker>
+  </defs>
+  <rect x="34" y="78.5" width="288" height="55" rx="13" fill="#edf4ff" stroke="#1769e0" stroke-width="2" />
+  <text x="178" y="113.35" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#202429"><tspan x="178" dy="0">Source</tspan></text>
+  <rect x="466" y="61.5" width="288" height="89" rx="13" fill="#fff5e5" stroke="#e88700" stroke-width="2" />
+  <text x="610" y="97.8606" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#202429"><tspan x="610" dy="0">Transform</tspan></text>
+  <text x="610" y="129.2894" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#69706f"><tspan x="610" dy="0">Normalize the input</tspan></text>
+  <rect x="898" y="34" width="288" height="144" rx="13" fill="#eaf7f0" stroke="#087d52" stroke-width="2" />
+  <text x="932" y="80.5434" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="550" fill="#087d52"><tspan x="932" dy="0">Output artifact</tspan></text>
+  <text x="932" y="108.3779" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#202429"><tspan x="932" dy="0">Checked record</tspan></text>
+  <text x="932" y="139.8066" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#69706f"><tspan x="932" dy="0">Ready when checks pass</tspan></text>
+  <line x1="343" y1="106" x2="445" y2="106" stroke="#202429" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="775" y1="106" x2="877" y2="106" stroke="#202429" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M 1042 178 L 1042 212 L 610 212 L 610 158" fill="none" stroke="#202429" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="8 5" />
+  <text x="826" y="199" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#69706f"><tspan x="826" dy="0">If invalid: retry</tspan></text>
+  <line x1="34" y1="246" x2="1186" y2="246" stroke="#ded9cf" stroke-width="1.5" />
+  <text x="34" y="267" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="500" fill="#69706f"><tspan x="34" dy="0">Legend</tspan></text>
+  <circle cx="42" cy="301" r="8" fill="#1769e0" />
+  <text x="63" y="307" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#202429"><tspan x="63" dy="0">Collected input</tspan></text>
+  <circle cx="275" cy="301" r="8" fill="#e88700" />
+  <text x="296" y="307" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#202429"><tspan x="296" dy="0">Processing</tspan></text>
+  <circle cx="508" cy="301" r="8" fill="#087d52" />
+  <text x="529" y="307" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#202429"><tspan x="529" dy="0">Published output</tspan></text>
+  <line x1="733" y1="301" x2="788" y2="301" stroke="#202429" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="801" y="307" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#202429"><tspan x="801" dy="0">Normal flow</tspan></text>
+  <line x1="967" y1="301" x2="1022" y2="301" stroke="#202429" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="8 5" />
+  <text x="1035" y="307" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#202429"><tspan x="1035" dy="0">Conditional flow</tspan></text>
+</svg>

@@ -134,6 +134,12 @@ table.docutils td {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+/* Images, including the sample diagrams, scale down to the content column. */
+.bd-content img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;

@@ -1,8 +1,8 @@
 mdreport
 ========
 
-Build Markdown reports programmatically using a chainable fluent interface. Add headings, text, lists, code blocks,
-templates, and Polars DataFrames.
+Build Markdown reports programmatically with a chainable API. Add headings, text, lists, callouts, figures, code blocks,
+templates, Polars DataFrames, and SVG diagrams.
 
 Install
 -------
@@ -30,7 +30,20 @@ Create a report
 
    report.save("q3-review.md")
 
-Each method adds content and returns the report. You can chain methods or call them one at a time.
+Each method adds content and returns the report. Chain methods when the sequence is clear, or call them one at a time.
+
+Create a diagram and embed it in a report:
+
+.. code-block:: python
+
+   from mdreport import Diagram, DiagramTheme, MarkdownReport, NodeRole, title_node
+
+   diagram = Diagram("Ingest", width=466, height=89, theme=DiagramTheme.LIGHT)
+   title_node(diagram, 89, 17, 288, "Source", role=NodeRole.ROOT)
+
+   report = MarkdownReport().title("Ingest")
+   report.append(diagram.figure(caption="Source node"))
+   report.save("ingest.md")
 
 Read the documentation
 ----------------------
@@ -38,6 +51,7 @@ Read the documentation
 .. toctree::
    :maxdepth: 2
 
-   usage
+   markdown
+   diagrams
    api-reference
    extensions

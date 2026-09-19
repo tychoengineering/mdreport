@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="144" viewBox="0 0 1220 144" role="img" aria-label="Ingest">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ffffff" />
+    </marker>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1205" />
+      <stop offset="100%" stop-color="#04160e" />
+    </linearGradient>
+    <linearGradient id="warm-fill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2f2410" />
+      <stop offset="100%" stop-color="#0f2b1f" />
+    </linearGradient>
+    <linearGradient id="bold-edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f5a524" />
+      <stop offset="100%" stop-color="#3ddc97" />
+    </linearGradient>
+  </defs>
+  <rect width="1220" height="144" fill="url(#canvas)" />
+  <rect x="34" y="44.5" width="288" height="55" rx="13" fill="#2b2b2b" stroke="#ffffff" stroke-width="3" />
+  <text x="178" y="79.35" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#ffffff"><tspan x="178" dy="0">Source</tspan></text>
+  <rect x="466" y="27.5" width="288" height="89" rx="13" fill="url(#warm-fill)" stroke="url(#bold-edge)" stroke-width="5" />
+  <text x="610" y="63.8606" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#ffffff"><tspan x="610" dy="0">Transform</tspan></text>
+  <text x="610" y="95.2894" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#aaaaaa"><tspan x="610" dy="0">Normalize the input</tspan></text>
+  <rect x="898" y="44.5" width="288" height="55" rx="13" fill="#2b2b2b" stroke="#ffffff" stroke-width="3" />
+  <text x="1042" y="79.35" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#ffffff"><tspan x="1042" dy="0">Store</tspan></text>
+  <line x1="343" y1="72" x2="445" y2="72" stroke="#ffffff" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="775" y1="72" x2="877" y2="72" stroke="#ffffff" stroke-width="2" marker-end="url(#arrow)" />
+</svg>

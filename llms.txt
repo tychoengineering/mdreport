@@ -7,9 +7,10 @@ Tycho Engineering, MIT License
 
 ## Pages
 
-- [mdreport](index.html.md): Build Markdown reports programmatically using a chainable fluent interface. Add headings, text, list...
-- [Usage examples](usage.html.md): Create a `MarkdownReport`, add content, and then render or save it.
-- [API reference](api-reference.html.md): Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
+- [mdreport](index.html.md): Build Markdown reports programmatically with a chainable API. Add headings, text, lists, callouts, f...
+- [Markdown](markdown.html.md): Create a `MarkdownReport`, add content, and then render or save it.
+- [Diagrams](diagrams.html.md): Create an SVG diagram in Python, then embed it in a report as a numbered figure.
+- [API reference](api-reference.html.md): Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 - [Extensions](extensions.html.md): Create a block when the report methods do not support the content you need.
 
 ---

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="301" viewBox="0 0 1220 301" role="img" aria-label="Sources">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#202429" />
+    </marker>
+  </defs>
+  <rect x="34" y="34" width="504" height="89" rx="13" fill="#edf4ff" stroke="#1769e0" stroke-width="2" />
+  <text x="55" y="70.3606" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#202429"><tspan x="55" dy="0">Warehouse tables</tspan></text>
+  <text x="55" y="101.7894" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#69706f"><tspan x="55" dy="0">Nightly extract</tspan></text>
+  <svg xmlns="http://www.w3.org/2000/svg" x="483" y="61.5" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1769e0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <desc>Lucide 0.468.0: database. ISC License
+
+Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors 2022.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+</desc>
+    <ellipse cx="12" cy="5" rx="9" ry="3" stroke="#1769e0" />
+    <path d="M3 5V19A9 3 0 0 0 21 19V5" stroke="#1769e0" />
+    <path d="M3 12A9 3 0 0 0 21 12" stroke="#1769e0" />
+  </svg>
+  <rect x="682" y="34" width="504" height="89" rx="13" fill="#edf4ff" stroke="#1769e0" stroke-width="2" />
+  <text x="703" y="70.3606" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#202429"><tspan x="703" dy="0">Spreadsheets</tspan></text>
+  <text x="703" y="101.7894" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#69706f"><tspan x="703" dy="0">Uploaded by analysts</tspan></text>
+  <svg xmlns="http://www.w3.org/2000/svg" x="1131" y="61.5" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1769e0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <desc>Lucide 0.468.0: table-2. ISC License
+
+Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors 2022.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+</desc>
+    <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18" stroke="#1769e0" />
+  </svg>
+  <rect x="34" y="178" width="504" height="89" rx="13" fill="#fff5e5" stroke="#e88700" stroke-width="2" />
+  <text x="55" y="214.3606" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#202429"><tspan x="55" dy="0">Runbooks</tspan></text>
+  <text x="55" y="245.7894" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#69706f"><tspan x="55" dy="0">Narrative context</tspan></text>
+  <svg xmlns="http://www.w3.org/2000/svg" x="483" y="205.5" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#e88700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <desc>Lucide 0.468.0: notebook-text. ISC License
+
+Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors 2022.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+</desc>
+    <path d="M2 6h4" stroke="#e88700" />
+    <path d="M2 10h4" stroke="#e88700" />
+    <path d="M2 14h4" stroke="#e88700" />
+    <path d="M2 18h4" stroke="#e88700" />
+    <rect width="16" height="20" x="4" y="2" rx="2" stroke="#e88700" />
+    <path d="M9.5 8h5" stroke="#e88700" />
+    <path d="M9.5 12H16" stroke="#e88700" />
+    <path d="M9.5 16H14" stroke="#e88700" />
+  </svg>
+  <rect x="682" y="178" width="504" height="89" rx="13" fill="#eaf7f0" stroke="#087d52" stroke-width="2" />
+  <text x="703" y="214.3606" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#202429"><tspan x="703" dy="0">Checked record</tspan></text>
+  <text x="703" y="245.7894" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#69706f"><tspan x="703" dy="0">Checks passed</tspan></text>
+  <svg xmlns="http://www.w3.org/2000/svg" x="1131" y="205.5" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#087d52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <desc>Lucide 0.468.0: file-check-2. ISC License
+
+Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors 2022.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+</desc>
+    <path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4" stroke="#087d52" />
+    <path d="M14 2v4a2 2 0 0 0 2 2h4" stroke="#087d52" />
+    <path d="m3 15 2 2 4-4" stroke="#087d52" />
+  </svg>
+</svg>

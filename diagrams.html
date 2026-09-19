@@ -1,0 +1,995 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Diagrams &#8212; Markdown Report</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=0fc419ee" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=4418a689" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=54fd5c55" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="_static/documentation_options.js?v=2fc15b33"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=30646c52"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'diagrams';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://mdreport.tycho.engineering/diagrams.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API reference" href="api-reference.html" />
+    <link rel="prev" title="Markdown" href="markdown.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.0.1a4" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Markdown Report</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Diagrams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/diagrams.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Diagrams</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-one-node">Draw one node</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embed-the-diagram">Embed the diagram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#join-two-nodes">Join two nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-node-to-the-copy">Fit the node to the copy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-legend">Add a legend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-the-flow">Group the flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branch-on-a-condition">Branch on a condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-a-record-and-annotate-it">Show a record and annotate it</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-work-into-lanes">Divide work into lanes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#name-a-node-with-an-icon">Name a node with an icon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-a-theme">Choose a theme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#palette-keys">Palette keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brand-the-palette">Brand the palette</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-border-widths">Adjust border widths</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-gradients">Use gradients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frame-the-canvas">Frame the canvas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-a-shape-the-library-does-not-have">Draw a shape the library does not have</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-or-serialize">Save or serialize</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-scale">The scale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-sizes">Component sizes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="diagrams">
+<h1>Diagrams<a class="headerlink" href="#diagrams" title="Link to this heading">#</a></h1>
+<p>Create an SVG diagram in Python, then embed it in a report as a numbered figure.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">Diagram</span></code> provides a canvas for components placed at explicit coordinates. Component functions supply the shapes and
+colors. The library does not measure text, arrange graphs, or prevent nodes from overlapping. The same code always
+produces the same bytes. Built-in components and Lucide icons contain no scripts or remote assets. The library
+XML-escapes text and attribute values, including values in custom elements.</p>
+<p>The default component heights, insets, and text sizes follow a golden-ratio scale. The examples use the same scale, but
+you can pass other values. See <a class="reference internal" href="#the-scale">The scale</a> for details.</p>
+<p>The first code block creates a complete one-node diagram. Later blocks show only the code added for that section and
+omit repeated imports, canvas setup, and elements introduced earlier. Their adjacent images can include those earlier
+elements.</p>
+<section id="draw-one-node">
+<h2>Draw one node<a class="headerlink" href="#draw-one-node" title="Link to this heading">#</a></h2>
+<p>Create a canvas with a title and size, then add a node. The node’s <code class="docutils literal notranslate"><span class="pre">role</span></code> describes its place in the flow and selects
+its default stroke and fill keys: <code class="docutils literal notranslate"><span class="pre">ROOT</span></code> marks input, <code class="docutils literal notranslate"><span class="pre">PARENT</span></code> marks processing, and <code class="docutils literal notranslate"><span class="pre">LEAF</span></code> marks output. The node’s
+coordinates determine its position on the canvas.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mdreport</span><span class="w"> </span><span class="kn">import</span> <span class="n">Diagram</span><span class="p">,</span> <span class="n">DiagramTheme</span><span class="p">,</span> <span class="n">MarkdownReport</span><span class="p">,</span> <span class="n">NodeRole</span><span class="p">,</span> <span class="n">title_node</span>
+
+<span class="n">diagram</span> <span class="o">=</span> <span class="n">Diagram</span><span class="p">(</span><span class="s2">"Source"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">466</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">89</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="n">DiagramTheme</span><span class="o">.</span><span class="n">LIGHT</span><span class="p">)</span>
+<span class="n">title_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Source"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">ROOT</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="A single node labeled Source" class="only-light" src="_images/one-node-light.svg" />
+<img alt="A single node labeled Source" class="only-dark" src="_images/one-node-dark.svg" />
+<p>The positional arguments are <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">width</span></code>, and the label. A <code class="docutils literal notranslate"><span class="pre">title_node</span></code> is always 55 units tall. Use this height
+to position the next component below it. Components with content-dependent heights return their calculated height.</p>
+<p>This canvas measures 466 by 89 units, and the node measures 288 by 55 units. Each outer dimension is about φ times
+its inner dimension, so the node occupies the golden section of the canvas.</p>
+</section>
+<section id="embed-the-diagram">
+<h2>Embed the diagram<a class="headerlink" href="#embed-the-diagram" title="Link to this heading">#</a></h2>
+<p>Call <code class="docutils literal notranslate"><span class="pre">figure</span></code> to embed the diagram in a report. The alternative text defaults to the diagram title.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">report</span> <span class="o">=</span> <span class="n">MarkdownReport</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Source"</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diagram</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">caption</span><span class="o">=</span><span class="s2">"Source node"</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="join-two-nodes">
+<h2>Join two nodes<a class="headerlink" href="#join-two-nodes" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">line</span></code> to draw a straight connector. Pass <code class="docutils literal notranslate"><span class="pre">arrow=True</span></code> to add an arrowhead at the end. Leave a small gap between the
+connector and the node so the arrowhead does not touch the border.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">title_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Source"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">ROOT</span><span class="p">)</span>
+<span class="n">title_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">610</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Store"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">LEAF</span><span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">398</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">589</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="A Source node with an arrow to a Store node" class="only-light" src="_images/two-nodes-light.svg" />
+<img alt="A Source node with an arrow to a Store node" class="only-dark" src="_images/two-nodes-dark.svg" />
+<p>The 55-unit nodes are centered on a 144-unit canvas. Their centerline is 72, which puts their <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinate at 44.5.
+SVG accepts the resulting half-unit coordinate. For connectors that turn a corner, pass a list of points to <code class="docutils literal notranslate"><span class="pre">path</span></code>.
+Both <code class="docutils literal notranslate"><span class="pre">line</span></code> and <code class="docutils literal notranslate"><span class="pre">path</span></code> accept <code class="docutils literal notranslate"><span class="pre">dashed=True</span></code> for conditional routes.</p>
+</section>
+<section id="fit-the-node-to-the-copy">
+<h2>Fit the node to the copy<a class="headerlink" href="#fit-the-node-to-the-copy" title="Link to this heading">#</a></h2>
+<p>Choose a node shape based on how much text it contains. <code class="docutils literal notranslate"><span class="pre">title_node</span></code> displays a name. <code class="docutils literal notranslate"><span class="pre">centered_node</span></code> adds one short
+line below the name. <code class="docutils literal notranslate"><span class="pre">information_node</span></code> left-aligns a category, title, and one or more description lines. Text does not
+wrap, so each line must fit within the node width.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">title_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mf">78.5</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Source"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">ROOT</span><span class="p">)</span>
+<span class="n">centered_node</span><span class="p">(</span>
+    <span class="n">diagram</span><span class="p">,</span> <span class="mi">466</span><span class="p">,</span> <span class="mf">61.5</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Transform"</span><span class="p">,</span> <span class="s2">"Normalize the input"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">PARENT</span>
+<span class="p">)</span>
+<span class="n">information_node</span><span class="p">(</span>
+    <span class="n">diagram</span><span class="p">,</span>
+    <span class="mi">898</span><span class="p">,</span>
+    <span class="mi">34</span><span class="p">,</span>
+    <span class="mi">288</span><span class="p">,</span>
+    <span class="s2">"Output artifact"</span><span class="p">,</span>
+    <span class="s2">"Checked record"</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"Ready when checks pass"</span><span class="p">],</span>
+    <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">LEAF</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">343</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="mi">445</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">775</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="mi">877</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Source, Transform, and Output artifact nodes connected left to right" class="only-light" src="_images/three-roles-light.svg" />
+<img alt="Source, Transform, and Output artifact nodes connected left to right" class="only-dark" src="_images/three-roles-dark.svg" />
+<p>The three nodes are 55, 89, and 144 units tall. These are consecutive steps on the scale, and each is about φ times
+the preceding height. Adjusting each <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinate by half the difference in height centers all three nodes at 106.</p>
+</section>
+<section id="add-a-legend">
+<h2>Add a legend<a class="headerlink" href="#add-a-legend" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">legend_header</span></code> draws a rule across the specified width and returns the centerline for its keys. Use <code class="docutils literal notranslate"><span class="pre">color_key</span></code> to
+identify a role and <code class="docutils literal notranslate"><span class="pre">arrow_key</span></code> to identify a connector style.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span><span class="o">.</span><span class="n">path</span><span class="p">([(</span><span class="mi">1042</span><span class="p">,</span> <span class="mi">178</span><span class="p">),</span> <span class="p">(</span><span class="mi">1042</span><span class="p">,</span> <span class="mi">212</span><span class="p">),</span> <span class="p">(</span><span class="mi">610</span><span class="p">,</span> <span class="mi">212</span><span class="p">),</span> <span class="p">(</span><span class="mi">610</span><span class="p">,</span> <span class="mi">158</span><span class="p">)],</span> <span class="n">dashed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">826</span><span class="p">,</span> <span class="mi">199</span><span class="p">,</span> <span class="s2">"If invalid: retry"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"muted"</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="n">key_y</span> <span class="o">=</span> <span class="n">legend_header</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">246</span><span class="p">,</span> <span class="mi">1152</span><span class="p">)</span>
+<span class="n">is_colored</span> <span class="o">=</span> <span class="n">diagram</span><span class="o">.</span><span class="n">theme</span> <span class="o">!=</span> <span class="n">DiagramTheme</span><span class="o">.</span><span class="n">DARK</span>
+<span class="k">if</span> <span class="n">is_colored</span><span class="p">:</span>
+    <span class="n">color_key</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="n">key_y</span><span class="p">,</span> <span class="s2">"Collected input"</span><span class="p">,</span> <span class="n">NodeRole</span><span class="o">.</span><span class="n">ROOT</span><span class="p">)</span>
+    <span class="n">color_key</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">267</span><span class="p">,</span> <span class="n">key_y</span><span class="p">,</span> <span class="s2">"Processing"</span><span class="p">,</span> <span class="n">NodeRole</span><span class="o">.</span><span class="n">PARENT</span><span class="p">)</span>
+    <span class="n">color_key</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="n">key_y</span><span class="p">,</span> <span class="s2">"Published output"</span><span class="p">,</span> <span class="n">NodeRole</span><span class="o">.</span><span class="n">LEAF</span><span class="p">)</span>
+<span class="n">arrow_key</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">733</span> <span class="k">if</span> <span class="n">is_colored</span> <span class="k">else</span> <span class="mi">34</span><span class="p">,</span> <span class="n">key_y</span><span class="p">,</span> <span class="s2">"Normal flow"</span><span class="p">)</span>
+<span class="n">arrow_key</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">967</span> <span class="k">if</span> <span class="n">is_colored</span> <span class="k">else</span> <span class="mi">267</span><span class="p">,</span> <span class="n">key_y</span><span class="p">,</span> <span class="s2">"Conditional flow"</span><span class="p">,</span> <span class="n">dashed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="The three-node flow with a dashed retry path and a legend" class="only-light" src="_images/with-legend-light.svg" />
+<img alt="The three-node flow with a dashed retry path and a legend" class="only-dark" src="_images/with-legend-dark.svg" />
+<p>The dark theme draws all nodes in the same gray, so color keys cannot distinguish their roles. Connector styles remain
+distinct in both themes. The example omits the dark theme’s color keys and moves its arrow keys left.</p>
+</section>
+<section id="group-the-flow">
+<h2>Group the flow<a class="headerlink" href="#group-the-flow" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">group_panel</span></code> to frame related nodes with a heading and muted caption. Reserve 55 units above the child nodes for
+the heading and 34 units below them for the caption.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">610</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="s2">"Ingest pipeline"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">29</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">550</span><span class="p">)</span>
+<span class="n">caption</span> <span class="o">=</span> <span class="s2">"Peers with the same role use the same node pattern."</span>
+<span class="n">group_panel</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">1152</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="s2">"Main flow"</span><span class="p">,</span> <span class="n">caption</span><span class="p">)</span>
+<span class="n">title_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mf">188.5</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Source"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">ROOT</span><span class="p">)</span>
+<span class="n">centered_node</span><span class="p">(</span>
+    <span class="n">diagram</span><span class="p">,</span> <span class="mi">466</span><span class="p">,</span> <span class="mf">171.5</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Transform"</span><span class="p">,</span> <span class="s2">"Normalize the input"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">PARENT</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<img alt="A titled panel around the three-node flow, above a legend" class="only-light" src="_images/grouped-light.svg" />
+<img alt="A titled panel around the three-node flow, above a legend" class="only-dark" src="_images/grouped-dark.svg" />
+<p>The panel is 233 units tall: 55 for the heading, 144 for the nodes, and 34 for the caption. Use <code class="docutils literal notranslate"><span class="pre">diagram.text</span></code> for a
+heading or other standalone label. Its <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinate sets the first line’s baseline. For multiple lines, pass a list
+of strings. Pass <code class="docutils literal notranslate"><span class="pre">title=None</span></code> to <code class="docutils literal notranslate"><span class="pre">legend_header</span></code> to draw a rule without a heading.</p>
+</section>
+<section id="branch-on-a-condition">
+<h2>Branch on a condition<a class="headerlink" href="#branch-on-a-condition" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">decision_node</span></code> for a short question, and place each answer on its outgoing connector. <code class="docutils literal notranslate"><span class="pre">node_port</span></code> returns an
+attachment point on one side of a box, so you do not have to calculate the edge coordinate.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">title_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mf">116.5</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="s2">"Record"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">ROOT</span><span class="p">)</span>
+<span class="n">decision_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">377</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="s2">"Schema ok?"</span><span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="o">*</span><span class="n">node_port</span><span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mf">116.5</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="n">PortSide</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">),</span> <span class="mi">356</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">box_label</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">733</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="s2">"Accept"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">"leaf_fill"</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="s2">"leaf"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">box_label</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">733</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="s2">"Quarantine"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">accepted</span> <span class="o">=</span> <span class="n">node_port</span><span class="p">(</span><span class="mi">377</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="n">PortSide</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">path</span><span class="p">([</span><span class="n">accepted</span><span class="p">,</span> <span class="p">(</span><span class="mi">667</span><span class="p">,</span> <span class="mi">144</span><span class="p">),</span> <span class="p">(</span><span class="mi">667</span><span class="p">,</span> <span class="mf">116.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">712</span><span class="p">,</span> <span class="mf">116.5</span><span class="p">)],</span> <span class="n">arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">679</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="s2">"Yes"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"muted"</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="n">TextAnchor</span><span class="o">.</span><span class="n">START</span><span class="p">)</span>
+
+<span class="n">rejected</span> <span class="o">=</span> <span class="n">node_port</span><span class="p">(</span><span class="mi">377</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="n">PortSide</span><span class="o">.</span><span class="n">BOTTOM</span><span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">path</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">rejected</span><span class="p">,</span> <span class="p">(</span><span class="mf">493.5</span><span class="p">,</span> <span class="mi">233</span><span class="p">),</span> <span class="p">(</span><span class="mi">667</span><span class="p">,</span> <span class="mi">233</span><span class="p">),</span> <span class="p">(</span><span class="mi">667</span><span class="p">,</span> <span class="mf">205.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">712</span><span class="p">,</span> <span class="mf">205.5</span><span class="p">)],</span>
+    <span class="n">arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dashed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">510</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="s2">"No"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"muted"</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="n">TextAnchor</span><span class="o">.</span><span class="n">START</span><span class="p">)</span>
+
+<span class="n">labeled_connector</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="p">(</span><span class="mi">932</span><span class="p">,</span> <span class="mf">116.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">987</span><span class="p">,</span> <span class="mf">116.5</span><span class="p">),</span> <span class="s2">"records"</span><span class="p">)</span>
+<span class="n">box_label</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">1008</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="s2">"Store"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">"leaf_fill"</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="s2">"leaf"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="A record reaching a schema check that accepts or quarantines it" class="only-light" src="_images/branching-light.svg" />
+<img alt="A record reaching a schema check that accepts or quarantines it" class="only-dark" src="_images/branching-dark.svg" />
+<p><code class="docutils literal notranslate"><span class="pre">box_label</span></code> draws the rounded box used by most named components. Pass a role’s <code class="docutils literal notranslate"><span class="pre">fill</span></code> and <code class="docutils literal notranslate"><span class="pre">stroke</span></code> to match a node, or
+use the defaults for a neutral box. <code class="docutils literal notranslate"><span class="pre">labeled_connector</span></code> places a muted caption above a horizontal arrow. It raises an
+error if the connector is not horizontal.</p>
+</section>
+<section id="show-a-record-and-annotate-it">
+<h2>Show a record and annotate it<a class="headerlink" href="#show-a-record-and-annotate-it" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">list_node</span></code> displays fields below a divider. <code class="docutils literal notranslate"><span class="pre">repeated_stack</span></code> draws three offset copies of a box to represent multiple
+items. <code class="docutils literal notranslate"><span class="pre">junction</span></code> marks an intentional split and distinguishes it from crossing lines. <code class="docutils literal notranslate"><span class="pre">annotation_callout</span></code> places a
+note on a leader line without an arrowhead.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">list_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="s2">"Record"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"id: string"</span><span class="p">,</span> <span class="s2">"status: enum"</span><span class="p">,</span> <span class="s2">"score: float"</span><span class="p">])</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">288</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">,</span> <span class="mi">356</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">repeated_stack</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">377</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="s2">"Documents"</span><span class="p">,</span> <span class="s2">"24 per batch"</span><span class="p">)</span>
+
+<span class="n">diagram</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">644</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">,</span> <span class="mi">678</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">)</span>
+<span class="n">junction</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">686</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">686</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">,</span> <span class="mi">788</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">box_label</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">809</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="s2">"Publish"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">"leaf_fill"</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="s2">"leaf"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">diagram</span><span class="o">.</span><span class="n">path</span><span class="p">([(</span><span class="mi">686</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">686</span><span class="p">,</span> <span class="mi">199</span><span class="p">),</span> <span class="p">(</span><span class="mi">788</span><span class="p">,</span> <span class="mi">199</span><span class="p">)],</span> <span class="n">arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">box_label</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">809</span><span class="p">,</span> <span class="mf">171.5</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="s2">"Cache"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">annotation_callout</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">1097</span><span class="p">,</span> <span class="mi">191</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Expires after"</span><span class="p">,</span> <span class="s2">"15 minutes"</span><span class="p">],</span> <span class="p">(</span><span class="mi">1042</span><span class="p">,</span> <span class="mi">199</span><span class="p">))</span>
+</pre></div>
+</div>
+<img alt="A record field list feeding a batch that splits between publish and cache" class="only-light" src="_images/shapes-light.svg" />
+<img alt="A record field list feeding a batch that splits between publish and cache" class="only-dark" src="_images/shapes-dark.svg" />
+<p><code class="docutils literal notranslate"><span class="pre">list_node</span></code> returns its height: 68 units plus 21 units per row. This includes a 55-unit header, 21 units for each field,
+and a 13-unit footer. Use the returned height to position the next component.</p>
+</section>
+<section id="divide-work-into-lanes">
+<h2>Divide work into lanes<a class="headerlink" href="#divide-work-into-lanes" title="Link to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">swimlane</span></code> creates a labeled work area for an actor, stage, or system. A <code class="docutils literal notranslate"><span class="pre">boundary_frame</span></code> marks an ownership or
+containment boundary. The boundary keeps its outline even when the active theme omits other borders.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">boundary_frame</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">1152</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Private network"</span><span class="p">)</span>
+<span class="n">swimlane</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="s2">"Extract"</span><span class="p">)</span>
+<span class="n">swimlane</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">199</span><span class="p">,</span> <span class="mi">1110</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="s2">"Publish"</span><span class="p">)</span>
+
+<span class="n">extract</span> <span class="o">=</span> <span class="p">((</span><span class="mi">233</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="s2">"Parse"</span><span class="p">),</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="s2">"Normalize"</span><span class="p">),</span> <span class="p">(</span><span class="mi">767</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="s2">"Score"</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">extract</span><span class="p">:</span>
+    <span class="n">box_label</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">"parent_fill"</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="s2">"parent"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">labeled_connector</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="p">(</span><span class="mi">432</span><span class="p">,</span> <span class="mf">133.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">479</span><span class="p">,</span> <span class="mf">133.5</span><span class="p">),</span> <span class="s2">"records"</span><span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">699</span><span class="p">,</span> <span class="mf">133.5</span><span class="p">,</span> <span class="mi">746</span><span class="p">,</span> <span class="mf">133.5</span><span class="p">,</span> <span class="n">arrow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Extract and Publish lanes inside a private network boundary" class="only-light" src="_images/lanes-light.svg" />
+<img alt="Extract and Publish lanes inside a private network boundary" class="only-dark" src="_images/lanes-dark.svg" />
+<p>A swimlane reserves its first 144 units for the header. Place its boxes after that column.</p>
+</section>
+<section id="name-a-node-with-an-icon">
+<h2>Name a node with an icon<a class="headerlink" href="#name-a-node-with-an-icon" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">icon_node</span></code> places a Lucide icon to the right of a left-aligned title and description. The icon is decorative and does
+not replace the title.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sources</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="s2">"Warehouse tables"</span><span class="p">,</span> <span class="s2">"Nightly extract"</span><span class="p">,</span> <span class="n">LucideIcon</span><span class="o">.</span><span class="n">DATABASE</span><span class="p">,</span> <span class="n">NodeRole</span><span class="o">.</span><span class="n">ROOT</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">682</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="s2">"Spreadsheets"</span><span class="p">,</span> <span class="s2">"Uploaded by analysts"</span><span class="p">,</span> <span class="n">LucideIcon</span><span class="o">.</span><span class="n">TABLE_2</span><span class="p">,</span> <span class="n">NodeRole</span><span class="o">.</span><span class="n">ROOT</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="s2">"Runbooks"</span><span class="p">,</span> <span class="s2">"Narrative context"</span><span class="p">,</span> <span class="n">LucideIcon</span><span class="o">.</span><span class="n">NOTEBOOK_TEXT</span><span class="p">,</span> <span class="n">NodeRole</span><span class="o">.</span><span class="n">PARENT</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">682</span><span class="p">,</span> <span class="mi">178</span><span class="p">,</span> <span class="s2">"Checked record"</span><span class="p">,</span> <span class="s2">"Checks passed"</span><span class="p">,</span> <span class="n">LucideIcon</span><span class="o">.</span><span class="n">FILE_CHECK_2</span><span class="p">,</span> <span class="n">NodeRole</span><span class="o">.</span><span class="n">LEAF</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">icon</span><span class="p">,</span> <span class="n">role</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+    <span class="n">icon_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">504</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="n">icon</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">role</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="Four nodes with right-side icons: Warehouse tables, Spreadsheets, Runbooks, and Checked record" class="only-light" src="_images/icons-light.svg" />
+<img alt="Four nodes with right-side icons: Warehouse tables, Spreadsheets, Runbooks, and Checked record" class="only-dark" src="_images/icons-dark.svg" />
+<p><code class="docutils literal notranslate"><span class="pre">LucideIcon</span></code> defines several common icons. You can also pass any icon name from the pinned Lucide release as a string.
+The first use downloads the icon geometry and upstream license from the pinned package, then caches both on disk. Later
+runs use the cache without a network connection. The library converts the geometry to plain SVG shapes and excludes
+scripts and external references. Each icon is 34 units square with a 21-unit gutter on each side, so an icon node must
+be at least 144 units wide.</p>
+<p>To draw an icon outside a node, append the result of <code class="docutils literal notranslate"><span class="pre">lucide_icon_element</span></code>. An accent color requires the zero-based
+geometry indices in <code class="docutils literal notranslate"><span class="pre">accent_parts</span></code>. A two-stop gradient requires an <code class="docutils literal notranslate"><span class="pre">element_id</span></code> that is unique in the document. You
+cannot combine an accent with a gradient. Lucide color arguments must be hexadecimal values.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lucide_icon_element</span><span class="p">(</span><span class="s2">"database"</span><span class="p">,</span> <span class="n">accent</span><span class="o">=</span><span class="s2">"#087d52"</span><span class="p">,</span> <span class="n">accent_parts</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,))</span>
+<span class="n">lucide_icon_element</span><span class="p">(</span>
+    <span class="s2">"database"</span><span class="p">,</span> <span class="n">gradient</span><span class="o">=</span><span class="p">(</span><span class="s2">"#1769e0"</span><span class="p">,</span> <span class="s2">"#087d52"</span><span class="p">),</span> <span class="n">element_id</span><span class="o">=</span><span class="s2">"database-gradient"</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="choose-a-theme">
+<h2>Choose a theme<a class="headerlink" href="#choose-a-theme" title="Link to this heading">#</a></h2>
+<p>The light theme uses bordered, tinted surfaces on a transparent canvas. The dark theme uses borderless gray surfaces
+and white text on a black canvas. Component positions remain the same in both themes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Diagram</span><span class="p">(</span><span class="s2">"Ingest"</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="n">DiagramTheme</span><span class="o">.</span><span class="n">DARK</span><span class="p">)</span>  <span class="c1"># gray surfaces on a black canvas</span>
+<span class="n">Diagram</span><span class="p">(</span><span class="s2">"Ingest"</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s2">"#ffffff"</span><span class="p">)</span>  <span class="c1"># a solid canvas, not a transparent one</span>
+<span class="n">Diagram</span><span class="p">(</span><span class="s2">"Ingest"</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="p">(</span><span class="s2">"#fdf6ec"</span><span class="p">,</span> <span class="s2">"#eef7f1"</span><span class="p">))</span>  <span class="c1"># a gradient wash across the canvas</span>
+<span class="n">Diagram</span><span class="p">(</span><span class="s2">"Ingest"</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="n">DiagramTheme</span><span class="o">.</span><span class="n">DARK</span><span class="p">,</span> <span class="n">borders</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># dark, with the role strokes drawn</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">background</span></code>, <code class="docutils literal notranslate"><span class="pre">borders</span></code>, and <code class="docutils literal notranslate"><span class="pre">palette</span></code> arguments override the corresponding theme settings. The dark examples on
+this page retain the black canvas, so each appears as a framed image.</p>
+<p>Paint arguments on <code class="docutils literal notranslate"><span class="pre">Diagram</span></code> drawing methods and component functions accept a palette key such as <code class="docutils literal notranslate"><span class="pre">&quot;ink&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;muted&quot;</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">&quot;root_fill&quot;</span></code>. The diagram resolves the key against the active theme. It treats an unknown string as a literal CSS
+color.</p>
+</section>
+<section id="palette-keys">
+<h2>Palette keys<a class="headerlink" href="#palette-keys" title="Link to this heading">#</a></h2>
+<p>Both themes define the same fourteen keys. You can override any of them. The table shows the default values.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>What it colors</p></th>
+<th class="head"><p>Light</p></th>
+<th class="head"><p>Dark</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ink</span></code></p></td>
+<td><p>Titles, body text, connectors, and arrowheads</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#202429</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#ffffff</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">muted</span></code></p></td>
+<td><p>Descriptions, captions, field rows, and legend labels</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#69706f</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#aaaaaa</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">line</span></code></p></td>
+<td><p>Neutral boxes, decision nodes, and boundary frame outlines</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#737874</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#777777</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">soft_line</span></code></p></td>
+<td><p>Panel and lane outlines, legend rules, and dividers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#ded9cf</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#383838</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">background</span></code></p></td>
+<td><p>The canvas</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#f5f2ec</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#000000</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">panel</span></code></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">group_panel</span></code> surface</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#fcfbf8</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#171717</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">panel_alt</span></code></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">swimlane</span></code> surface</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#f7faf7</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#202020</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">neutral_fill</span></code></p></td>
+<td><p>Neutral component surfaces</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#f8f7f3</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#2b2b2b</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">root</span></code> / <code class="docutils literal notranslate"><span class="pre">root_fill</span></code></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">ROOT</span></code> node stroke and fill</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#1769e0</span></code> / <code class="docutils literal notranslate"><span class="pre">#edf4ff</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#ffffff</span></code> / <code class="docutils literal notranslate"><span class="pre">#2b2b2b</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">parent</span></code> / <code class="docutils literal notranslate"><span class="pre">parent_fill</span></code></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">PARENT</span></code> node stroke and fill</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#e88700</span></code> / <code class="docutils literal notranslate"><span class="pre">#fff5e5</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#ffffff</span></code> / <code class="docutils literal notranslate"><span class="pre">#2b2b2b</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">leaf</span></code> / <code class="docutils literal notranslate"><span class="pre">leaf_fill</span></code></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">LEAF</span></code> node stroke and fill</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#087d52</span></code> / <code class="docutils literal notranslate"><span class="pre">#eaf7f0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#ffffff</span></code> / <code class="docutils literal notranslate"><span class="pre">#2b2b2b</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">background</span></code> and role stroke keys depend on other settings. The light theme leaves the canvas transparent unless
+you pass <code class="docutils literal notranslate"><span class="pre">background=&quot;background&quot;</span></code>. Role strokes appear only when <code class="docutils literal notranslate"><span class="pre">borders</span></code> is enabled. The light theme enables borders
+by default, while the dark theme disables them. In the default dark palette, all roles have the same gray fill and white
+stroke. Set <code class="docutils literal notranslate"><span class="pre">borders=True</span></code> to show those strokes, or override the role colors to distinguish the roles.</p>
+<p>Import <code class="docutils literal notranslate"><span class="pre">LIGHT_PALETTE</span></code>, <code class="docutils literal notranslate"><span class="pre">DARK_PALETTE</span></code>, or <code class="docutils literal notranslate"><span class="pre">theme_palette(theme)</span></code> to read the existing theme mappings. Copy a mapping
+before changing it because these objects hold the global theme state.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mdreport</span><span class="w"> </span><span class="kn">import</span> <span class="n">DiagramTheme</span><span class="p">,</span> <span class="n">theme_palette</span>
+
+<span class="n">palette</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">theme_palette</span><span class="p">(</span><span class="n">DiagramTheme</span><span class="o">.</span><span class="n">LIGHT</span><span class="p">))</span>
+<span class="n">palette</span><span class="p">[</span><span class="s2">"root"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"#0e9f6e"</span>
+</pre></div>
+</div>
+</section>
+<section id="brand-the-palette">
+<h2>Brand the palette<a class="headerlink" href="#brand-the-palette" title="Link to this heading">#</a></h2>
+<p>Pass only the changed keys to <code class="docutils literal notranslate"><span class="pre">palette</span></code>. All other keys retain the theme defaults.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BRAND_PALETTES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">DiagramTheme</span><span class="o">.</span><span class="n">LIGHT</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"root"</span><span class="p">:</span> <span class="s2">"#0e9f6e"</span><span class="p">,</span> <span class="s2">"root_fill"</span><span class="p">:</span> <span class="s2">"#ecfdf5"</span><span class="p">,</span>
+        <span class="s2">"leaf"</span><span class="p">:</span> <span class="s2">"#7c3aed"</span><span class="p">,</span> <span class="s2">"leaf_fill"</span><span class="p">:</span> <span class="s2">"#f3e8ff"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">DiagramTheme</span><span class="o">.</span><span class="n">DARK</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"root"</span><span class="p">:</span> <span class="s2">"#34d399"</span><span class="p">,</span> <span class="s2">"root_fill"</span><span class="p">:</span> <span class="s2">"#0c2b22"</span><span class="p">,</span>
+        <span class="s2">"leaf"</span><span class="p">:</span> <span class="s2">"#c4b5fd"</span><span class="p">,</span> <span class="s2">"leaf_fill"</span><span class="p">:</span> <span class="s2">"#231a39"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">diagram</span> <span class="o">=</span> <span class="n">Diagram</span><span class="p">(</span><span class="s2">"Ingest"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">987</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">144</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="n">theme</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">BRAND_PALETTES</span><span class="p">[</span><span class="n">theme</span><span class="p">])</span>
+</pre></div>
+</div>
+<img alt="The two-node flow in brand green and purple" class="only-light" src="_images/branded-light.svg" />
+<img alt="The two-node flow in brand green and purple" class="only-dark" src="_images/branded-dark.svg" />
+<p>Define separate overrides for each theme. A tint that works behind dark text on a light canvas can obscure white text
+on a dark canvas.</p>
+</section>
+<section id="adjust-border-widths">
+<h2>Adjust border widths<a class="headerlink" href="#adjust-border-widths" title="Link to this heading">#</a></h2>
+<p>Set <code class="docutils literal notranslate"><span class="pre">Diagram(stroke_width=...)</span></code> to change the default width for rectangle-based components and the canvas frame. Pass
+the same argument to a supported component to override one node. The default width is 2. Connectors use their own
+<code class="docutils literal notranslate"><span class="pre">width</span></code> argument. <code class="docutils literal notranslate"><span class="pre">decision_node</span></code> uses a fixed width of 2, and <code class="docutils literal notranslate"><span class="pre">boundary_frame</span></code> uses a fixed width of 1.5.</p>
+</section>
+<section id="use-gradients">
+<h2>Use gradients<a class="headerlink" href="#use-gradients" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">diagram.gradient</span></code> defines a two-stop linear gradient and returns a paint value. Use that value anywhere the API accepts
+a color, including a node’s fill and border. Each stop can be a palette key or literal color. The gradient axis uses
+fractions of the element’s dimensions. By default, it runs from corner to corner; <code class="docutils literal notranslate"><span class="pre">x2=1,</span> <span class="pre">y2=0</span></code> makes it horizontal.</p>
+<p>The canvas can also use a gradient. Pass two colors to <code class="docutils literal notranslate"><span class="pre">background</span></code> to create a full-canvas gradient with the reserved
+ID <code class="docutils literal notranslate"><span class="pre">canvas</span></code>. Other gradient names remain available.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stops</span> <span class="o">=</span> <span class="n">BOLD_GRADIENTS</span><span class="p">[</span><span class="n">theme</span><span class="p">]</span>
+<span class="n">diagram</span> <span class="o">=</span> <span class="n">Diagram</span><span class="p">(</span>
+    <span class="s2">"Ingest"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1220</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">144</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="n">theme</span><span class="p">,</span>
+    <span class="n">stroke_width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">borders</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">stops</span><span class="p">[</span><span class="s2">"canvas"</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">warm</span> <span class="o">=</span> <span class="n">diagram</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="s2">"warm-fill"</span><span class="p">,</span> <span class="o">*</span><span class="n">stops</span><span class="p">[</span><span class="s2">"fill"</span><span class="p">])</span>
+<span class="n">bold</span> <span class="o">=</span> <span class="n">diagram</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="s2">"bold-edge"</span><span class="p">,</span> <span class="o">*</span><span class="n">stops</span><span class="p">[</span><span class="s2">"edge"</span><span class="p">],</span> <span class="n">x2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y2</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">title_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Source"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">ROOT</span><span class="p">)</span>
+<span class="n">centered_node</span><span class="p">(</span>
+    <span class="n">diagram</span><span class="p">,</span>
+    <span class="mi">466</span><span class="p">,</span>
+    <span class="mf">27.5</span><span class="p">,</span>
+    <span class="mi">288</span><span class="p">,</span>
+    <span class="s2">"Transform"</span><span class="p">,</span>
+    <span class="s2">"Normalize the input"</span><span class="p">,</span>
+    <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">PARENT</span><span class="p">,</span>
+    <span class="n">fill</span><span class="o">=</span><span class="n">warm</span><span class="p">,</span>
+    <span class="n">stroke</span><span class="o">=</span><span class="n">bold</span><span class="p">,</span>
+    <span class="n">stroke_width</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">title_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">898</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Store"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">LEAF</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="A three-node flow whose middle node carries a thicker orange-to-green gradient border" class="only-light" src="_images/bold-nodes-light.svg" />
+<img alt="A three-node flow whose middle node carries a thicker orange-to-green gradient border" class="only-dark" src="_images/bold-nodes-dark.svg" />
+<p>This example stores gradient stops by theme, as shown in <a class="reference internal" href="#brand-the-palette">Brand the palette</a>. In the dark theme,
+<code class="docutils literal notranslate"><span class="pre">parent</span></code> and <code class="docutils literal notranslate"><span class="pre">leaf</span></code> are both white, so a gradient between them would appear as solid white. Separate dark-theme stops
+keep the border visible against the black canvas.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">fill</span></code> and <code class="docutils literal notranslate"><span class="pre">stroke</span></code> arguments accept a palette key, literal CSS color, or gradient paint. Either argument overrides
+the color supplied by the node’s <code class="docutils literal notranslate"><span class="pre">role</span></code> without changing its semantic role. A standard <code class="docutils literal notranslate"><span class="pre">color_key</span></code> uses the role’s
+palette stroke, not a node’s custom paint. <code class="docutils literal notranslate"><span class="pre">box_label</span></code>, <code class="docutils literal notranslate"><span class="pre">title_node</span></code>, <code class="docutils literal notranslate"><span class="pre">centered_node</span></code>, <code class="docutils literal notranslate"><span class="pre">information_node</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">icon_node</span></code> accept <code class="docutils literal notranslate"><span class="pre">fill</span></code>, <code class="docutils literal notranslate"><span class="pre">stroke</span></code>, and <code class="docutils literal notranslate"><span class="pre">stroke_width</span></code>.</p>
+<p>Gradient definitions have three constraints:</p>
+<ul class="simple">
+<li><p>Each gradient name becomes an SVG ID and must be unique within the diagram. Defining the same name twice raises an
+error.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">icon_node</span></code> uses a flat Lucide stroke for its icon. A gradient border does not change the icon color. To apply a
+gradient to the icon, pass <code class="docutils literal notranslate"><span class="pre">icon_gradient</span></code> with a unique <code class="docutils literal notranslate"><span class="pre">icon_id</span></code>. Do not combine <code class="docutils literal notranslate"><span class="pre">icon_gradient</span></code> with
+<code class="docutils literal notranslate"><span class="pre">icon_accent</span></code>; an accent requires one or more <code class="docutils literal notranslate"><span class="pre">accent_parts</span></code> indices.</p></li>
+<li><p>A borderless theme omits strokes on ordinary component surfaces, regardless of their width or paint. Frames and
+boundary frames remain visible. In the dark theme, set <code class="docutils literal notranslate"><span class="pre">borders=True</span></code> to display a gradient node border. Gradient
+fills do not require borders.</p></li>
+</ul>
+<p>To control a canvas gradient’s axis, refer to its ID when you create the diagram, then define the gradient. SVG resolves
+paint by ID rather than document order, so the definition can follow its first use.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span> <span class="o">=</span> <span class="n">Diagram</span><span class="p">(</span><span class="s2">"Ingest"</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s2">"url(#hero)"</span><span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="s2">"hero"</span><span class="p">,</span> <span class="s2">"#fdf6ec"</span><span class="p">,</span> <span class="s2">"#eef7f1"</span><span class="p">,</span> <span class="n">x2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y2</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="frame-the-canvas">
+<h2>Frame the canvas<a class="headerlink" href="#frame-the-canvas" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">diagram.frame</span></code> to outline the canvas. It accepts palette keys, literal colors, and gradient paints. Pass <code class="docutils literal notranslate"><span class="pre">radius</span></code>
+to round the corners.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span> <span class="o">=</span> <span class="n">Diagram</span><span class="p">(</span><span class="s2">"Ingest"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">466</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">144</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="p">(</span><span class="s2">"#fdf6ec"</span><span class="p">,</span> <span class="s2">"#eef7f1"</span><span class="p">))</span>
+<span class="n">edge</span> <span class="o">=</span> <span class="n">diagram</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="s2">"edge"</span><span class="p">,</span> <span class="s2">"parent"</span><span class="p">,</span> <span class="s2">"leaf"</span><span class="p">,</span> <span class="n">x2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y2</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">title_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Source"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">ROOT</span><span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">edge</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="A single node on a gradient canvas inside a rounded gradient frame" class="only-light" src="_images/framed-light.svg" />
+<img alt="A single node on a gradient canvas inside a rounded gradient frame" class="only-dark" src="_images/framed-dark.svg" />
+<p>The method places the outline half a stroke inside the viewBox. A rectangle drawn directly on the edge loses its outer
+half to clipping and appears thinner than requested. The frame width defaults to the diagram’s <code class="docutils literal notranslate"><span class="pre">stroke_width</span></code>.</p>
+<p>Frames and boundary frames remain visible under borderless themes. Call <code class="docutils literal notranslate"><span class="pre">frame</span></code> last if it must appear above content
+that reaches the canvas edge.</p>
+</section>
+<section id="draw-a-shape-the-library-does-not-have">
+<h2>Draw a shape the library does not have<a class="headerlink" href="#draw-a-shape-the-library-does-not-have" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">svg_element</span></code> to create an SVG element and <code class="docutils literal notranslate"><span class="pre">append</span></code> to add it to the canvas. The function converts underscores in
+attribute names to hyphens and omits attributes set to <code class="docutils literal notranslate"><span class="pre">None</span></code>. The serializer escapes all attribute values.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">svg_element</span><span class="p">(</span>
+        <span class="s2">"ellipse"</span><span class="p">,</span>
+        <span class="n">cx</span><span class="o">=</span><span class="mf">493.5</span><span class="p">,</span>
+        <span class="n">cy</span><span class="o">=</span><span class="mi">72</span><span class="p">,</span>
+        <span class="n">rx</span><span class="o">=</span><span class="mi">89</span><span class="p">,</span>
+        <span class="n">ry</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span>
+        <span class="n">fill</span><span class="o">=</span><span class="n">diagram</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">"parent_fill"</span><span class="p">),</span>
+        <span class="n">stroke</span><span class="o">=</span><span class="n">diagram</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="s2">"parent"</span><span class="p">),</span>
+        <span class="n">stroke_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">diagram</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">493.5</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="s2">"Queue"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">550</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="A producer and consumer joined through an ellipse labeled Queue" class="only-light" src="_images/custom-element-light.svg" />
+<img alt="A producer and consumer joined through an ellipse labeled Queue" class="only-dark" src="_images/custom-element-dark.svg" />
+<p><code class="docutils literal notranslate"><span class="pre">diagram.color</span></code> resolves a palette key for the active theme, which avoids hard-coded hex values in custom elements. The
+ellipse has horizontal and vertical radii of 89 and 55 units, for a total size of 178 by 110 units. It uses the same
+golden proportion as other dimensions in the default scale.</p>
+</section>
+<section id="save-or-serialize">
+<h2>Save or serialize<a class="headerlink" href="#save-or-serialize" title="Link to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">save</span></code> to write a standalone SVG. <code class="docutils literal notranslate"><span class="pre">to_string</span></code> returns serialized SVG text, while <code class="docutils literal notranslate"><span class="pre">data_url</span></code> returns a base64-encoded
+data URL.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diagram</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">"data/ingest-pipeline.svg"</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The generated SVG is indented and deterministic. Committed diagrams produce readable diffs only when their source
+changes.</p>
+</section>
+<section id="the-scale">
+<h2>The scale<a class="headerlink" href="#the-scale" title="Link to this heading">#</a></h2>
+<p>Default component sizes follow a single golden-ratio system.</p>
+<p><code class="docutils literal notranslate"><span class="pre">FIBONACCI_SPACE</span></code> contains these lengths: 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, and 610. Consecutive Fibonacci
+numbers approach φ, giving adjacent steps golden proportions while keeping coordinates as whole numbers. The defaults
+use 21-unit insets, 34-unit card insets and icons, and node heights of 55, 89, or 144 units. The wide examples use
+288-unit nodes, 144-unit gaps, and 34-unit outer margins.</p>
+<p><code class="docutils literal notranslate"><span class="pre">TYPE_SCALE</span></code> contains these text sizes: 13, 15, 18, 21, 25, 29, and 34. Each size is about the preceding size multiplied
+by the cube root of φ. Three steps produce a full golden-ratio increase, such as 13 to 21 to 34. The defaults use 18
+for body text, 21 for node titles, and 29 for diagram headings.</p>
+<p>Line spacing also follows φ. The next line begins about φ times its font size below the current baseline. In a text
+stack, the gap between rows is the upper row’s size divided by φ. Common sizes therefore align with the Fibonacci
+scale: 13-unit text advances by 21 units, 21-unit text by 34, and 34-unit text by 55. The gutter constants follow the
+same calculation: 13 divided by φ is about 8, and 21 divided by φ is about 13.</p>
+<p>Three functions apply the scale to custom layouts. Each result is rounded to a whole unit.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mdreport</span><span class="w"> </span><span class="kn">import</span> <span class="n">golden_height</span><span class="p">,</span> <span class="n">golden_point</span><span class="p">,</span> <span class="n">golden_split</span>
+
+<span class="n">golden_height</span><span class="p">(</span><span class="mi">1120</span><span class="p">)</span>  <span class="c1"># 692 — the height that makes 1120 a golden rectangle</span>
+<span class="n">golden_split</span><span class="p">(</span><span class="mi">1152</span><span class="p">)</span>  <span class="c1"># (712, 440) — the two parts of a golden cut</span>
+<span class="n">golden_point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">610</span><span class="p">)</span>  <span class="c1"># 377 — the off-center line to sit a focus on</span>
+</pre></div>
+</div>
+<p>Pass <code class="docutils literal notranslate"><span class="pre">from_end=True</span></code> to <code class="docutils literal notranslate"><span class="pre">golden_point</span></code> to mirror the cut and move the focus toward the start of the span. This position
+works for a title band or heading.</p>
+</section>
+<section id="component-sizes">
+<h2>Component sizes<a class="headerlink" href="#component-sizes" title="Link to this heading">#</a></h2>
+<p>Use these fixed heights to position adjacent nodes. The heights follow the scale, so you can center mixed nodes by
+offsetting each one by half the difference in height.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Height</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">title_node</span></code></p></td>
+<td><p>55</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">centered_node</span></code></p></td>
+<td><p>89</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">icon_node</span></code></p></td>
+<td><p>89</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">information_node</span></code></p></td>
+<td><p>144, plus 29 per description line after the first</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list_node</span></code></p></td>
+<td><p>68, plus 21 per row</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">repeated_stack</span></code></p></td>
+<td><p>89, plus a 13-unit offset behind it</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Container components use dimensions supplied by the caller. A <code class="docutils literal notranslate"><span class="pre">group_panel</span></code> reserves 55 vertical units for its heading
+and 34 for its caption. A <code class="docutils literal notranslate"><span class="pre">swimlane</span></code> reserves a 144-unit-wide header column on the left.</p>
+<p>Import the named constants to calculate layouts: <code class="docutils literal notranslate"><span class="pre">TITLE_NODE_HEIGHT</span></code>, <code class="docutils literal notranslate"><span class="pre">CENTERED_NODE_HEIGHT</span></code>, <code class="docutils literal notranslate"><span class="pre">ICON_NODE_HEIGHT</span></code>,
+<code class="docutils literal notranslate"><span class="pre">INFORMATION_NODE_HEIGHT</span></code>, <code class="docutils literal notranslate"><span class="pre">PANEL_HEADING_BAND</span></code>, <code class="docutils literal notranslate"><span class="pre">PANEL_CAPTION_BAND</span></code>, and <code class="docutils literal notranslate"><span class="pre">LANE_HEADER</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">information_node</span></code> and <code class="docutils literal notranslate"><span class="pre">list_node</span></code> return their calculated height. Validation varies by function. For example,
+<code class="docutils literal notranslate"><span class="pre">Diagram.rect</span></code> validates its geometry, while the low-level <code class="docutils literal notranslate"><span class="pre">svg_element</span></code> helper does not. Blank paint values are
+rejected, but unknown nonblank strings pass through as literal CSS paint. See the <a class="reference internal" href="api-reference.html"><span class="std std-doc">API reference</span></a>
+for every component, argument, and validation rule.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="markdown.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Markdown</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="api-reference.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">API reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-one-node">Draw one node</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embed-the-diagram">Embed the diagram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#join-two-nodes">Join two nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-the-node-to-the-copy">Fit the node to the copy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-legend">Add a legend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-the-flow">Group the flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branch-on-a-condition">Branch on a condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-a-record-and-annotate-it">Show a record and annotate it</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-work-into-lanes">Divide work into lanes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#name-a-node-with-an-icon">Name a node with an icon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-a-theme">Choose a theme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#palette-keys">Palette keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brand-the-palette">Brand the palette</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-border-widths">Adjust border widths</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-gradients">Use gradients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frame-the-canvas">Frame the canvas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-a-shape-the-library-does-not-have">Draw a shape the library does not have</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-or-serialize">Save or serialize</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-scale">The scale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-sizes">Component sizes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tycho Engineering
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright Tycho Engineering, MIT License.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

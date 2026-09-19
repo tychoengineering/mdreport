@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=0fc419ee" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=0208f335" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=54fd5c55" />
   
   <!-- So that users can add custom icons -->
   <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
@@ -41,7 +41,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=01285bff"></script>
+    <script src="_static/documentation_options.js?v=2fc15b33"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -52,10 +52,10 @@
     <link rel="canonical" href="https://mdreport.tycho.engineering/index.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Usage examples" href="usage.html" />
+    <link rel="next" title="Markdown" href="markdown.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.1a2" />
+  <meta name="docsearch:version" content="0.0.1a4" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -151,7 +151,8 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams.html">Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api-reference.html">API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
 </ul>
@@ -322,8 +323,8 @@
                   
   <section id="mdreport">
 <h1>mdreport<a class="headerlink" href="#mdreport" title="Link to this heading">#</a></h1>
-<p>Build Markdown reports programmatically using a chainable fluent interface. Add headings, text, lists, code blocks,
-templates, and Polars DataFrames.</p>
+<p>Build Markdown reports programmatically with a chainable API. Add headings, text, lists, callouts, figures, code blocks,
+templates, Polars DataFrames, and SVG diagrams.</p>
 <section id="install">
 <h2>Install<a class="headerlink" href="#install" title="Link to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>mdreport
@@ -346,27 +347,64 @@ templates, and Polars DataFrames.</p>
 <span class="n">report</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"q3-review.md"</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Each method adds content and returns the report. You can chain methods or call them one at a time.</p>
+<p>Each method adds content and returns the report. Chain methods when the sequence is clear, or call them one at a time.</p>
+<p>Create a diagram and embed it in a report:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mdreport</span><span class="w"> </span><span class="kn">import</span> <span class="n">Diagram</span><span class="p">,</span> <span class="n">DiagramTheme</span><span class="p">,</span> <span class="n">MarkdownReport</span><span class="p">,</span> <span class="n">NodeRole</span><span class="p">,</span> <span class="n">title_node</span>
+
+<span class="n">diagram</span> <span class="o">=</span> <span class="n">Diagram</span><span class="p">(</span><span class="s2">"Ingest"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">466</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">89</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="n">DiagramTheme</span><span class="o">.</span><span class="n">LIGHT</span><span class="p">)</span>
+<span class="n">title_node</span><span class="p">(</span><span class="n">diagram</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">288</span><span class="p">,</span> <span class="s2">"Source"</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">NodeRole</span><span class="o">.</span><span class="n">ROOT</span><span class="p">)</span>
+
+<span class="n">report</span> <span class="o">=</span> <span class="n">MarkdownReport</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Ingest"</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diagram</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">caption</span><span class="o">=</span><span class="s2">"Source node"</span><span class="p">))</span>
+<span class="n">report</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"ingest.md"</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="read-the-documentation">
 <h2>Read the documentation<a class="headerlink" href="#read-the-documentation" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#add-common-content">Add common content</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#add-a-callout">Add a callout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#add-figures">Add figures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#add-a-dataframe">Add a DataFrame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#add-template-values">Add template values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#add-frontmatter">Add frontmatter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#add-a-table-of-contents">Add a table of contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#link-to-headings">Link to headings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html#render-or-save">Render or save</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="markdown.html#add-common-content">Add common content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markdown.html#add-a-callout">Add a callout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markdown.html#add-figures">Add figures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markdown.html#add-a-dataframe">Add a DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markdown.html#add-template-values">Add template values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markdown.html#add-frontmatter">Add frontmatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markdown.html#add-a-table-of-contents">Add a table of contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markdown.html#link-to-headings">Link to headings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markdown.html#render-or-save">Render or save</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams.html">Diagrams</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#draw-one-node">Draw one node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#embed-the-diagram">Embed the diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#join-two-nodes">Join two nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#fit-the-node-to-the-copy">Fit the node to the copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#add-a-legend">Add a legend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#group-the-flow">Group the flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#branch-on-a-condition">Branch on a condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#show-a-record-and-annotate-it">Show a record and annotate it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#divide-work-into-lanes">Divide work into lanes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#name-a-node-with-an-icon">Name a node with an icon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#choose-a-theme">Choose a theme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#palette-keys">Palette keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#brand-the-palette">Brand the palette</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#adjust-border-widths">Adjust border widths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#use-gradients">Use gradients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#frame-the-canvas">Frame the canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#draw-a-shape-the-library-does-not-have">Draw a shape the library does not have</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#save-or-serialize">Save or serialize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#the-scale">The scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diagrams.html#component-sizes">Component sizes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api-reference.html">API reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api-reference.html#report">Report</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-reference.html#blocks">Blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-reference.html#diagrams">Diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-reference.html#golden-ratio-scale">Golden-ratio scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-reference.html#diagram-components">Diagram components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-reference.html#heading-anchors">Heading anchors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-reference.html#extension-protocols">Extension protocols</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-reference.html#errors">Errors</a></li>
@@ -400,11 +438,11 @@ templates, and Polars DataFrames.</p>
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="usage.html"
+       href="markdown.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Usage examples</p>
+        <p class="prev-next-title">Markdown</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

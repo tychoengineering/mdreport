@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=0fc419ee" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=0208f335" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=54fd5c55" />
   
   <!-- So that users can add custom icons -->
   <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
@@ -40,7 +40,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=01285bff"></script>
+    <script src="_static/documentation_options.js?v=2fc15b33"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -53,7 +53,7 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.1a2" />
+  <meta name="docsearch:version" content="0.0.1a4" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -149,7 +149,8 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams.html">Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api-reference.html">API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
 </ul>
@@ -269,8 +270,10 @@
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
  | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
@@ -296,6 +299,8 @@
 </li>
         <li><a href="api-reference.html#mdreport.DeferredReportBlock.__init__">(DeferredReportBlock method)</a>
 </li>
+        <li><a href="api-reference.html#mdreport.Diagram.__init__">(Diagram method)</a>
+</li>
         <li><a href="api-reference.html#mdreport.Figure.__init__">(Figure method)</a>
 </li>
         <li><a href="api-reference.html#mdreport.MarkdownParser.__init__">(MarkdownParser method)</a>
@@ -311,14 +316,24 @@
         <li><a href="api-reference.html#mdreport.TableOfContentsEntry.__init__">(TableOfContentsEntry method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.CalloutKind.__new__">__new__() (CalloutKind method)</a>
 
       <ul>
+        <li><a href="api-reference.html#mdreport.DiagramTheme.__new__">(DiagramTheme method)</a>
+</li>
         <li><a href="api-reference.html#mdreport.HeadingAnchorStyle.__new__">(HeadingAnchorStyle method)</a>
 </li>
+        <li><a href="api-reference.html#mdreport.LucideIcon.__new__">(LucideIcon method)</a>
+</li>
+        <li><a href="api-reference.html#mdreport.NodeRole.__new__">(NodeRole method)</a>
+</li>
+        <li><a href="api-reference.html#mdreport.PortSide.__new__">(PortSide method)</a>
+</li>
+        <li><a href="api-reference.html#mdreport.TextAnchor.__new__">(TextAnchor method)</a>
+</li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.TableOfContents.__post_init__">__post_init__() (TableOfContents method)</a>
 </li>
       <li><a href="api-reference.html#mdreport.Callout.__report__">__report__() (Callout method)</a>
@@ -349,9 +364,19 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.Figure.alt_text">alt_text (Figure attribute)</a>
 </li>
+      <li><a href="api-reference.html#mdreport.Diagram.anchor">anchor() (Diagram method)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.annotation_callout">annotation_callout() (in module mdreport)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#mdreport.MarkdownReport.append">append() (MarkdownReport method)</a>
+      <li><a href="api-reference.html#mdreport.Diagram.append">append() (Diagram method)</a>
+
+      <ul>
+        <li><a href="api-reference.html#mdreport.MarkdownReport.append">(MarkdownReport method)</a>
+</li>
+      </ul></li>
+      <li><a href="api-reference.html#mdreport.arrow_key">arrow_key() (in module mdreport)</a>
 </li>
       <li><a href="api-reference.html#mdreport.HeadingAnchorStyle.ATTRIBUTE">ATTRIBUTE (HeadingAnchorStyle attribute)</a>
 </li>
@@ -363,9 +388,19 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.report_block.BlockContent">BlockContent (in module mdreport.report_block)</a>
 </li>
+      <li><a href="api-reference.html#mdreport.bold_paragraph_tokens">bold_paragraph_tokens() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.BORDER_WIDTH">BORDER_WIDTH (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.LucideIcon.BOT">BOT (LucideIcon attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#mdreport.bold_paragraph_tokens">bold_paragraph_tokens() (in module mdreport)</a>
+      <li><a href="api-reference.html#mdreport.PortSide.BOTTOM">BOTTOM (PortSide attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.boundary_frame">boundary_frame() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.box_label">box_label() (in module mdreport)</a>
 </li>
       <li><a href="api-reference.html#mdreport.MarkdownReport.bullet_list">bullet_list() (MarkdownReport method)</a>
 </li>
@@ -381,19 +416,33 @@
 </li>
       <li><a href="api-reference.html#mdreport.CalloutKind">CalloutKind (class in mdreport)</a>
 </li>
+      <li><a href="api-reference.html#mdreport.CANVAS_GRADIENT">CANVAS_GRADIENT (in module mdreport)</a>
+</li>
       <li><a href="api-reference.html#mdreport.Figure.caption">caption (Figure attribute)</a>
 </li>
       <li><a href="api-reference.html#mdreport.CalloutKind.CAUTION">CAUTION (CalloutKind attribute)</a>
 </li>
-      <li><a href="api-reference.html#mdreport.TableOfContentsEntry.children">children (TableOfContentsEntry attribute)</a>
+      <li><a href="api-reference.html#mdreport.centered_node">centered_node() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.CENTERED_NODE_HEIGHT">CENTERED_NODE_HEIGHT (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.centered_text_stack">centered_text_stack() (in module mdreport)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.TableOfContentsEntry.children">children (TableOfContentsEntry attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.Diagram.circle">circle() (Diagram method)</a>
+</li>
       <li><a href="api-reference.html#mdreport.CodeBlock.code">code (CodeBlock attribute)</a>
 </li>
       <li><a href="api-reference.html#mdreport.MarkdownReport.code_block">code_block() (MarkdownReport method)</a>
 </li>
       <li><a href="api-reference.html#mdreport.CodeBlock">CodeBlock (class in mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.Diagram.color">color() (Diagram method)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.color_key">color_key() (in module mdreport)</a>
 </li>
       <li><a href="api-reference.html#mdreport.TableOfContents.contents_tokens">contents_tokens() (TableOfContents method)</a>
 </li>
@@ -407,15 +456,31 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.DiagramTheme.DARK">DARK (DiagramTheme attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.diagram.DARK_PALETTE">DARK_PALETTE (in module mdreport.diagram)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.Diagram.data_url">data_url() (Diagram method)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.LucideIcon.DATABASE">DATABASE (LucideIcon attribute)</a>
+</li>
       <li><a href="api-reference.html#mdreport.Table.dataframe">dataframe (Table attribute)</a>
 </li>
       <li><a href="api-reference.html#mdreport.Table.decimal_places">decimal_places (Table attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.decision_node">decision_node() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.DEFAULT_FONT_FAMILY">DEFAULT_FONT_FAMILY (in module mdreport)</a>
+</li>
       <li><a href="api-reference.html#mdreport.DeferredReportBlock">DeferredReportBlock (class in mdreport)</a>
 </li>
       <li><a href="api-reference.html#mdreport.TableOfContents.depth">depth (TableOfContents attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.Diagram">Diagram (class in mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.DiagramTheme">DiagramTheme (class in mdreport)</a>
 </li>
       <li><a href="api-reference.html#mdreport.MarkdownReport.directive">directive() (MarkdownReport method)</a>
 </li>
@@ -425,12 +490,14 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#mdreport.TableOfContents.end_level">end_level (TableOfContents property)</a>
+      <li><a href="api-reference.html#mdreport.TextAnchor.END">END (TextAnchor attribute)</a>
 </li>
-      <li><a href="api-reference.html#mdreport.TableOfContents.entries">entries() (TableOfContents method)</a>
+      <li><a href="api-reference.html#mdreport.TableOfContents.end_level">end_level (TableOfContents property)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.TableOfContents.entries">entries() (TableOfContents method)</a>
+</li>
       <li><a href="api-reference.html#mdreport.TableOfContents.entry_inline">entry_inline() (TableOfContents method)</a>
 </li>
       <li><a href="api-reference.html#mdreport.MarkdownParser.environment">environment (MarkdownParser attribute)</a>
@@ -443,19 +510,49 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.fence_token">fence_token() (in module mdreport)</a>
 </li>
+      <li><a href="api-reference.html#mdreport.FIBONACCI_SPACE">FIBONACCI_SPACE (in module mdreport)</a>
+</li>
       <li><a href="api-reference.html#mdreport.Figure">Figure (class in mdreport)</a>
 </li>
-      <li><a href="api-reference.html#mdreport.MarkdownReport.figure">figure() (MarkdownReport method)</a>
+      <li><a href="api-reference.html#mdreport.Diagram.figure">figure() (Diagram method)</a>
+
+      <ul>
+        <li><a href="api-reference.html#mdreport.MarkdownReport.figure">(MarkdownReport method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.FigureEmbeddingError">FigureEmbeddingError (class in mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.LucideIcon.FILE_CHECK_2">FILE_CHECK_2 (LucideIcon attribute)</a>
 </li>
       <li><a href="api-reference.html#mdreport.format_dataframe">format_dataframe() (in module mdreport)</a>
 </li>
       <li><a href="api-reference.html#mdreport.format_dataframe_csv">format_dataframe_csv() (in module mdreport)</a>
 </li>
+      <li><a href="api-reference.html#mdreport.Diagram.frame">frame() (Diagram method)</a>
+</li>
       <li><a href="api-reference.html#mdreport.MarkdownReport.frontmatter">frontmatter() (MarkdownReport method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.golden_height">golden_height() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.golden_point">golden_point() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.GOLDEN_RATIO">GOLDEN_RATIO (in module mdreport)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.golden_split">golden_split() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.Diagram.gradient">gradient() (Diagram method)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.group_panel">group_panel() (in module mdreport)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -481,17 +578,33 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.icon_node">icon_node() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.ICON_NODE_HEIGHT">ICON_NODE_HEIGHT (in module mdreport)</a>
+</li>
       <li><a href="api-reference.html#mdreport.HeadingAnchorStyle.IMPLICIT">IMPLICIT (HeadingAnchorStyle attribute)</a>
 </li>
       <li><a href="api-reference.html#mdreport.CalloutKind.IMPORTANT">IMPORTANT (CalloutKind attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.information_node">information_node() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.INFORMATION_NODE_HEIGHT">INFORMATION_NODE_HEIGHT (in module mdreport)</a>
+</li>
       <li><a href="api-reference.html#mdreport.TableOfContentsEntry.inline">inline (TableOfContentsEntry attribute)</a>
 </li>
       <li><a href="api-reference.html#mdreport.Figure.is_embedded">is_embedded (Figure attribute)</a>
 </li>
       <li><a href="api-reference.html#mdreport.TableOfContents.is_linked">is_linked (TableOfContents attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.junction">junction() (in module mdreport)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -507,17 +620,39 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.labeled_connector">labeled_connector() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.LANE_HEADER">LANE_HEADER (in module mdreport)</a>
+</li>
       <li><a href="api-reference.html#mdreport.CodeBlock.language">language (CodeBlock attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.NodeRole.LEAF">LEAF (NodeRole attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.PortSide.LEFT">LEFT (PortSide attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.legend_header">legend_header() (in module mdreport)</a>
 </li>
       <li><a href="api-reference.html#mdreport.TableOfContentsEntry.level">level (TableOfContentsEntry attribute)</a>
 </li>
+      <li><a href="api-reference.html#mdreport.DiagramTheme.LIGHT">LIGHT (DiagramTheme attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.diagram.LIGHT_PALETTE">LIGHT_PALETTE (in module mdreport.diagram)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.Diagram.line">line() (Diagram method)</a>
+</li>
       <li><a href="api-reference.html#mdreport.MarkdownReport.line_break">line_break() (MarkdownReport method)</a>
 </li>
       <li><a href="api-reference.html#mdreport.list_item_tokens">list_item_tokens() (in module mdreport)</a>
 </li>
+      <li><a href="api-reference.html#mdreport.list_node">list_node() (in module mdreport)</a>
+</li>
       <li><a href="api-reference.html#mdreport.list_tokens">list_tokens() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.lucide_icon_element">lucide_icon_element() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.LucideIcon">LucideIcon (class in mdreport)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -529,11 +664,15 @@
 </li>
       <li><a href="api-reference.html#mdreport.MarkdownParser">MarkdownParser (class in mdreport)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.MarkdownReport">MarkdownReport (class in mdreport)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.Callout.message">message (Callout attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.LucideIcon.MESSAGES_SQUARE">MESSAGES_SQUARE (LucideIcon attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.TextAnchor.MIDDLE">MIDDLE (TextAnchor attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -541,10 +680,18 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#mdreport.CalloutKind.NOTE">NOTE (CalloutKind attribute)</a>
+      <li><a href="api-reference.html#mdreport.node_paint">node_paint() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.node_port">node_port() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.NodeRole">NodeRole (class in mdreport)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.CalloutKind.NOTE">NOTE (CalloutKind attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.LucideIcon.NOTEBOOK_TEXT">NOTEBOOK_TEXT (LucideIcon attribute)</a>
+</li>
       <li><a href="api-reference.html#mdreport.MarkdownReport.numbered_list">numbered_list() (MarkdownReport method)</a>
 </li>
   </ul></td>
@@ -553,6 +700,10 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.PANEL_CAPTION_BAND">PANEL_CAPTION_BAND (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.PANEL_HEADING_BAND">PANEL_HEADING_BAND (in module mdreport)</a>
+</li>
       <li><a href="api-reference.html#mdreport.paragraph_tokens">paragraph_tokens() (in module mdreport)</a>
 </li>
       <li><a href="api-reference.html#mdreport.Callout.params">params (Callout attribute)</a>
@@ -567,11 +718,17 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.NodeRole.PARENT">PARENT (NodeRole attribute)</a>
+</li>
       <li><a href="api-reference.html#mdreport.MarkdownParser.parse">parse() (MarkdownParser method)</a>
 </li>
       <li><a href="api-reference.html#mdreport.MarkdownParser.parse_inline">parse_inline() (MarkdownParser method)</a>
 </li>
       <li><a href="api-reference.html#mdreport.MarkdownParser.parser">parser (MarkdownParser attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.Diagram.path">path() (Diagram method)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.PortSide">PortSide (class in mdreport)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -581,19 +738,29 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.raw_token">raw_token() (in module mdreport)</a>
 </li>
+      <li><a href="api-reference.html#mdreport.Diagram.rect">rect() (Diagram method)</a>
+</li>
       <li><a href="api-reference.html#mdreport.MarkdownParser.render">render() (MarkdownParser method)</a>
 
       <ul>
         <li><a href="api-reference.html#mdreport.MarkdownReport.render">(MarkdownReport method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.render_template">render_template() (in module mdreport)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.render_template_items">render_template_items() (in module mdreport)</a>
 </li>
+      <li><a href="api-reference.html#mdreport.repeated_stack">repeated_stack() (in module mdreport)</a>
+</li>
       <li><a href="api-reference.html#mdreport.ReportBlock">ReportBlock (class in mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.Diagram.rich_line">rich_line() (Diagram method)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.PortSide.RIGHT">RIGHT (PortSide attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.NodeRole.ROOT">ROOT (NodeRole attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -601,7 +768,15 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api-reference.html#mdreport.MarkdownReport.save">save() (MarkdownReport method)</a>
+      <li><a href="api-reference.html#mdreport.Diagram.save">save() (Diagram method)</a>
+
+      <ul>
+        <li><a href="api-reference.html#mdreport.MarkdownReport.save">(MarkdownReport method)</a>
+</li>
+      </ul></li>
+      <li><a href="api-reference.html#mdreport.LucideIcon.SHARE_2">SHARE_2 (LucideIcon attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.LucideIcon.SHIELD_CHECK">SHIELD_CHECK (LucideIcon attribute)</a>
 </li>
       <li><a href="api-reference.html#mdreport.TableOfContentsEntry.slug">slug (TableOfContentsEntry attribute)</a>
 </li>
@@ -611,7 +786,13 @@
 </li>
       <li><a href="api-reference.html#mdreport.Figure.source">source (Figure attribute)</a>
 </li>
+      <li><a href="api-reference.html#mdreport.TextAnchor.START">START (TextAnchor attribute)</a>
+</li>
       <li><a href="api-reference.html#mdreport.TableOfContents.start_level">start_level (TableOfContents attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.svg_element">svg_element() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.swimlane">swimlane() (in module mdreport)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -623,6 +804,8 @@
 </li>
       <li><a href="api-reference.html#mdreport.MarkdownReport.table">table() (MarkdownReport method)</a>
 </li>
+      <li><a href="api-reference.html#mdreport.LucideIcon.TABLE_2">TABLE_2 (LucideIcon attribute)</a>
+</li>
       <li><a href="api-reference.html#mdreport.table_cell_tokens">table_cell_tokens() (in module mdreport)</a>
 </li>
       <li><a href="api-reference.html#mdreport.MarkdownReport.table_of_contents">table_of_contents() (MarkdownReport method)</a>
@@ -631,11 +814,19 @@
 </li>
       <li><a href="api-reference.html#mdreport.TableOfContents">TableOfContents (class in mdreport)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api-reference.html#mdreport.TableOfContentsEntry">TableOfContentsEntry (class in mdreport)</a>
 </li>
-      <li><a href="api-reference.html#mdreport.MarkdownReport.text">text() (MarkdownReport method)</a>
+      <li><a href="api-reference.html#mdreport.Diagram.text">text() (Diagram method)</a>
+
+      <ul>
+        <li><a href="api-reference.html#mdreport.MarkdownReport.text">(MarkdownReport method)</a>
+</li>
+      </ul></li>
+      <li><a href="api-reference.html#mdreport.TextAnchor">TextAnchor (class in mdreport)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api-reference.html#mdreport.theme_palette">theme_palette() (in module mdreport)</a>
 </li>
       <li><a href="api-reference.html#mdreport.CalloutKind.TIP">TIP (CalloutKind attribute)</a>
 </li>
@@ -648,6 +839,16 @@
 </li>
       </ul></li>
       <li><a href="api-reference.html#mdreport.MarkdownReport.title">title() (MarkdownReport method)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.title_node">title_node() (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.TITLE_NODE_HEIGHT">TITLE_NODE_HEIGHT (in module mdreport)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.Diagram.to_string">to_string() (Diagram method)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.PortSide.TOP">TOP (PortSide attribute)</a>
+</li>
+      <li><a href="api-reference.html#mdreport.TYPE_SCALE">TYPE_SCALE (in module mdreport)</a>
 </li>
   </ul></td>
 </tr></table>

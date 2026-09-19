@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Usage examples &#8212; Markdown Report</title>
+    <title>Markdown &#8212; Markdown Report</title>
   
   
   
@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=0fc419ee" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=0208f335" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=54fd5c55" />
   
   <!-- So that users can add custom icons -->
   <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
@@ -41,22 +41,22 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
 
-    <script src="_static/documentation_options.js?v=01285bff"></script>
+    <script src="_static/documentation_options.js?v=2fc15b33"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=30646c52"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'usage';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
-    <link rel="canonical" href="https://mdreport.tycho.engineering/usage.html" />
+    <link rel="canonical" href="https://mdreport.tycho.engineering/markdown.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API reference" href="api-reference.html" />
+    <link rel="next" title="Diagrams" href="diagrams.html" />
     <link rel="prev" title="mdreport" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.1a2" />
+  <meta name="docsearch:version" content="0.0.1a4" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -150,7 +150,8 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Usage examples</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams.html">Diagrams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api-reference.html">API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
 </ul>
@@ -212,7 +213,7 @@
       
       
       
-      <li><a href="_sources/usage.md" target="_blank"
+      <li><a href="_sources/markdown.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -295,7 +296,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Usage examples</h1>
+    <h1>Markdown</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -325,8 +326,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="usage-examples">
-<h1>Usage examples<a class="headerlink" href="#usage-examples" title="Link to this heading">#</a></h1>
+  <section id="markdown">
+<h1>Markdown<a class="headerlink" href="#markdown" title="Link to this heading">#</a></h1>
 <p>Create a <code class="docutils literal notranslate"><span class="pre">MarkdownReport</span></code>, add content, and then render or save it.</p>
 <section id="add-common-content">
 <h2>Add common content<a class="headerlink" href="#add-common-content" title="Link to this heading">#</a></h2>
@@ -462,7 +463,7 @@ document. Two headings with the same text are numbered apart, as <code class="do
 <p>For a renderer that generates no anchors, write them into the document:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mdreport</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeadingAnchorStyle</span><span class="p">,</span> <span class="n">MarkdownReport</span><span class="p">,</span> <span class="n">slugify</span>
 
-<span class="n">MarkdownReport</span><span class="p">(</span><span class="n">anchor_style</span><span class="o">=</span><span class="n">HeadingAnchorStyle</span><span class="o">.</span><span class="n">HTML</span><span class="p">)</span>       <span class="c1"># ## &lt;a id="revenue"&gt;&lt;/a&gt;Revenue</span>
+<span class="n">MarkdownReport</span><span class="p">(</span><span class="n">anchor_style</span><span class="o">=</span><span class="n">HeadingAnchorStyle</span><span class="o">.</span><span class="n">HTML</span><span class="p">)</span>  <span class="c1"># ## &lt;a id="revenue"&gt;&lt;/a&gt;Revenue</span>
 <span class="n">MarkdownReport</span><span class="p">(</span><span class="n">anchor_style</span><span class="o">=</span><span class="n">HeadingAnchorStyle</span><span class="o">.</span><span class="n">ATTRIBUTE</span><span class="p">)</span>  <span class="c1"># ## Revenue {#revenue}</span>
 
 <span class="n">report</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Back to [revenue](#</span><span class="si">{</span><span class="n">slugify</span><span class="p">(</span><span class="s1">'Revenue'</span><span class="p">)</span><span class="si">}</span><span class="s2">)."</span><span class="p">)</span>  <span class="c1"># link to a heading</span>
@@ -503,11 +504,11 @@ else renders it as visible text.</p>
       </div>
     </a>
     <a class="right-next"
-       href="api-reference.html"
+       href="diagrams.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">API reference</p>
+        <p class="prev-next-title">Diagrams</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

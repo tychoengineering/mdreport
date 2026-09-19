@@ -1,4 +1,4 @@
-# Usage examples
+# Markdown
 
 Create a `MarkdownReport`, add content, and then render or save it.
 
@@ -51,7 +51,7 @@ report.callout(
 ```
 
 The kinds are `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, and `CAUTION`. Pass `title` to replace the
-kind's title.
+kind’s title.
 
 ## Add figures
 
@@ -143,7 +143,7 @@ report = (
 )
 ```
 
-Entries link to each heading's anchor, so the list reads as `- [Revenue](#revenue)`. Narrow the
+Entries link to each heading’s anchor, so the list reads as `- [Revenue](#revenue)`. Narrow the
 list with `start_level` and `depth` — `table_of_contents(start_level=2, depth=2)` covers level 2
 and level 3 headings, skipping the title.
 
@@ -158,13 +158,13 @@ For a renderer that generates no anchors, write them into the document:
 ```python
 from mdreport import HeadingAnchorStyle, MarkdownReport, slugify
 
-MarkdownReport(anchor_style=HeadingAnchorStyle.HTML)       # ## <a id="revenue"></a>Revenue
+MarkdownReport(anchor_style=HeadingAnchorStyle.HTML)  # ## <a id="revenue"></a>Revenue
 MarkdownReport(anchor_style=HeadingAnchorStyle.ATTRIBUTE)  # ## Revenue {#revenue}
 
 report.markdown(f"Back to [revenue](#{slugify('Revenue')}).")  # link to a heading
 ```
 
-`ATTRIBUTE` is the syntax Pandoc, kramdown, and python-markdown's `attr_list` understand; anything
+`ATTRIBUTE` is the syntax Pandoc, kramdown, and python-markdown’s `attr_list` understand; anything
 else renders it as visible text.
 
 ## Render or save
