@@ -9,12 +9,27 @@ from typing import Any, ClassVar, cast
 
 import mdformat.plugins
 from markdown_it import MarkdownIt
+from markdown_it.common.normalize_url import validateLink
 from markdown_it.renderer import RendererProtocol
 from markdown_it.token import Token
 from mdformat.renderer import MDRenderer, RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Postprocess, Render
 
 __all__ = ["MarkdownParser", "ReportSyntaxExtension", "create_parser"]
+
+
+def validate_link(url: str) -> bool:
+    """Allow every scheme markdown-it allows by default, plus ``file:``.
+
+    markdown-it-py's default validator blocks ``file:`` links because it is
+    designed for HTML output, where a stray ``file:`` link is an XSS/local-
+    disclosure risk. Reports render back to Markdown text (or a terminal), not
+    HTML a browser executes, and ``file://`` links to local paths are a
+    routine, legitimate result here — so that scheme shouldn't be rejected.
+    """
+    if url.strip().lower().startswith("file:"):
+        return True
+    return validateLink(url)
 
 
 def create_markdown_renderer(parser: MarkdownIt) -> RendererProtocol:
@@ -128,6 +143,7 @@ class MarkdownParser:
 def create_parser() -> MarkdownParser:
     """Create the Markdown parser and serializer a report builds with."""
     parser = MarkdownIt(renderer_cls=create_markdown_renderer)
+    parser.validateLink = validate_link
     parser.options["mdformat"] = {"number": True, "wrap": "keep"}
     parser.options["store_labels"] = True
     parser.options["parser_extension"] = []
