@@ -1,7 +1,8 @@
 # mdreport
 
 Build Markdown reports in Python with a chainable API. `mdreport` supports headings, text, nested lists, callouts,
-figures, captions, code blocks, YAML frontmatter, tables of contents, Jinja templates, and Polars DataFrames.
+figures, captions, code blocks, YAML frontmatter, tables of contents, Jinja templates, Polars DataFrames, and SVG
+diagrams.
 
 ```python
 from mdreport import CalloutKind, MarkdownReport
@@ -31,6 +32,21 @@ report = (
 report.save("q3-review.md")
 print(report)
 ```
+
+Create and embed a diagram with the same report API:
+
+```python
+from mdreport import Diagram, DiagramTheme, MarkdownReport, NodeRole, title_node
+
+diagram = Diagram("Ingest", width=466, height=89, theme=DiagramTheme.LIGHT)
+title_node(diagram, 89, 17, 288, "Source", role=NodeRole.ROOT)
+
+report = MarkdownReport().title("Ingest")
+report.append(diagram.figure(caption="Source node"))
+report.save("ingest.md")
+```
+
+See the [diagram guide](docs/source/diagrams.md) for connectors, branching, themes, palettes, and layout helpers.
 
 ## Installation
 

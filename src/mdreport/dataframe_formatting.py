@@ -12,9 +12,7 @@ __all__ = ["format_dataframe", "format_dataframe_csv", "format_table_cell"]
 def format_dataframe(dataframe: pl.DataFrame, decimal_places: int) -> pl.DataFrame:
     """Normalize list and float columns for report exports."""
     formatted_dataframe = dataframe.with_columns(cs.by_dtype(pl.List(pl.String)).list.join(", "))
-    return formatted_dataframe.with_columns(
-        cs.by_dtype(pl.Float32, pl.Float64).cast(pl.Decimal(scale=decimal_places))
-    )
+    return formatted_dataframe.with_columns(cs.by_dtype(pl.Float32, pl.Float64).cast(pl.Decimal(scale=decimal_places)))
 
 
 def format_dataframe_csv(dataframe: pl.DataFrame, decimal_places: int = 2) -> str:

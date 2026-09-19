@@ -2,7 +2,8 @@
 
 Sphinx sources for the mdreport documentation site.
 
-- `source/` — the introduction, usage examples, API reference, and extensions page.
+- `source/` — the introduction, Markdown guide, diagram guide, API reference, and extensions page.
+- `diagram_examples.py` — renders the sample diagrams the diagram guide shows.
 - `build/` — build output (gitignored). `build/html/index.html` is the rendered site.
 
 ## Building
@@ -27,11 +28,19 @@ make html
 
 ## Writing
 
-- The usage and extensions pages are Markdown, parsed by [MyST](https://myst-parser.readthedocs.io/). Relative links
+- The Markdown, diagram, and extensions pages are Markdown, parsed by [MyST](https://myst-parser.readthedocs.io/). Relative links
   between pages (`[API reference](api-reference.rst)`) resolve to the built pages.
 - `index.rst` and `api-reference.rst` are reStructuredText because they use `toctree` and autodoc directives.
 - Add a new guide page by dropping the `.md` file in `source/` and listing it in the `toctree` in
   `index.rst`. A page missing from a `toctree` is a warning, which `--strict` turns into an error.
+- `diagrams.md` shows each sample in both themes, one image tagged `only-light` and one `only-dark`,
+  which the theme switches between. Every snippet on that page is a function in `diagram_examples.py`.
+  Change the snippet and the function together, then re-render:
+
+  ```bash
+  uv run docs/diagram_examples.py
+  ```
+
 - The API reference documents names under their re-exported top-level path (`mdreport.Table`), not the module they
   live in. Keep that consistent — `add_module_names = False` in `conf.py` assumes it.
 

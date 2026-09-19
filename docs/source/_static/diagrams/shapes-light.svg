@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="267" viewBox="0 0 1220 267" role="img" aria-label="Record delivery">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#202429" />
+    </marker>
+  </defs>
+  <rect x="34" y="34" width="233" height="131" rx="13" fill="#f8f7f3" stroke="#737874" stroke-width="2" />
+  <text x="55" y="68" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#202429"><tspan x="55" dy="0">Record</tspan></text>
+  <line x1="55" y1="81" x2="246" y2="81" stroke="#ded9cf" stroke-width="1.5" />
+  <text x="55" y="105" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#69706f"><tspan x="55" dy="0">id: string</tspan></text>
+  <text x="55" y="126" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#69706f"><tspan x="55" dy="0">status: enum</tspan></text>
+  <text x="55" y="147" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#69706f"><tspan x="55" dy="0">score: float</tspan></text>
+  <line x1="288" y1="99.5" x2="356" y2="99.5" stroke="#202429" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="390" y="68" width="233" height="89" rx="13" fill="#737874" stroke="#737874" stroke-width="2" />
+  <rect x="385" y="63" width="233" height="89" rx="13" fill="#ded9cf" stroke="#737874" stroke-width="2" />
+  <rect x="377" y="55" width="233" height="89" rx="13" fill="#f8f7f3" stroke="#737874" stroke-width="2" />
+  <text x="493.5" y="92.8606" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" font-weight="550" fill="#202429"><tspan x="493.5" dy="0">Documents</tspan></text>
+  <text x="493.5" y="121.7394" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#69706f"><tspan x="493.5" dy="0">24 per batch</tspan></text>
+  <line x1="644" y1="99.5" x2="678" y2="99.5" stroke="#202429" stroke-width="2" />
+  <circle cx="686" cy="99.5" r="5" fill="#202429" />
+  <line x1="686" y1="99.5" x2="788" y2="99.5" stroke="#202429" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="809" y="72" width="233" height="55" rx="13" fill="#eaf7f0" stroke="#087d52" stroke-width="2" />
+  <text x="925.5" y="105.8" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#202429"><tspan x="925.5" dy="0">Publish</tspan></text>
+  <path d="M 686 99.5 L 686 199 L 788 199" fill="none" stroke="#202429" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="809" y="171.5" width="233" height="55" rx="13" fill="#f8f7f3" stroke="#737874" stroke-width="2" />
+  <text x="925.5" y="205.3" text-anchor="middle" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#202429"><tspan x="925.5" dy="0">Cache</tspan></text>
+  <path d="M 1042 199 L 1076 199 L 1076 186 L 1089 186" fill="none" stroke="#69706f" stroke-width="1.5" />
+  <text x="1097" y="191" text-anchor="start" font-family="'SF Pro Text', 'SF Pro Icons', -apple-system, BlinkMacSystemFont, system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" fill="#69706f"><tspan x="1097" dy="0">Expires after</tspan><tspan x="1097" dy="29.1246">15 minutes</tspan></text>
+</svg>

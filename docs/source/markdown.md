@@ -1,4 +1,4 @@
-# Usage examples
+# Markdown
 
 Create a `MarkdownReport`, add content, and then render or save it.
 
@@ -158,7 +158,7 @@ For a renderer that generates no anchors, write them into the document:
 ```python
 from mdreport import HeadingAnchorStyle, MarkdownReport, slugify
 
-MarkdownReport(anchor_style=HeadingAnchorStyle.HTML)       # ## <a id="revenue"></a>Revenue
+MarkdownReport(anchor_style=HeadingAnchorStyle.HTML)  # ## <a id="revenue"></a>Revenue
 MarkdownReport(anchor_style=HeadingAnchorStyle.ATTRIBUTE)  # ## Revenue {#revenue}
 
 report.markdown(f"Back to [revenue](#{slugify('Revenue')}).")  # link to a heading
